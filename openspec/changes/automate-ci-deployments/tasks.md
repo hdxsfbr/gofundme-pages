@@ -11,7 +11,7 @@
 
 - [x] 2.1 Add GitLab validation and serialized main-only Railway deployment, fixing browser environment setup; verify GitLab CI lint and focused deployment-script failure checks.
 - [x] 2.2 Provision dedicated Railway app/PostgreSQL services with private database reference, HTTPS origin, and runtime secrets; verify configuration by names and identifiers without exposing values.
-- [ ] 2.3 Attach an available GitLab runner and configure a masked protected project/environment deployment token; verify runner/variable metadata and outdated-deployment protection.
+- [x] 2.3 Attach an available GitLab runner and configure a masked protected project/environment deployment token; verify runner/variable metadata and outdated-deployment protection.
 - [x] 2.4 Document triggers, variables, deployment identity checks, investigation and rollback, and append the deployment work to the AI usage log.
 
 ## 3. Integrated release verification

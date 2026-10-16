@@ -1,0 +1,59 @@
+{
+  "recordedAt": "2026-10-16T20:06:34.661485+00:00",
+  "sourceSha": "fc87cc49c4ecf26f01f7439e5b4fc8fcfa529d63",
+  "pipeline": "https://labs.gauntletai.com/andrebatista/gofundme-pages/-/pipelines/57373",
+  "validationJob": "https://labs.gauntletai.com/andrebatista/gofundme-pages/-/jobs/234034",
+  "validationStatus": "success",
+  "checks": {
+    "format": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "typecheck": "passed",
+    "unitIntegration": {
+      "passed": 174,
+      "skipped": 0,
+      "failed": 0,
+      "source": "CI trace and successful unit assert-ci-results step; Playwright clears the earlier unit JSON from its output directory"
+    },
+    "browser": {
+      "startTime": "2026-10-16T19:56:28.653Z",
+      "duration": 517613.38399999996,
+      "expected": 59,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "browserReportSource": "test-results/browser.json in the validation job artifact",
+  "origin": "http://127.0.0.1:3000",
+  "authentication": "signed out, isolated anonymous test visitors, x-demo-test true",
+  "screenshots": [
+    {
+      "file": "fundraiser-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cf13bc468dbf7a44ece0ad3654493ba5433deb5ec48f405ad635e9dbe9af67a0",
+      "reviewed": true
+    },
+    {
+      "file": "fundraiser-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "efe0b9d8c0222d550daa129799c4a0123bc842a4386085b48cffe0746fec16d3",
+      "reviewed": true
+    }
+  ],
+  "limitations": [
+    "CI-local validation, not hosted Railway acceptance.",
+    "No live model calls. Deployment credential setup and hosted verification remain pending."
+  ],
+  "visualReview": {
+    "reviewedAt": "2026-10-16T20:07:47.238539+00:00",
+    "reviewer": "primary assistant; not human sign-off",
+    "result": "Desktop and mobile fundraiser images reviewed: assets and typography rendered, funding panel and chart present, content and relationship links visible, no clipping or blocking overlay."
+  }
+}

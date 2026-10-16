@@ -170,13 +170,21 @@ export async function verifyInfrastructure(env, railway) {
     120_000,
   );
 }
-export async function deploy(env = process.env) {
-  const { target, origin } = configuration(env);
-  const railwayEnv = {
+export function deploymentEnvironment(env) {
+  const childEnv = {
     ...env,
     RAILWAY_CALLER: "skill:use-railway@1.7.0",
     RAILWAY_AGENT_SESSION: `ci-${env.CI_PIPELINE_ID}`,
   };
+  // railway/iac checks the executable named by `_` before evaluating config.
+  // Shells leave Node/Python here; removing it makes the SDK check `railway`
+  // through the same PATH as the CLI invocation, retaining its version guard.
+  delete childEnv._;
+  return childEnv;
+}
+export async function deploy(env = process.env) {
+  const { target, origin } = configuration(env);
+  const railwayEnv = deploymentEnvironment(env);
   const railway = async (args, timeout = 60_000) => {
     try {
       return (

@@ -1,7 +1,12 @@
 import { describe, expect, it, vi } from "vitest";
+import { execFileSync } from "node:child_process";
+import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { delimiter, join } from "node:path";
 import {
   assertCurrentMain,
   configuration,
+  deploymentEnvironment,
   releaseStatus,
   uploadIdentity,
   waitForHealth,
@@ -167,5 +172,48 @@ describe("reviewed infrastructure gate", () => {
     await expect(verifyInfrastructure(env, failing)).rejects.toThrow(
       "unreviewed",
     );
+  });
+});
+
+describe("SDK CLI compatibility check", () => {
+  it("checks the PATH CLI instead of an inherited Node executable during real SDK evaluation", () => {
+    const directory = mkdtempSync(join(tmpdir(), "railway-sdk-version-"));
+    try {
+      // A version-only CLI fixture; importing the real SDK performs no API call.
+      writeFileSync(
+        join(directory, "railway"),
+        '#!/bin/sh\ntest "$1" = "--version" || exit 1\nprintf "railway 5.63.1\\n"\n',
+        { mode: 0o700 },
+      );
+      const source =
+        'const mod = await import("railway/iac"); const partial = mod.partial; const graph = {}; process.stdout.write(JSON.stringify({ partial, project: graph }));';
+      const args = [
+        "--experimental-strip-types",
+        "--input-type=module",
+        "-e",
+        source,
+      ];
+      const inherited = {
+        ...process.env,
+        ...env,
+        _: process.execPath,
+        PATH: directory + delimiter + process.env.PATH,
+      };
+      expect(() =>
+        execFileSync(process.execPath, args, { env: inherited, stdio: "pipe" }),
+      ).toThrow("requires Railway CLI 5.42.1 or newer");
+      const sanitized = deploymentEnvironment(inherited);
+      expect(sanitized.RAILWAY_TOKEN).toBe(env.RAILWAY_TOKEN);
+      expect(inherited._).toBe(process.execPath);
+      expect(
+        execFileSync(process.execPath, args, {
+          env: sanitized,
+          encoding: "utf8",
+          stdio: "pipe",
+        }),
+      ).toBe('{"project":{}}');
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
   });
 });
