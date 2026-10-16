@@ -1,0 +1,32 @@
+# Design
+
+## Context
+
+See proposal.md for motivation. GitLab project 2247 has an initial main branch, no pipeline, no assigned runner, and no CI variables. Both provider CLIs are authenticated. Railway has no project for this application. The existing Node/Next application uses PostgreSQL, visitor cookies, and an optional server-side OpenAI integration. Local development and the archived milestone remain useful and must remain usable.
+
+## Goals / Non-Goals
+
+Use a single production environment and existing CI infrastructure within the one-week project scope. Preserve all application behavior and simulated-payment boundaries. Do not introduce Kubernetes, registry operations, production accounts, custom domains, real payments, or database restoration automation. Historical milestone evidence remains immutable.
+
+## Decisions
+
+1. **Railway app plus PostgreSQL, GitLab CI.** Railway provides private networking, persistent volumes, HTTPS domains, pre-deploy commands, and readiness gates with less server administration than a new DigitalOcean application host. Reuse the owner's available GitLab Docker runner with sufficient memory; attaching a runner does not modify its other projects. DigitalOcean remains the runner host.
+2. **Node 24 standalone Next container.** Use a multi-stage pinned Node image, locked dependency installation, Next standalone output, and a non-root runtime binding to 0.0.0.0 and Railway's PORT. Include public/static assets and the plain-JavaScript migration runner. Ignore secrets, local dependencies, build output, research media, and historical evidence in both Docker and Railway upload contexts. This keeps runtime independent of development-only tsx.
+3. **Migrate once before activation.** Convert the existing idempotent SQL runner to native JavaScript, use a transaction-scoped advisory lock and bounded connection/query waits, and run it as Railway's pre-deploy command. Use Railway's PostgreSQL template and its generated password; DATABASE_URL references the private service variable. The template currently uses PostgreSQL 18; CI uses the same major, while the existing local PostgreSQL 17 volume remains untouched.
+4. **Readiness tied to the release.** Add a dynamic no-store /api/health endpoint checking required origin/database configuration and the schema needed by existing actions. Exclude it from visitor-cookie proxy behavior. Return RAILWAY_DEPLOYMENT_ID as the non-secret release identity. CI records the source SHA and upload deployment ID, polls that deployment to SUCCESS, and requires the public endpoint to return that same ID. This avoids mistaking the previous running release for a successful rollout without adding per-release secret/config mutations.
+5. **One validation gate, main-only release.** Run source checks, production build, database suites, and browser tests with a disposable PostgreSQL service and fixture AI responses. Make browser helpers work without a developer .env.local file. Pin the Railway CLI. Use a protected masked project/environment token only in the main deploy job. Serialize deployment jobs and enable GitLab's outdated-deployment protection; verify main's current head before starting an upload.
+6. **Runtime provider and cookie behavior.** Keep the already-authorized optional OpenAI key only in Railway runtime variables. Set APP_ORIGIN to the HTTPS public domain and verify secure cookies, origin checks, navigation, actions, and streaming on that exact domain. Readiness must not depend on the model provider. CI never makes paid AI calls.
+7. **Current Railway infrastructure format.** Railway's CLI and official instructions report that legacy railway.json is unavailable for new services and sunsets on 2026-12-01. Use a TypeScript IaC partial owning only the web runtime settings, preserving independently provisioned database, domain, and variables. Review and apply the initial non-destructive plan once; application deployments continue through the scoped CI token. Infrastructure drift checks must remain compatible with that project/environment credential and must not require a broader account credential.
+
+## Risks / Trade-offs
+
+- Hosted services consume the user's Railway allowance/billing; use one app replica and one database rather than adding previews or a new VM.
+- Shared CI runner capacity can delay checks; jobs use a dedicated tag and bounded timeouts without changing runner-wide settings.
+- Migrations must stay backward compatible because the prior application remains active during rollout. Existing SQL is additive/idempotent; schema rollback is not automated.
+- A public demo has fictional campaign data, simulated donations, anonymous device-bound sessions, and bounded AI access. It is not a production fundraising platform.
+- A readiness gate is a release-time check, not continuous monitoring or a backup policy. Document operational limits rather than claiming those features.
+- Railway intentionally blocks creation of long-lived project tokens through OAuth. The user must create the token in Railway's account UI and store it directly as a masked protected production variable in GitLab; local OAuth credentials are not copied into CI.
+
+## Migration Plan
+
+Prepare and validate source/config first, create dedicated services, configure private references and secrets, assign the available GitLab runner, and push the implementation branch. After branch validation, publish the reviewed commit to main without force-pushing and let its pipeline perform the initial deployment. Inspect hosted desktop/mobile flows and a second deployment for persistence. Record pipeline/deployment IDs and evidence, then complete the OpenSpec change. For application rollback, deploy a known-good compatible commit through CI or use Railway rollback followed by readiness verification; leave the persistent database intact and never automatically reverse migrations.

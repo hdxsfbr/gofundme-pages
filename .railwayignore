@@ -1,0 +1,17 @@
+.git
+.env*
+node_modules
+.next
+docs
+openspec
+.agents
+test-results
+playwright-report
+coverage
+*.tsbuildinfo
+*.log
+.DS_Store
+.npm
+deployment-result.json
+railway-plan*.json
+*.railway-plan.json

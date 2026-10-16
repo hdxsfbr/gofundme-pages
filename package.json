@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:browser": "playwright test",
-    "db:migrate": "node --env-file-if-exists=.env.local --import tsx scripts/migrate.ts",
+    "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate.mjs",
     "report": "node --env-file-if-exists=.env.local --import tsx scripts/report.ts",
     "eval:ai": "node --env-file-if-exists=.env.local --import tsx scripts/eval-ai.ts",
     "format:check": "prettier --check src scripts tests",
@@ -44,6 +44,7 @@
     "eslint-config-next": "16.4.2",
     "lighthouse": "13.5.0",
     "prettier": "3.6.2",
+    "railway": "3.16.0",
     "tsx": "4.23.15",
     "typescript": "5.9.3",
     "vitest": "5.0.5"

@@ -1,12 +1,12 @@
 import { expect, type BrowserContext, type Page } from "@playwright/test";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import pg from "pg";
 export const origin = process.env.BASE_URL || "http://127.0.0.1:3000";
 export const community = "/communities/a-greener-tomorrow";
 export const campaign = "grow-a-neighborhood";
 export const fundraiser = "/fundraisers/" + campaign;
-const env = readFileSync(".env.local", "utf8");
+const env = existsSync(".env.local") ? readFileSync(".env.local", "utf8") : "";
 const connectionString =
   process.env.DATABASE_URL || env.match(/^DATABASE_URL=["']?([^\n"']+)/m)?.[1];
 export const db = new pg.Pool({

@@ -34,3 +34,7 @@ The milestone-specific runtime evaluation/capture work used eight model calls: f
 ## Preview-origin repair
 
 After user review exposed rejected actions through the forwarded preview address, the Sol implementation agent added explicit origin configuration and regression tests; the Sol browser agent checked persisted actions through a local forwarding reproduction; Luna updated setup and validation documentation. The primary Codex agent configured/restarted the server, reviewed the fix, and verified one additional live Ask response through the preview origin. This request returned a missing-budget answer for fictional campaign data. See [repair evidence](evidence/preview-origin-release.json) and [live Ask result](evidence/preview-live-ask.json). Earlier release evidence remains a historical snapshot.
+
+## Deployment automation
+
+On 2026-10-16, the primary Codex agent coordinated the Railway and GitLab deployment change and reviewed the OpenSpec plan. A bounded documentation agent drafted the deployment runbook, linked it from the README, and recorded this work. Runtime/container/migration/health implementation and CI/deployment configuration were assigned to separate agents; their details and review status must be reconciled with the final source before this entry is treated as complete. The runbook records project/service identifiers and currently marks first hosted release evidence as pending. No deployment success, hosted journey, or production readiness claim is made here until supported by recorded pipeline and hosted verification evidence.

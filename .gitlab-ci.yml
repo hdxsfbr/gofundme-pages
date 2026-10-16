@@ -1,0 +1,84 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+
+stages: [validate, deploy]
+
+default:
+  image: node:24.14.0-bookworm-slim@sha256:d8e448a56fc63242f70026718378bd4b00f8c82e78d20eefb199224a4d8e33d8
+  tags: [digitalocean]
+  interruptible: true
+
+variables:
+  NEXT_TELEMETRY_DISABLED: "1"
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+
+validate:
+  stage: validate
+  timeout: 25m
+  services:
+    - name: postgres:18.3-bookworm@sha256:80630f83606d8db77d30b3851b16a9f78be2d0d4dda6f7b82a1fdca5ebe3acba
+      alias: postgres
+  variables:
+    POSTGRES_DB: gofundme_ci
+    POSTGRES_USER: ci
+    POSTGRES_PASSWORD: disposable-ci-only
+    DATABASE_URL: postgres://ci:disposable-ci-only@postgres:5432/gofundme_ci
+    APP_ORIGIN: http://127.0.0.1:3000
+    BASE_URL: http://127.0.0.1:3000
+    PRIMARY_BASE_URL: http://127.0.0.1:3000
+    PREVIEW_BASE_URL: http://127.0.0.1:61071
+    APP_PREVIEW_ORIGINS: http://127.0.0.1:61071
+    CHROME_BIN: /usr/bin/chromium
+    OPENAI_API_KEY: ""
+  cache:
+    key:
+      files: [package-lock.json]
+    paths: [.npm/]
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends chromium ca-certificates && rm -rf /var/lib/apt/lists/*
+    - npm ci --prefer-offline
+  script:
+    - npm run format:check
+    - npm run lint
+    - node scripts/ci-database.mjs
+    - npm run db:migrate
+    - npm test -- --reporter=default --reporter=json --outputFile=test-results/unit.json
+    - node scripts/assert-ci-results.mjs unit test-results/unit.json
+    - npm run build
+    - npm run typecheck
+    - node scripts/ci-browser.mjs
+    - node scripts/assert-ci-results.mjs browser test-results/browser.json
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths: [test-results/, playwright-report/]
+
+deploy-production:
+  stage: deploy
+  timeout: 25m
+  interruptible: false
+  needs: [validate]
+  resource_group: production
+  environment:
+    name: production
+    url: $APP_ORIGIN
+    deployment_tier: production
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main" && $CI_COMMIT_REF_PROTECTED == "true"'
+  variables:
+    RAILWAY_CALLER: skill:use-railway@1.7.0
+    RAILWAY_AGENT_SESSION: ci-$CI_PIPELINE_ID
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*
+    - npm ci --ignore-scripts --prefer-offline
+    - npm install --global @railway/cli@5.63.1
+  script:
+    - node scripts/deploy-railway.mjs
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths: [deployment-result.json]

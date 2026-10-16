@@ -1,4 +1,5 @@
 import "server-only";
+import { allowedOrigins } from "./origins";
 export class RequestError extends Error {
   constructor(
     message: string,
@@ -7,38 +8,16 @@ export class RequestError extends Error {
     super(message);
   }
 }
-function configuredOrigin(value: string): string {
-  const input = value.trim();
-  if (!/^https?:\/\/[^/?#\\\s]+$/i.test(input)) throw new Error();
-  const parsed = new URL(input);
-  if (
-    parsed.username ||
-    parsed.password ||
-    parsed.pathname !== "/" ||
-    parsed.search ||
-    parsed.hash
-  )
-    throw new Error();
-  return parsed.origin;
-}
-function allowedOrigins(): Set<string> {
-  try {
-    if (!process.env.APP_ORIGIN) throw new Error();
-    const primary = configuredOrigin(process.env.APP_ORIGIN);
-    const previews = process.env.APP_PREVIEW_ORIGINS?.trim();
-    return new Set([
-      primary,
-      ...(previews ? previews.split(",").map(configuredOrigin) : []),
-    ]);
-  } catch {
-    throw new RequestError("Site origin configuration is unavailable.", 503);
-  }
-}
 export async function body(req: Request) {
   const origin = req.headers.get("origin");
   // Configuration trims whitespace and normalizes URL casing and default ports.
   // Browser Origin headers must exactly match a configured serialized origin.
-  const allowed = allowedOrigins();
+  let allowed: Set<string>;
+  try {
+    allowed = allowedOrigins();
+  } catch {
+    throw new RequestError("Site origin configuration is unavailable.", 503);
+  }
   if (!origin || !allowed.has(origin))
     throw new RequestError("This action must come from this site.", 403);
   const text = await req.text();
