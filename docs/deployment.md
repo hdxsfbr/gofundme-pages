@@ -44,6 +44,8 @@ The authenticated CLI can provision and deploy with OAuth, but Railway [intentio
 
 Pushes and merge requests run formatting, lint, database integration checks, unit tests, production build, type checking, and Chromium browser journeys against disposable PostgreSQL 18 and controlled AI responses. Passing non-main branches stop after validation. A passing pipeline on protected `main` deploys automatically. Production jobs are serialized with GitLab's outdated-deployment protection; the deploy job also checks that the source commit is still the current main head. The Railway CLI is pinned to 5.63.1 in the deploy job.
 
+For initial activation, the reviewed implementation is fast-forwarded to main and its single pipeline performs the full checks before deployment. If the token is still missing after validation succeeds, add it and retry only the failed `deploy-production` job; the same validated main SHA is still required.
+
 The deploy job records the source commit and Railway deployment ID, waits up to 18 minutes for that deployment to reach `SUCCESS`, then polls `/api/health` over HTTPS for up to two minutes. Readiness must report the same deployment ID, return success without redirects, and set no cookie. A successful image build or upload alone is not a successful release. A missing token or failed readiness check fails the job.
 
 ## Verify and investigate a release
