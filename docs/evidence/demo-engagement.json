@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "window": {
+    "from": "2026-10-16T02:38:18.371Z",
+    "to": "2026-10-16T02:39:03.806Z",
+    "bounds": "[from, to)"
+  },
+  "population": "all recorded sessions including tests",
+  "simulatedDonations": true,
+  "counts": {
+    "events": 28,
+    "pageViews": 8,
+    "pageVisitors": 1,
+    "activeSessions": 1
+  },
+  "discovery": {
+    "communityVisitors": 1,
+    "cardOpenEvents": 3,
+    "campaignArrival": {
+      "numerator": 1,
+      "denominator": 1,
+      "rate": 1
+    }
+  },
+  "follows": {
+    "savedFollowEvents": 1,
+    "savedUnfollowEvents": 0,
+    "visitorFollow": {
+      "numerator": 1,
+      "denominator": 1,
+      "rate": 1
+    }
+  },
+  "donations": {
+    "startedAttempts": 1,
+    "completedAttempts": 1,
+    "completedCents": 1250,
+    "completion": {
+      "numerator": 1,
+      "denominator": 1,
+      "rate": 1
+    },
+    "unmatchedCompletedAttempts": 0,
+    "startsMissingAttemptId": 0,
+    "completionsMissingAttemptId": 0
+  },
+  "sharing": {
+    "share_opened": {
+      "events": 1,
+      "visitors": 1
+    },
+    "share_copied": {
+      "events": 1,
+      "visitors": 1
+    },
+    "native_share_completed": {
+      "events": 0,
+      "visitors": 0
+    },
+    "share_cancelled": {
+      "events": 0,
+      "visitors": 0
+    },
+    "share_failed": {
+      "events": 0,
+      "visitors": 0
+    }
+  },
+  "returns": {
+    "sessionsStarted": 1,
+    "returningVisitors": 0,
+    "returningSession": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0
+    }
+  },
+  "ai": {
+    "submittedRequests": 3,
+    "supported": 2,
+    "abstained": 1,
+    "failed": 0,
+    "observedOutcome": {
+      "numerator": 3,
+      "denominator": 3,
+      "rate": 1
+    },
+    "pendingSubmittedRequests": 0,
+    "outcomesWithoutInWindowSubmission": 0,
+    "citationOpens": 2,
+    "citationVisitors": 1,
+    "visitorCitationUse": {
+      "numerator": 1,
+      "denominator": 1,
+      "rate": 1
+    },
+    "answeredRequestCitationUse": {
+      "numerator": 2,
+      "denominator": 3,
+      "rate": 0.6666666666666666
+    },
+    "citationOpensWithoutMatchedAnswer": 0,
+    "latencySamples": 3,
+    "meanLatencyMs": 1524,
+    "eventsMissingRequestId": 0
+  },
+  "outbox": {
+    "reconciled": 0,
+    "pending": 0
+  }
+}

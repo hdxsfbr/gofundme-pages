@@ -1,0 +1,116 @@
+{
+  "checkedAt": "2026-10-16T05:29:19.922426+00:00",
+  "state": "Final production release candidate evidence",
+  "buildId": "-6yPHl9lZGab-87T31WH9",
+  "file": "demo.webm",
+  "sha256": "41c3f03466bc84bc392c08daae526ed34df696311263a0e762dba4ae86c8b071",
+  "media": {
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1440,
+        "height": 1000,
+        "r_frame_rate": "25/1"
+      }
+    ],
+    "format": {
+      "duration": "55.240000",
+      "size": "7486360"
+    }
+  },
+  "tools": {
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "ffprobe": "6.1.1-3ubuntu5"
+  },
+  "fullStreamDecode": {
+    "command": "ffmpeg -hide_banner -v error -threads 1 -i docs/evidence/milestone/demo.webm -f null -",
+    "exitCode": 0,
+    "errors": []
+  },
+  "visualReview": {
+    "reviewer": "Codex browser-verification agent; primary agent independently reviewed final answer/report frames",
+    "method": "Viewed all13 extracted frames; not a claim of full real-time human playback.",
+    "frames": [
+      {
+        "file": "demo-frames/00.88-community-discovery.png",
+        "sampleSeconds": 0.88,
+        "sha256": "3e13c83fca8247beb6aa3d9b8f15052712ff3e3560996eaabcc9820aa336627e"
+      },
+      {
+        "file": "demo-frames/07.86-organizer-profile.png",
+        "sampleSeconds": 7.86,
+        "sha256": "d69a77669fd4ecc6b6dd3f59292b5a591e886f5d1a7b0f2e83d0032289850a40"
+      },
+      {
+        "file": "demo-frames/11.61-following-discovery.png",
+        "sampleSeconds": 11.61,
+        "sha256": "998c84dd27555c333b3936a3f9d24de8794b73b1f61a056b5db89f6d7c9cedc2"
+      },
+      {
+        "file": "demo-frames/14.60-purpose-answer-early-complete.png",
+        "sampleSeconds": 14.6,
+        "sha256": "70fd749b6f022f122169f3053e29d78bb79fc9536e2e4917b5f5d5c5425f576f"
+      },
+      {
+        "file": "demo-frames/15.37-purpose-answer-and-source-footer.png",
+        "sampleSeconds": 15.37,
+        "sha256": "2b1cbd5fbc84d93a392196c380d3726fe226097b2bd307950d0f22558a94bb8a"
+      },
+      {
+        "file": "demo-frames/25.62-simulated-donation-confirmation.png",
+        "sampleSeconds": 25.62,
+        "sha256": "93bda145d8f4560cd174b43b49d3d65aed9f688aa12a6da609cf259830ae0785"
+      },
+      {
+        "file": "demo-frames/28.40-live-partial-funding-early.png",
+        "sampleSeconds": 28.4,
+        "sha256": "42c8d337d43aacf4d4306ae93c933afb934a9df2d5219dfaa71c7fd1d0e5a6cd"
+      },
+      {
+        "file": "demo-frames/28.60-live-partial-funding.png",
+        "sampleSeconds": 28.6,
+        "sha256": "1a77d3995eb053b54176eea24d8ff0793c5da0eafac70de37faf8140ef0c927a"
+      },
+      {
+        "file": "demo-frames/29.67-fresh-funding-after-donation.png",
+        "sampleSeconds": 29.67,
+        "sha256": "4b7084b6d63e4f9ebb66e02b7ff6f39aed37ab56d9cf535b43bd751a1b90093d"
+      },
+      {
+        "file": "demo-frames/33.47-contextual-average-follow-up.png",
+        "sampleSeconds": 33.47,
+        "sha256": "b36805c5dc3ca713f7f9e3edddcc3ddd0da77e51741effb64dff9093798dd36b"
+      },
+      {
+        "file": "demo-frames/40.90-private-supporter-profile.png",
+        "sampleSeconds": 40.9,
+        "sha256": "eb6df9d6924c3f6fdcdce9abda0f04dc31385cd9b595c055ae34ec76b2891e2e"
+      },
+      {
+        "file": "demo-frames/45.06-explicit-missing-budget.png",
+        "sampleSeconds": 45.06,
+        "sha256": "2083bc9c9a86f6d841953cdbacd4a75a8fcdb11603ceb512fa45b36bf197f314"
+      },
+      {
+        "file": "demo-frames/49.38-actual-measurement-report.png",
+        "sampleSeconds": 49.38,
+        "sha256": "6dfd5ab5bc2ff7f525b45d33182d7632fd770bcaf462aad91d173bf2ea3be36c"
+      }
+    ],
+    "observations": [
+      "Connected community, organizer profile, and Following journey is visible.",
+      "28.40s shows one funding claim while Writing status remains;28.60s shows three claims still pending;29.67s shows completed response. This confirms genuinely incremental visible claims rather than a completed-response animation.",
+      "Donation confirmation explicitly states $12.50 simulated support and no money charged.",
+      "Fresh funding and contextual average match authoritative seeded records plus the one recorded contribution; source references are grouped beneath answer prose and snapshots beneath references.",
+      "Missing-budget answer explicitly states the source limitation and supplies no invented costs.",
+      "Private profile shows featured cause and followed organizer; saved contribution activity is separately asserted by the recorder but lies below sampled viewport.",
+      "All measurement rows,1visitor/1session scope, simulation and no-uplift disclaimers are readable within the video frame."
+    ]
+  },
+  "caveats": [
+    "Silent desktop recording, isolated cookie-bound x-demo-test visitor; no physical mobile device or authenticated reference account.",
+    "Four real model requests; no AI response interception and no extra request made to retain full wire payloads. Displayed final answers were visually transcribed for source review.",
+    "Completion required an SSE done frame, finalized UI state, and corresponding saved aggregate analytics before advancing to the next action.",
+    "No population engagement, retention uplift, field performance, or recipient delivery claim."
+  ]
+}

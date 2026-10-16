@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-16T03:09:05.240Z",
+  "state": "Existing Ask panel before chat composer changes",
+  "captures": [
+    {
+      "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "docs/evidence/chat/before-1440.png",
+      "authentication": "Isolated cookie-bound demo visitor; no production account authentication",
+      "modelRequests": 0
+    },
+    {
+      "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "docs/evidence/chat/before-390.png",
+      "authentication": "Isolated cookie-bound demo visitor; no production account authentication",
+      "modelRequests": 0
+    }
+  ]
+}

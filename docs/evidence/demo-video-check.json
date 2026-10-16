@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-16T02:40:08.459532+00:00",
+  "file": "demo.webm",
+  "sha256": "7e914b6c0b4019f22aeed8ca3f9691bbe9d357273fecbc9d4e8733403a0d265c",
+  "media": {
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1440,
+        "height": 1000,
+        "r_frame_rate": "25/1"
+      }
+    ],
+    "format": {
+      "duration": "54.840000",
+      "size": "7910736"
+    }
+  },
+  "fullStreamDecode": {
+    "command": "ffmpeg -v error -i docs/evidence/demo.webm -f null -",
+    "exitCode": 0,
+    "errors": []
+  },
+  "visualReview": {
+    "reviewer": "primary Codex agent",
+    "method": "Viewed extracted frames, not a claim of full real-time human playback",
+    "sampleSeconds": [
+      4,
+      16,
+      25,
+      28,
+      30,
+      42,
+      51
+    ],
+    "frames": "demo-frames/",
+    "observations": [
+      "Community discovery and filtering visible",
+      "Live purpose answer cites matching itemized source",
+      "No-charge $12.50 donation confirmation visible",
+      "Remaining amount $3,137.50 matches server projection",
+      "Missing-budget answer supplies no invented costs",
+      "Final measurement scene agrees with recorded CLI report"
+    ]
+  }
+}

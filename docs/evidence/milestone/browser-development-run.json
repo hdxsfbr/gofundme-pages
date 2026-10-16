@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "state": "Development verification before correcting the lazy-load failure fixture",
+  "buildId": "-6yPHl9lZGab-87T31WH9",
+  "recordedAt": "2026-10-16T05:22:14.525843+00:00",
+  "stats": {
+    "startTime": "2026-10-16T05:20:20.120Z",
+    "duration": 47606.201,
+    "expected": 56,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "failure": {
+    "file": "tests/browser/chat-loading.spec.ts",
+    "observation": "Test aborted only the first chunk request. Turbopack automatically retried and successfully opened the composer, so the expected error was absent. This did not demonstrate an application defect.",
+    "correction": "Keep the chunk unavailable through all initial attempts until the actual error appears; then restore availability and click the existing Retry opening assistant button."
+  },
+  "focusedRecheck": {
+    "stats": {
+      "startTime": "2026-10-16T05:21:56.354Z",
+      "duration": 2370.6330000000003,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "result": "Existing application retry successfully opens the composer after an actual persistent initial outage; no model requests."
+  },
+  "scope": "No live model requests in either automated run. Full corrected suite rerun pending."
+}

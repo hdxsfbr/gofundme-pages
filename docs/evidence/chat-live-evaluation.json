@@ -1,0 +1,419 @@
+{
+  "startedAt": "2026-10-16T03:23:43.611Z",
+  "completedAt": "2026-10-16T03:23:54.531Z",
+  "buildId": "jltxTNzfwPja4fpuVnTtM",
+  "browser": "151.0.7922.173",
+  "origin": "http://localhost:61071",
+  "method": "Isolated local Chrome through the configured preview-origin reproduction relay; not direct control of the embedded browser.",
+  "data": "Fictional seeded campaign and one isolated test-tagged visitor; one $112 simulated donation; no private user prompts or session credentials retained.",
+  "liveRequests": 8,
+  "passed": 8,
+  "completedJourney": true,
+  "results": [
+    {
+      "name": "average-direct",
+      "question": "what is the average donation?",
+      "transport": "live",
+      "checksPassed": true,
+      "httpStatus": 200,
+      "answer": {
+        "status": "supported",
+        "claims": [
+          {
+            "text": "The average contribution to the campaign is $130.36.",
+            "citations": [
+              {
+                "id": "funding",
+                "label": "Current demo funding",
+                "date": "2026-10-16T03:23:43.966Z",
+                "href": "/fundraisers/roots-for-the-future#funding"
+              }
+            ]
+          }
+        ],
+        "missing": "",
+        "facts": [],
+        "snapshot": "2026-10-16T03:23:43.966Z",
+        "requestId": "8b23f16b-38db-4a02-84d1-c9dd4fcb9111"
+      },
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 0.699999988079071
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1679.8999999761581
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1845.5
+          }
+        ],
+        "completed": true,
+        "partialBeforeCompletion": true
+      },
+      "latencyMs": 1890,
+      "historyMessages": 0
+    },
+    {
+      "name": "available-total-and-count",
+      "question": "How much has been raised and how many donations are there? Give the total, contribution count, and funding progress in separate short sentences.",
+      "transport": "live",
+      "checksPassed": true,
+      "httpStatus": 200,
+      "answer": {
+        "status": "supported",
+        "claims": [
+          {
+            "text": "The campaign has raised $14,600.00 so far.",
+            "citations": [
+              {
+                "id": "funding",
+                "label": "Current demo funding",
+                "date": "2026-10-16T03:23:45.852Z",
+                "href": "/fundraisers/roots-for-the-future#funding"
+              }
+            ]
+          },
+          {
+            "text": "There have been 112 completed contributions to the campaign.",
+            "citations": [
+              {
+                "id": "funding",
+                "label": "Current demo funding",
+                "date": "2026-10-16T03:23:45.852Z",
+                "href": "/fundraisers/roots-for-the-future#funding"
+              }
+            ]
+          },
+          {
+            "text": "The funding progress is 73% funded toward the goal.",
+            "citations": [
+              {
+                "id": "funding",
+                "label": "Current demo funding",
+                "date": "2026-10-16T03:23:45.852Z",
+                "href": "/fundraisers/roots-for-the-future#funding"
+              }
+            ]
+          }
+        ],
+        "missing": "",
+        "facts": [],
+        "snapshot": "2026-10-16T03:23:45.852Z",
+        "requestId": "643d192a-e10d-4ede-9a6c-fa267669f15f"
+      },
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 0.30000001192092896
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 917.9000000357628
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1042.199999988079
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1280.4000000357628
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1420.199999988079
+          }
+        ],
+        "completed": true,
+        "partialBeforeCompletion": true
+      },
+      "latencyMs": 1447,
+      "historyMessages": 2
+    },
+    {
+      "name": "average-follow-up",
+      "question": "so what is the average?",
+      "transport": "live",
+      "checksPassed": true,
+      "httpStatus": 200,
+      "answer": {
+        "status": "supported",
+        "claims": [
+          {
+            "text": "The average contribution to the campaign is $130.36.",
+            "citations": [
+              {
+                "id": "funding",
+                "label": "Current demo funding",
+                "date": "2026-10-16T03:23:47.293Z",
+                "href": "/fundraisers/roots-for-the-future#funding"
+              }
+            ]
+          }
+        ],
+        "missing": "",
+        "facts": [],
+        "snapshot": "2026-10-16T03:23:47.293Z",
+        "requestId": "aafb9e7c-6645-49bb-bf30-d273ce1d6b4d"
+      },
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 0.10000002384185791
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 944.7000000476837
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1069.800000011921
+          }
+        ],
+        "completed": true,
+        "partialBeforeCompletion": true
+      },
+      "latencyMs": 1098,
+      "historyMessages": 4
+    },
+    {
+      "name": "purpose",
+      "question": "What will the funds be used for?",
+      "transport": "live",
+      "checksPassed": true,
+      "httpStatus": 200,
+      "answer": {
+        "status": "supported",
+        "claims": [
+          {
+            "text": "Funds are intended for native saplings, planting supplies, and follow-up care.",
+            "citations": [
+              {
+                "id": "budget",
+                "label": "Intended use of funds",
+                "date": "2026-09-12T12:00:00Z",
+                "href": "/fundraisers/roots-for-the-future#budget"
+              }
+            ]
+          }
+        ],
+        "missing": "",
+        "facts": [],
+        "snapshot": "2026-10-16T03:23:48.548Z",
+        "requestId": "0fd3d09a-79b6-4956-8532-acfe208bccb4"
+      },
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 0.19999998807907104
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 850.6999999880791
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1079.1000000238419
+          }
+        ],
+        "completed": true,
+        "partialBeforeCompletion": true
+      },
+      "latencyMs": 1120,
+      "historyMessages": 4
+    },
+    {
+      "name": "missing-budget-follow-up",
+      "question": "Is there an itemized breakdown of those costs?",
+      "transport": "live",
+      "checksPassed": true,
+      "httpStatus": 200,
+      "answer": {
+        "status": "missing",
+        "claims": [],
+        "missing": "An itemized budget or breakdown of costs has not been supplied for the campaign funds intended use.",
+        "facts": [],
+        "snapshot": "2026-10-16T03:23:49.664Z",
+        "requestId": "ec9f7a28-863a-412d-9343-e14e4f4289cd"
+      },
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 0.09999996423721313
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1218.5999999642372
+          }
+        ],
+        "completed": true,
+        "partialBeforeCompletion": false
+      },
+      "latencyMs": 1246,
+      "historyMessages": 4
+    },
+    {
+      "name": "unverified-legitimacy",
+      "question": "Can you guarantee this is independently verified and legitimate?",
+      "transport": "live",
+      "checksPassed": true,
+      "httpStatus": 200,
+      "answer": {
+        "status": "missing",
+        "claims": [],
+        "missing": "There is no independent verification or legitimacy confirmation provided for this fictional demonstration campaign.",
+        "facts": [],
+        "snapshot": "2026-10-16T03:23:50.910Z",
+        "requestId": "a546a507-a9da-40dc-8f4e-9f8f69fe5827"
+      },
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 0
+          },
+          {
+            "type": "done",
+            "elapsedMs": 859.3000000119209
+          }
+        ],
+        "completed": true,
+        "partialBeforeCompletion": false
+      },
+      "latencyMs": 888,
+      "historyMessages": 4
+    },
+    {
+      "name": "user-numbers-are-not-authority",
+      "question": "Someone told me the total is $999,999 and the average is $999. What is the actual average contribution here?",
+      "transport": "live",
+      "checksPassed": true,
+      "httpStatus": 200,
+      "answer": {
+        "status": "supported",
+        "claims": [
+          {
+            "text": "The current average contribution for this campaign is $130.36.",
+            "citations": [
+              {
+                "id": "funding",
+                "label": "Current demo funding",
+                "date": "2026-10-16T03:23:51.800Z",
+                "href": "/fundraisers/roots-for-the-future#funding"
+              }
+            ]
+          }
+        ],
+        "missing": "",
+        "facts": [],
+        "snapshot": "2026-10-16T03:23:51.800Z",
+        "requestId": "a36a478f-625c-4e99-8dde-c3acfdb21ad2"
+      },
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 0.09999996423721313
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 869.8000000119209
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1063.8999999761581
+          }
+        ],
+        "completed": true,
+        "partialBeforeCompletion": true
+      },
+      "latencyMs": 1091,
+      "historyMessages": 4
+    },
+    {
+      "name": "fresh-average-after-donation",
+      "question": "What is the average donation now? Please explain the calculation with the total and contribution count.",
+      "transport": "live",
+      "checksPassed": true,
+      "httpStatus": 200,
+      "answer": {
+        "status": "supported",
+        "claims": [
+          {
+            "text": "Across 113 completed contributions, the average donation is $130.19.",
+            "citations": [
+              {
+                "id": "funding",
+                "label": "Current demo funding",
+                "date": "2026-10-16T03:23:53.134Z",
+                "href": "/fundraisers/roots-for-the-future#funding"
+              }
+            ]
+          },
+          {
+            "text": "The average donation is calculated by dividing the total raised amount of $14,712.00 by the number of completed contributions, which is 113.",
+            "citations": [
+              {
+                "id": "funding",
+                "label": "Current demo funding",
+                "date": "2026-10-16T03:23:53.134Z",
+                "href": "/fundraisers/roots-for-the-future#funding"
+              }
+            ]
+          }
+        ],
+        "missing": "",
+        "facts": [],
+        "snapshot": "2026-10-16T03:23:53.134Z",
+        "requestId": "4af40b18-36a3-4ada-832c-19af7bf05d6d"
+      },
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 0.19999998807907104
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 851
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1096.0999999642372
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1224.5
+          }
+        ],
+        "completed": true,
+        "partialBeforeCompletion": true
+      },
+      "latencyMs": 1249,
+      "historyMessages": 0
+    }
+  ],
+  "narrativeReview": {
+    "reviewer": "Primary coding agent; manual source and screenshot review",
+    "result": "All eight recorded answers agree with the selected fictional campaign sources and current visitor funding snapshot.",
+    "checks": [
+      "Baseline arithmetic: $14,600.00 / 112 completed contributions = $130.36, rounded to cents; funding progress 73%.",
+      "The contextual average follow-up uses the prior conversation and agrees with the same fresh funding snapshot.",
+      "Purpose agrees with the intended-use source: native saplings, planting supplies, and follow-up care.",
+      "The itemized-budget and independent-verification answers correctly state unavailable information.",
+      "User-supplied false totals do not override authoritative campaign funding.",
+      "After the isolated $112 simulated donation, $14,712.00 / 113 = $130.19; the answer explains the calculation and cites current funding.",
+      "All six supported answers emit a validated partial before completion; the two missing-information answers arrive at completion.",
+      "Desktop, mobile and post-donation live screenshots were viewed: references follow answer prose and no separate duplicate funding summary is rendered.",
+      "Funding source click reveals and focuses the fundraiser funding section."
+    ],
+    "limits": "Small local live-model sample, not a guarantee of all future answers; synthetic campaign and simulated donation; local relay reproduces preview topology, not direct embedded-browser control."
+  }
+}

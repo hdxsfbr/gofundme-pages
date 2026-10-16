@@ -1,0 +1,10 @@
+{
+  "recordedAt": "2026-10-16T02:14:00.375Z",
+  "result": "pass",
+  "method": "Created isolated visitor, followed community and donated $12.50 on dev server; saved private cookie locally, stopped Node process, clean install/build/start production with same PostgreSQL volume; restored context and verified unchanged identity, donor totals, community totals, private activity and second-visitor isolation.",
+  "fundraiser": "$11,862.50",
+  "community": "$52,762.50",
+  "privateDonationCount": 1,
+  "secondVisitor": "$11,850",
+  "cookieRecorded": false
+}

@@ -1,0 +1,49 @@
+{
+  "recordedAt": "2026-10-16T05:19:35.630Z",
+  "browser": "151.0.7922.173",
+  "viewport": "390x844",
+  "throttling": "none",
+  "build": "production",
+  "buildId": "-6yPHl9lZGab-87T31WH9",
+  "tracePrivacy": "Cookie and authorization headers and cookie arrays redacted from trace/network records before sharing.",
+  "method": "Playwright action through visible DOM assertion plus two animation frames. Includes browser-driver overhead and any scrolling; these are scripted action-to-visible-result timings, not INP or pure event-handler duration.",
+  "modelRequestsDuringInitialRenderingAndPanelOpening": 0,
+  "measures": [
+    {
+      "name": "filter-Maya",
+      "elapsedMs": 50.1
+    },
+    {
+      "name": "filter-Maya",
+      "elapsedMs": 31
+    },
+    {
+      "name": "filter-Maya",
+      "elapsedMs": 34.9
+    },
+    {
+      "name": "open-Ask-panel",
+      "elapsedMs": 99.6
+    },
+    {
+      "name": "open-Ask-panel",
+      "elapsedMs": 60.3
+    },
+    {
+      "name": "open-Ask-panel",
+      "elapsedMs": 59.7
+    },
+    {
+      "name": "chart-7 days",
+      "elapsedMs": 66.9
+    },
+    {
+      "name": "chart-All time",
+      "elapsedMs": 66.5
+    },
+    {
+      "name": "chart-30 days",
+      "elapsedMs": 66.3
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# Preserve Lighthouse's generated HTML exactly, including its blank-line spaces.
+docs/evidence/**/*.html whitespace=-blank-at-eol

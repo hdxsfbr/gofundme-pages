@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-16T02:55:08.595Z",
+  "completedAt": "2026-10-16T02:56:29.959018+00:00",
+  "applicationMode": "production, next start",
+  "nextBuildId": "OWarGDoXxQxksChR2HgFM",
+  "testFile": "tests/browser/preview-origin.spec.ts",
+  "results": {
+    "passed": 2,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMs": 3066.863
+  },
+  "environment": {
+    "node": "24.14.0",
+    "browser": "Google Chrome151.0.7922.173, headless",
+    "playwright": "1.64.1",
+    "workers": 1,
+    "retries": 0,
+    "testTrafficHeader": "x-demo-test: true"
+  },
+  "topology": {
+    "browserOrigin": "http://localhost:61071",
+    "relay": "scripts/preview-proxy.mjs, bound on127.0.0.1:61071",
+    "upstream": "http://127.0.0.1:3000",
+    "hostHeader": "Rewritten to127.0.0.1:3000",
+    "originHeader": "Preserved as emitted by browser",
+    "configuredPrimaryOrigin": "http://127.0.0.1:3000",
+    "configuredPreviewOrigins": [
+      "http://localhost:61071"
+    ]
+  },
+  "reproduction": [
+    "Complete the README PostgreSQL/environment/build setup first.",
+    "APP_ORIGIN=http://127.0.0.1:3000 APP_PREVIEW_ORIGINS=http://localhost:61071 npm run start",
+    "PREVIEW_BASE_URL=http://localhost:61071 PREVIEW_TARGET=http://127.0.0.1:3000 node scripts/preview-proxy.mjs",
+    "PREVIEW_BASE_URL=http://localhost:61071 PRIMARY_BASE_URL=http://127.0.0.1:3000 npm run test:browser -- tests/browser/preview-origin.spec.ts"
+  ],
+  "observedAllowedOrigins": {
+    "reproduction": "Local relay of the forwarded preview origin; not direct control of the user's embedded browser",
+    "previewOrigin": "http://localhost:61071",
+    "primaryOrigin": "http://127.0.0.1:3000",
+    "previewRequests": [
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/actions",
+        "status": 200,
+        "origin": "http://localhost:61071",
+        "action": "follow"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/actions",
+        "status": 200,
+        "origin": "http://localhost:61071",
+        "action": "follow"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/actions",
+        "status": 200,
+        "origin": "http://localhost:61071",
+        "action": "feature"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/actions",
+        "status": 200,
+        "origin": "http://localhost:61071",
+        "action": "donate"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://localhost:61071"
+      },
+      {
+        "path": "/api/ask",
+        "status": 400,
+        "origin": "http://localhost:61071"
+      }
+    ],
+    "primaryRequests": [
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://127.0.0.1:3000"
+      },
+      {
+        "path": "/api/actions",
+        "status": 200,
+        "origin": "http://127.0.0.1:3000",
+        "action": "follow"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://127.0.0.1:3000"
+      },
+      {
+        "path": "/api/ask",
+        "status": 400,
+        "origin": "http://127.0.0.1:3000"
+      },
+      {
+        "path": "/api/events",
+        "status": 200,
+        "origin": "http://127.0.0.1:3000"
+      }
+    ],
+    "persistence": {
+      "followReload": true,
+      "unfollowReload": true,
+      "featureReasonReload": true,
+      "donationReload": true,
+      "donationCents": 1250,
+      "donationRecords": 1,
+      "featureRecords": 1,
+      "independentPrimaryVisitor": true
+    },
+    "invalidAsk": {
+      "previewStatus": 400,
+      "primaryStatus": 400,
+      "liveModelCalls": 0
+    },
+    "explicitEvent": {
+      "status": 200,
+      "testTrafficTagged": true
+    }
+  },
+  "observedRejectedOrigins": {
+    "checks": [
+      {
+        "category": "foreign",
+        "origin": "https://example.invalid",
+        "path": "/api/actions",
+        "status": 403
+      },
+      {
+        "category": "foreign",
+        "origin": "https://example.invalid",
+        "path": "/api/events",
+        "status": 403
+      },
+      {
+        "category": "foreign",
+        "origin": "https://example.invalid",
+        "path": "/api/ask",
+        "status": 403
+      },
+      {
+        "category": "missing",
+        "origin": null,
+        "path": "/api/actions",
+        "status": 403
+      },
+      {
+        "category": "missing",
+        "origin": null,
+        "path": "/api/events",
+        "status": 403
+      },
+      {
+        "category": "missing",
+        "origin": null,
+        "path": "/api/ask",
+        "status": 403
+      },
+      {
+        "category": "unconfigured-loopback",
+        "origin": "http://localhost:61072",
+        "path": "/api/actions",
+        "status": 403
+      },
+      {
+        "category": "unconfigured-loopback",
+        "origin": "http://localhost:61072",
+        "path": "/api/events",
+        "status": 403
+      },
+      {
+        "category": "unconfigured-loopback",
+        "origin": "http://localhost:61072",
+        "path": "/api/ask",
+        "status": 403
+      }
+    ],
+    "forbiddenMutationsSaved": 0,
+    "forbiddenEventsSaved": 0,
+    "liveModelCalls": 0
+  },
+  "validation": {
+    "eslint": "passed for tests/browser/preview-origin.spec.ts",
+    "typecheck": "passed",
+    "format": "Prettier3.6.2 applied"
+  },
+  "scopeLimits": [
+    "This is a workspace-local reproduction of a forwarded browser origin using isolated Playwright contexts. It is not direct control or observation of the user's embedded browser or external forwarding client.",
+    "Ask probes intentionally contain an empty question.400 confirms passage through the origin gate into deterministic input validation; no model call or answer quality is claimed.",
+    "Follow/unfollow, feature reason, simulated donation, reload persistence, and event writes use real application/PostgreSQL paths with isolated test visitors. No global visitor reset or broad cleanup was performed.",
+    "The two focused tests skip when PREVIEW_BASE_URL is absent. This focused run replaces no baseline35-case browser or performance evidence.",
+    "No Lighthouse or demo-video rerun was performed for this focused regression."
+  ]
+}

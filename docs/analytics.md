@@ -1,0 +1,97 @@
+# Engagement measurement
+
+The prototype records first-party, pseudonymous demo interactions. Donations are simulated: no money moves. A non-test session is not proof of a human visit. These observations cannot establish improved retention, a demographic preference, fundraising impact, or that asking AI causes donations.
+
+## Reproduce and export
+
+Use Node 22 or later, install dependencies, configure `DATABASE_URL` in `.env.local`, and run `npm run db:migrate` against the intended demo database. Migrations apply both `001_initial.sql` and `002_event_outbox.sql` on existing or empty databases without resetting visitor state. The report reconciles pending measurement events before reading analytics; it does not change saved support actions or call a model:
+
+```sh
+npm run report
+npm run report -- --from 2026-10-15T00:00:00Z --to 2026-10-16T00:00:00Z
+npm run report -- --from 2026-10-15T00:00:00Z --to 2026-10-16T00:00:00Z --include-test
+npm run --silent report -- --from 2026-10-15T00:00:00Z --to 2026-10-16T00:00:00Z > engagement-report.json
+```
+
+`npm run report` invokes `node --env-file-if-exists=.env.local --import tsx scripts/report.ts`. The silent npm form produces only JSON on stdout for export; errors go to stderr and exit nonzero. Connection errors omit credentials and connection details. Do not commit `.env.local` or connection URLs.
+
+Time bounds require ISO timestamps with an explicit timezone. Offsets are normalized to UTC. The window is start-inclusive and end-exclusive, `[from, to)`. Omitted bounds are unbounded and appear as `null` in the output. After outbox reconciliation, a read-only repeatable-read transaction gives sessions and events a consistent snapshot. Historical sessions before `from` remain available solely to recognize returns; action metrics use only events inside the window. Use identical bounds and the same database snapshot to reproduce exact counts as the database grows. The CLI drains at most 10,000 pending events per invocation in batches of 500; `outbox.reconciled` counts delivered rows and `outbox.pending` shows remaining backlog across all populations/windows. A nonzero backlog means projection coverage is incomplete; rerun to drain more. A failed reconciliation makes the command exit nonzero instead of silently exporting stale analytics.
+
+Default reports exclude sessions where `is_test=true`, including those sessions from return history. `--include-test` includes all recorded traffic and explicitly labels that population. Development-mode sessions, requests with `x-demo-test: true`, and sessions created with `demo_test=1` are test sessions. Mark test traffic before its first event: this label is assigned when the session is created, so adding a marker during an existing session does not relabel earlier events. Scripted browser runs, validation fixtures, and reviewer demos are not evidence of independent human demand.
+
+## Event dictionary
+
+Each stored event contains its unique event ID, pseudonymous visitor ID, session ID, timestamp, name, optional entity ID, and sanitized properties. The public collector accepts only the client event list; server events are emitted by the corresponding authoritative operations. Property availability is described below, not an assertion that every event carries every field.
+
+| Event | Producer and meaning | Relevant properties |
+| --- | --- | --- |
+| `page_view` | Client route entry/reload | `pageType` (`communities`, `fundraisers`, `profiles`, `me`) |
+| `discovery_card_open` | Client campaign-card navigation intent | Campaign entity ID |
+| `discovery_filter_changed` | Client discovery control change | `filterType`; never raw search terms |
+| `follow_changed` | Server saved follow or unfollow | `targetType`, resulting boolean `active` |
+| `cause_featured`, `cause_unfeatured` | Server saved private-profile feature change | Campaign entity ID; never the personal reason |
+| `donation_started` | Client opened an intended donation flow | `attemptId` |
+| `donation_completed` | Server persisted simulated donation in its transaction | `attemptId`, integer USD `cents`; event ID is the saved donation ID |
+| `share_opened` | Client opened share controls | Shared entity ID |
+| `share_copied` | Clipboard API resolved | Shared entity ID |
+| `native_share_completed` | Web Share API resolved | Shared entity ID |
+| `share_cancelled` | Native sharing rejected with `AbortError` | Shared entity ID |
+| `share_failed` | Native share or clipboard failure | Shared entity ID |
+| `update_opened` | Server persisted viewing an update section | Campaign entity ID |
+| `ai_question_submitted` | Server accepted question for generation | `requestId` |
+| `ai_answer_completed` | Server returned a validated supported response | `requestId`, `latencyMs` |
+| `ai_answer_abstained` | Server returned a validated missing-information response | `requestId`, `latencyMs` |
+| `ai_answer_failed` | Server rejected or failed a request | `requestId`, `latencyMs`, safe `status` code |
+| `ai_citation_opened` | Client selected an evidence link | `sourceId`, `requestId` when available |
+| `performance_measured` | Client performance observation | `metric`, numeric `value`, `source`, `pageType` |
+
+The shared property allowlist is `pageType`, `targetType`, `active`, `attemptId`, `requestId`, `sourceId`, `status`, `latencyMs`, `cents`, `metric`, `value`, `source`, and `filterType`. Values must be finite numbers, booleans, or strings no longer than 80 characters without `?`, `@`, or newlines. Unknown keys and nested values are discarded. These constraints minimize accidental text storage; they are not a detector for personal information. Producers must supply controlled identifiers/codes and never place arbitrary user content inside an allowed key.
+
+Raw searches, AI questions/answers, profile notes, URL queries, credentials, and payment information have no analytics property. Personal feature reasons and session-token hashes belong to operational state and are not selected by the report. Both the durable event outbox and projected events use the same property sanitizer. Outbox rows retain only event/visitor/session IDs, session start, event time/name/entity, test flag, allowed properties, and delivery timestamp. Delivered rows are retained for idempotency; this demo has no automatic retention-expiry policy. The report SQL selects only the fields needed for aggregation, and its JSON exposes no visitor, session, request, attempt, source, or campaign identifiers. The fixed tests assert raw-text removal in the shared sanitizer and aggregate-only reporting; this does not prove that future producers cannot misuse an allowed key.
+
+## Metrics and denominators
+
+Every reported rate is a fraction in `[0,1]`, accompanied by integer `numerator` and `denominator`. Multiply by 100 to display a percentage. An absent denominator produces `rate: null` (no observations). An observed denominator with no qualifying outcome produces `rate: 0`. Counts remain zero for an empty dataset; AI latency is `null` without valid latency samples.
+
+| Output | Numerator / denominator or count definition |
+| --- | --- |
+| `counts` | Distinct recorded event IDs, page-view events, distinct visitors with a page view, and distinct sessions with an in-window event. Active sessions may have begun before the window. |
+| `discovery.campaignArrival` | Distinct community-page visitors who have a community page view, then a card-open event, then a matching campaign page view in the same session and window / distinct community-page visitors in the window. Equal timestamps are accepted because storage time resolution and delivery can coincide. |
+| `discovery.cardOpenEvents` | Distinct delivered card-open event IDs; repeated intentional opens count separately. This is not an impression-to-click rate. |
+| `follows.visitorFollow` | Distinct page-view visitors who saved at least one `active=true` follow in the window / distinct page-view visitors in the window. This measures action, not current follow state. A visitor who later unfollows still performed a follow action. |
+| `follows.savedFollowEvents`, `savedUnfollowEvents` | Saved events split by resulting boolean state. Follow activity without a recorded page view is counted here but not added to the visitor-rate numerator. |
+| `donations.completion` | Unique completed attempts matched to an in-window started attempt, completed at or after the start / unique in-window started attempts. Match requires the same visitor, campaign, and `attemptId`. Each attempt contributes at most once. |
+| `donations.completedAttempts`, `completedCents` | Unique in-window completion attempt keys and sum of their positive integer cents, including completions whose start was not observed. These are simulated amounts. A retry with the same attempt key contributes once. |
+| `donations.unmatchedCompletedAttempts` | Completion keys with no qualifying in-window start (including missing/lost starts, pre-window starts, or bad ordering). They are excluded from the conversion numerator, so conversion cannot exceed 100%. Separate missing-ID counts identify records excluded from keyed counts. |
+| `sharing.*` | For each of open, copied, native resolution, cancelled, and failed: distinct event IDs and distinct visitors. There is no shared attempt key, so no outcome/open conversion rate is calculated. One person may copy and invoke native sharing. |
+| `returns.returningSession` | Sessions that began in the window with an earlier-starting included session for the same persistent visitor / all included sessions that began in the window. `returningVisitors` counts distinct visitors in the numerator. |
+| `ai.supported`, `abstained`, `failed` | Unique terminal request keys, split by status. Request key is visitor, campaign, and `requestId`; the earliest recorded terminal event wins if duplicates/conflicts exist. Failure counts include rejected requests that never emitted a submission. |
+| `ai.observedOutcome` | Submitted requests with a matching terminal event at or after submission / submitted requests, all inside the window. This measures observed response completion, including failures; it is not answer correctness or AI success. |
+| `ai.pendingSubmittedRequests` | Submissions lacking a qualifying in-window terminal event. May mean in-flight requests, lost events, or outcomes after the window. |
+| `ai.outcomesWithoutInWindowSubmission` | Terminal request keys without a qualifying in-window submission. These include validation/rate-limit failures and responses to pre-window submissions. Missing request IDs are reported separately. |
+| `ai.visitorCitationUse` | Distinct visitors with an AI submission/outcome and a citation open in the window / distinct visitors with an AI submission/outcome in the window. This is a visitor association, not request attribution. |
+| `ai.answeredRequestCitationUse` | Supported/abstained request keys with a subsequent citation open matching visitor, campaign, and request ID / supported/abstained request keys in the window. Repeated citation opens do not inflate this numerator. |
+| `ai.citationOpens`, `citationVisitors`, `citationOpensWithoutMatchedAnswer` | Citation event count, distinct citation visitors, and citation events without a matching in-window supported/abstained answer (including older rows lacking request IDs). |
+| `ai.meanLatencyMs` | Arithmetic mean of finite, nonnegative latency values on deduplicated terminal outcomes, with `latencySamples` as its denominator. Includes rejected requests; it is server request duration, not browser-perceived rendering time or model-only duration. |
+
+All event IDs are deduplicated before counting. Donation attempts and AI requests also deduplicate distinct events with the same semantic key. Rows whose visitor does not match their included session are ignored. Page-type aliases in the pure aggregator accept both singular and current plural names for historical compatibility.
+
+## Sessions, delivery, and interpretation limits
+
+A persistent demo cookie resolves to a pseudonymous visitor. A new analytics session begins at 30 minutes or more of inactivity, based on durable intake activity times in `event_session_state`. Session identity and its test label are assigned when an event is queued, not when it is eventually projected. Reloads and cross-page navigation within that interval do not create a return. Clearing the cookie, using another browser, or another device appears as a different visitor. A session only records activity that reaches the server. Prior test sessions do not make a default-population visit a return. Upgrading the database initializes intake cursors from each visitor's latest existing analytics session, preserving established session identities.
+
+Client collection uses best-effort `fetch` with keepalive and has no durable retry queue. Navigation, offline clients, blocked requests, concurrent delivery, and tab closure can lose or reorder events. A card-open measures intent; the report requires a matching campaign page view before calling it an arrival. Direct campaign visits and campaign links outside discovery do not enter this numerator. Card impressions and scroll exposure are not measured. Browser-reported copy/share success proves neither receipt, external posting, nor an acquired donor; closing the share dialog without invoking native sharing is not a recorded native cancellation.
+
+Authoritative support mutations save their domain event to `domain_event_outbox` in the same transaction as the donation, follow, feature, or update-view state. Donation completion uses the donation's stable ID and preserves its attempt ID. If domain storage fails, neither action nor queued outcome is committed. After commit, the server attempts delivery to `analytics_sessions` and `events` in a separate transaction. Projection failure rolls back only delivery and leaves the action saved and event pending; responses still return saved state. A static diagnostic reports deferred delivery without visitor content. A no-change donation retry keeps the existing saved donation/outcome and can retry pending delivery.
+
+Each event's ID, original timestamp, assigned session, and test flag survive deferred delivery. Projection inserts use event-ID uniqueness; marking a row delivered shares the projection transaction, so crash/retry cannot double-count. Retained outbox IDs also deduplicate repeated client delivery. Concurrent intake serializes on the visitor; concurrent delivery locks pending rows with `SKIP LOCKED`. Later events/actions retry pending rows for that visitor, and the report command reconciles all visitors without requiring request cookies or headers. There is no background worker: idle pending rows remain pending until one of those retry paths runs. A total database outage or failure of the durable intake tables still prevents saving an action; the guarantee covers failed analytics projections while durable domain storage works. Client events lost before reaching durable intake remain unmeasured.
+
+AI terminal status is response-contract acceptance, abstention, or failure; it is not an independent factual-grounding score. Live-provider evaluation is separate. Citation usage says evidence links were selected, not read or understood. Requests and replies crossing window boundaries can leave unmatched records; use wider windows to inspect this without reclassifying conversion cohorts. Charts, feature saves, filter changes, updates, and performance events remain available in storage but are not additional rates in this export. Performance budgets and field claims require separate measured evidence.
+
+## Validation evidence
+
+On 2026-10-15, `npm test -- tests/report.test.ts` passed six deterministic fixture tests covering visitor denominators, matching discovery arrivals, event/attempt/request deduplication, zero versus empty metrics, return history before the window, half-open UTC boundaries, test exclusion, separated share outcomes, AI outcomes, and citation attribution. Targeted ESLint and `npx tsc --noEmit` also passed. These are synthetic fixtures, not human traffic or live model results.
+
+The exact `node --env-file-if-exists=.env.local --import tsx scripts/report.ts --from 2026-10-15T00:00:00Z --to 2026-10-16T00:00:00Z` command and the documented `npm run --silent report ... --include-test` variant both succeeded against the configured local database. At the initial check the selected window had zero events and zero sessions in both populations; rates and latency were correctly `null`. After browser validation populated the local database, an unbounded `npm run --silent report -- --include-test` check succeeded with 266 recorded events and zero pending rows at that snapshot. These changing counts are shared validation traffic, not independent human engagement; preserve a release-specific export after the final scripted journey.
+
+`npm test -- tests/outbox.test.ts tests/report.test.ts` additionally passed all ten tests (six report fixtures, four PostgreSQL outbox integration tests). Outbox tests create a uniquely named temporary schema, apply both migrations, invoke the actual support-action route with mocked Next request context, and inject failing INSERT triggers only in that schema. They verify a saved donation and follow return HTTP 200 while event insertion fails; same-key donation replay and repeated follows do not add records; conflicting donation reuse returns 409; restoring analytics delivers exactly one event per saved action; repeated delivery adds zero events; original timestamps/session/test labels survive; session-projection failure preserves an unfollow; a later action retries pending delivery; queued private text is excluded; and rerunnable migrations preserve state and adopt an existing session. The schema is dropped afterward; no public tables are disabled or reset. These integration tests require `DATABASE_URL` (loaded from `.env.local` when present) and explicitly skip without it. They do not call a live model.

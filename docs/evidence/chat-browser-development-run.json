@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "state": "Development run before test synchronization/geometry corrections",
+  "recordedAt": "2026-10-16T03:23:56.380439+00:00",
+  "nextBuildId": "jltxTNzfwPja4fpuVnTtM",
+  "stats": {
+    "startTime": "2026-10-16T03:22:28.587Z",
+    "duration": 43384.367,
+    "expected": 52,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "failures": [
+    {
+      "file": "chat-conversation.spec.ts",
+      "title": "chat keeps its header/composer visible and preserves scrollback at 320px with no serious accessibility findings",
+      "status": "unexpected",
+      "errors": [
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m2\u001b[39m\nReceived:    \u001b[31m25\u001b[39m\n\n  355 |         .boundingBox();\n  356 |       expect(Math.abs(finalHeader!.y - header!.y)).toBeLessThanOrEqual(2);\n> 357 |       expect(Math.abs(finalComposer!.y - composer!.y)).toBeLessThanOrEqual(2);\n      |                                                        ^\n  358 |       expect(finalComposer!.y + finalComposer!.height).toBeLessThanOrEqual(\n  359 |         page.viewportSize()!.height,\n  360 |       );\n    at /home/hdx/code/gofundme-pages/tests/browser/chat-conversation.spec.ts:357:56"
+      ]
+    },
+    {
+      "file": "preview-origin.spec.ts",
+      "title": "explicit preview origin supports real browser actions, persistence, analytics and invalid-Ask validation; primary origin still works",
+      "status": "unexpected",
+      "errors": [
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('Contributed $12.50 in simulated support')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByText('Contributed $12.50 in simulated support') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Contributed $12.50 in simulated support')\u001b[22m\n\u001b[2m    14 \u00d7 locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  132 |     await expect(\n  133 |       page.getByText(\"Contributed $12.50 in simulated support\"),\n> 134 |     ).toHaveCount(1);\n      |       ^\n  135 |     await expect(page.locator(\".funding-line strong\")).toHaveText(\"$11,862.50\");\n  136 |     await expect(page.locator(\"blockquote\")).toHaveText(reason);\n  137 |     expect(await actor(preview)).toBe(visitor);\n    at /home/hdx/code/gofundme-pages/tests/browser/preview-origin.spec.ts:134:7"
+      ]
+    }
+  ],
+  "scope": "Controlled AI fixtures; zero live model requests; separate final rerun pending.",
+  "corrections": [
+    "Composer bottom is anchored while textarea naturally changes height; replace top-coordinate equality with bottom-coordinate equality and verify16px mobile input.",
+    "Wait for/me URL after See your impact navigation before reloading; prior immediate reload cancelled in-flight navigation."
+  ]
+}

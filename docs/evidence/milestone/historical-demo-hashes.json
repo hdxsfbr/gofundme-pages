@@ -1,0 +1,51 @@
+{
+  "purpose": "Before-and-after integrity manifest for preserved historical demo artifacts.",
+  "files": [
+    {
+      "path": "docs/evidence/demo-engagement.json",
+      "sha256": "8fc50c2eabdb4a90b599587b3fc1994b0d057c166c72493ae3757255d2106bad"
+    },
+    {
+      "path": "docs/evidence/demo-frames/04s.png",
+      "sha256": "13b49f23512eda49e380233d5a5fecd73bc715136cdfe90e7b628b82b520c490"
+    },
+    {
+      "path": "docs/evidence/demo-frames/16s.png",
+      "sha256": "0cd60617d121ddf710b90bd9de4a0af23bb6365d2e72957bc947aee777fc15ea"
+    },
+    {
+      "path": "docs/evidence/demo-frames/25s.png",
+      "sha256": "f2cc7baab88c2e4f010790cfcc7d7a762621cc881af8f7824967cf08b5bd361d"
+    },
+    {
+      "path": "docs/evidence/demo-frames/28s.png",
+      "sha256": "c169185431f58dacdb73cfca55c5cfad2a3ddd393bcf2b7fa2d9eba494c8a18e"
+    },
+    {
+      "path": "docs/evidence/demo-frames/30s.png",
+      "sha256": "3e826258bf2fab4c8633cfed37079ea4816e03652a074941babbb2d904a4b8f4"
+    },
+    {
+      "path": "docs/evidence/demo-frames/42s.png",
+      "sha256": "d5202ddedba5f097bfc145c4da8e7049fd2da74f890dfed2d131a934ffe86e13"
+    },
+    {
+      "path": "docs/evidence/demo-frames/51s.png",
+      "sha256": "d2c703577615d75f521b27e8c1bee5eb8a3e1cad22fb301ec489c32e9bb2f408"
+    },
+    {
+      "path": "docs/evidence/demo-recording.json",
+      "sha256": "6fabafd3f8bb9374223b7c75f619ccad32a1a023c97c4a49ec2a6584670c9fb4"
+    },
+    {
+      "path": "docs/evidence/demo-video-check.json",
+      "sha256": "455e27bfec18d0d0df660f9a865bae37a3db0828b2b1410d2a06404fcf6ded27"
+    },
+    {
+      "path": "docs/evidence/demo.webm",
+      "sha256": "7e914b6c0b4019f22aeed8ca3f9691bbe9d357273fecbc9d4e8733403a0d265c"
+    }
+  ],
+  "verifiedUnchangedAt": "2026-10-16T05:29:19.922426+00:00",
+  "allUnchanged": true
+}

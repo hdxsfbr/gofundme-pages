@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-16T03:24:03.529Z",
+  "completedAt": "2026-10-16T03:25:34.905344+00:00",
+  "command": "PREVIEW_BASE_URL=http://localhost:61071 BROWSER_EVIDENCE_DIR=docs/evidence/chat/browser PLAYWRIGHT_JSON_OUTPUT_FILE=/tmp/chat-browser-final-report.json npx playwright test --reporter=list,json",
+  "environment": {
+    "applicationMode": "production, next start",
+    "baseURL": "http://127.0.0.1:3000",
+    "nextBuildId": "jltxTNzfwPja4fpuVnTtM",
+    "operatingSystem": "Linux",
+    "node": "24.14.0",
+    "next": "16.4.2",
+    "browser": "Google Chrome 151.0.7922.173, headless, /usr/bin/google-chrome",
+    "playwright": "1.64.1",
+    "axeCorePlaywright": "4.14.0",
+    "workers": 1,
+    "retries": 0,
+    "deviceScaleFactor": 1,
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 844
+      }
+    ],
+    "visualChecksReducedMotion": "reduce",
+    "testTrafficHeader": "x-demo-test: true",
+    "storage": "Configured local PostgreSQL; independent browser visitors; no global reset",
+    "font": "Manrope, locally preloaded",
+    "imageDelivery": "AVIF preferred; quality60; campaign cards mount media within200px of viewport",
+    "prettier": "3.6.2",
+    "previewBaseURL": "http://localhost:61071",
+    "previewTopology": "Workspace local relay scripts/preview-proxy.mjs preserving Origin, rewriting Host to primary; not direct control of embedded browser."
+  },
+  "results": {
+    "passed": 54,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMs": 37652.845
+  },
+  "files": [
+    {
+      "file": "tests/browser/assistant-visual.spec.ts",
+      "cases": 9,
+      "passed": 9
+    },
+    {
+      "file": "tests/browser/chat-conversation.spec.ts",
+      "cases": 9,
+      "passed": 9
+    },
+    {
+      "file": "tests/browser/chat-streaming.spec.ts",
+      "cases": 8,
+      "passed": 8
+    },
+    {
+      "file": "tests/browser/donation-pending.spec.ts",
+      "cases": 3,
+      "passed": 3
+    },
+    {
+      "file": "tests/browser/experience.spec.ts",
+      "cases": 16,
+      "passed": 16
+    },
+    {
+      "file": "tests/browser/journey.spec.ts",
+      "cases": 1,
+      "passed": 1
+    },
+    {
+      "file": "tests/browser/navigation-loading.spec.ts",
+      "cases": 1,
+      "passed": 1
+    },
+    {
+      "file": "tests/browser/preview-origin.spec.ts",
+      "cases": 2,
+      "passed": 2
+    },
+    {
+      "file": "tests/browser/storage-events.spec.ts",
+      "cases": 5,
+      "passed": 5
+    }
+  ],
+  "coverage": [
+    "Isolated cookie identity, reload persistence, visitor-ID spoof rejection, same-origin mutation checks",
+    "Integer cents/range/precision validation, concurrent idempotent donation retries, lost-response retry, conflicting key reuse, independent new donations, trusted completion event counts",
+    "Real saved donation responses delayed: amount controls disabled, exact saved confirmation, close/reopen stale callback discarded, older acknowledgement cannot replace newer completion or funding total",
+    "Following union across community/campaign/organizer, deduplication, persistent reversal, failed-follow recovery, analytics collector outage leaves support usable",
+    "Private plain-text feature reasons, 280-character bound, markup safety, visitor and public-profile isolation, reload and unfeature",
+    "Combined search/topic/reset, deterministic matching, Back restores URL/search/topic/scroll within 30px, header view navigation, linked profiles and all four campaign routes",
+    "Visible-only update-view persistence and newer-update freshness; keyboard chart ranges and dated cumulative data alternative",
+    "Canonical share/copy URLs, native cancellation, clipboard denial/selectable fallback, separate outcome events; native outcomes use controlled browser fixtures",
+    "Complete community to fundraiser to organizer to Following to fixture Ask/citation to feature/donation to private-profile journey",
+    "Empty transactional-schema migration replay, database uniqueness/check constraints, collector deduplication and private-property stripping, client completion-event spoof rejection",
+    "Visitor-scoped PostgreSQL failure produces recoverable page error; real Retry succeeds after scoped trigger removal; trigger/function cleaned in finally",
+    "Keyboard modal entry/tab order/escape/focus return, reduced motion, page overflow checks and serious/critical axe checks at all three viewports",
+    "Delayed actual client-navigation RSC response exposes a distinct visible Link pending status while the current page remains readable; release reaches the clicked fundraiser and removes pending status",
+    "Conversational Ask: Enter sends exactly once; Shift+Enter newline; IME/repeated key ignored; immediate user bubble and cleared typed/suggested draft; later draft retained through error and retry without duplicate bubbles.",
+    "Only last two completed campaign-local pairs sent as history; assistant context1500char cap, total request8192char bound drops oldest whole pairs; retry excludes future turns.",
+    "Chat header and composer bottom remain fixed while transcript scrolls; mobile input16px; scrollback is preserved on arriving answer with explicit Latest message jump; focus is retained/restored.",
+    "Native Response/ReadableStream controlled transport fixture delivers partial claims before done, splitUTF8 byte chunks and multilineSSE fields; final only enters history; citations deduplicate below all answer prose.",
+    "Stream safe error, truncation, malformedJSON, wrongrequestidentity, invalidfinalschema discard partials and retry same turn; close cancels reader; reopening has no old history; one20second total deadline remains after partial delivery.",
+    "Explicit preview origin follow/unfollow, private feature note, simulated donation, reload persistence, events and invalidAsk400; foreign/missing/unconfiguredloopback origins403; primary remains usable."
+  ],
+  "ai": {
+    "liveModelCallsMadeBySuite": 0,
+    "chatCases": 9,
+    "streamCases": 8,
+    "controlledFixtures": "Existing response fixtures use Playwright route interception. Incremental cases replace only /api/ask fetch with a native browser Response/ReadableStream and explicitly labeled fixture claims; no artificial token animation and no provider call.",
+    "acceptanceBoundary": "Tests verify browser parsing/display and failure behavior. Actual provider incremental generation/grounding/latency and route stream validation are separate parent/backend evidence."
+  },
+  "accessibility": {
+    "axeScans": 18,
+    "seriousOrCriticalViolations": 0,
+    "scope": "Three pages+donation modal plus empty and long-conversation Ask at1440x1000,390x844,320x844; reducedmotion enabled; no completeWCAGconformance claim."
+  },
+  "visualEvidence": {
+    "authentication": "Isolated cookie-bound demo visitors, no production-account authentication.",
+    "beforeMetadata": "docs/evidence/chat/before-state.json",
+    "screenshots": [
+      {
+        "path": "docs/evidence/chat/browser/community-1440.png",
+        "url": "http://127.0.0.1:3000/communities/a-greener-tomorrow",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "state": "community",
+        "capturedAt": "2026-10-16T03:24:07.513215+00:00",
+        "sha256": "f94fd35a8680a8b36061b799eff86da902d572f7584cd52e9cbe8df0871b002c"
+      },
+      {
+        "path": "docs/evidence/chat/browser/fundraiser-1440.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "state": "fundraiser",
+        "capturedAt": "2026-10-16T03:24:08.081210+00:00",
+        "sha256": "7c9166a3815841428f4c785d6581de75699f9faf7b6fec36c9257cf319bb22c5"
+      },
+      {
+        "path": "docs/evidence/chat/browser/profile-1440.png",
+        "url": "http://127.0.0.1:3000/profiles/maya-chen",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "state": "profile",
+        "capturedAt": "2026-10-16T03:24:08.576206+00:00",
+        "sha256": "5ab9c7b3383db1b7afa05ddfbfbd0dfc7deb442516833dcc6b6563a754f5e144"
+      },
+      {
+        "path": "docs/evidence/chat/browser/donation-dialog-1440.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "state": "donation-dialog",
+        "capturedAt": "2026-10-16T03:24:08.821204+00:00",
+        "sha256": "17be8a1e0212f00cfab57b233ce519994f76e2ee3fd0a2f34664fe69c658c4a4"
+      },
+      {
+        "path": "docs/evidence/chat/after-empty-1440.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "state": "Ask empty; controlled answer fixture",
+        "capturedAt": "2026-10-16T03:24:18.274120+00:00",
+        "sha256": "f37ca9841ed0549f5df6951b683920c6bbed315e1a8bdbff6c69115c851c5c52"
+      },
+      {
+        "path": "docs/evidence/chat/after-conversation-1440.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "state": "Ask conversation; controlled answer fixture",
+        "capturedAt": "2026-10-16T03:24:19.057113+00:00",
+        "sha256": "049da7a440dd6176cfd7de36c35f3074f0388ccbc5541bdb8568e25267ac814d"
+      },
+      {
+        "path": "docs/evidence/chat/browser/community-390.png",
+        "url": "http://127.0.0.1:3000/communities/a-greener-tomorrow",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "state": "community",
+        "capturedAt": "2026-10-16T03:24:10.282191+00:00",
+        "sha256": "816342889dadc60d1f2d651764b09a402a8c923083d87f106acb0593d3b7e10d"
+      },
+      {
+        "path": "docs/evidence/chat/browser/fundraiser-390.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "state": "fundraiser",
+        "capturedAt": "2026-10-16T03:24:10.812186+00:00",
+        "sha256": "57fe23de24084417699481a8e3e168cdf142f457d0619898e445842e206c78bc"
+      },
+      {
+        "path": "docs/evidence/chat/browser/profile-390.png",
+        "url": "http://127.0.0.1:3000/profiles/maya-chen",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "state": "profile",
+        "capturedAt": "2026-10-16T03:24:11.324182+00:00",
+        "sha256": "5966f9b9c6188c077d020f5a45ffee7665fc8ddd22db44ab1b2ce7211f0558f4"
+      },
+      {
+        "path": "docs/evidence/chat/browser/donation-dialog-390.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "state": "donation-dialog",
+        "capturedAt": "2026-10-16T03:24:11.494180+00:00",
+        "sha256": "2e8419f1e3e0f4d28a90e60f1d516b103f5b3c0c9ec31987f97b7459448806fd"
+      },
+      {
+        "path": "docs/evidence/chat/after-empty-390.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "state": "Ask empty; controlled answer fixture",
+        "capturedAt": "2026-10-16T03:24:19.723107+00:00",
+        "sha256": "4d377efd445cb3c6dd4478fc6979fb0519d9b4d341982a826afb4390969c7175"
+      },
+      {
+        "path": "docs/evidence/chat/after-conversation-390.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "state": "Ask conversation; controlled answer fixture",
+        "capturedAt": "2026-10-16T03:24:20.312101+00:00",
+        "sha256": "3e8bbb78f4641b405062f7ba1197a1567d29874bca72dd47d3b18678b34bc325"
+      },
+      {
+        "path": "docs/evidence/chat/browser/community-320.png",
+        "url": "http://127.0.0.1:3000/communities/a-greener-tomorrow",
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "state": "community",
+        "capturedAt": "2026-10-16T03:24:12.844168+00:00",
+        "sha256": "ee0ffe93ef4d20963f0a5d37b799573c009a7ac2de4c4e14038253fbff4a098a"
+      },
+      {
+        "path": "docs/evidence/chat/browser/fundraiser-320.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "state": "fundraiser",
+        "capturedAt": "2026-10-16T03:24:13.336164+00:00",
+        "sha256": "b18cf24d6332d9371059d5e21a11944f67bc59451f1b895b15252623ce12e3a6"
+      },
+      {
+        "path": "docs/evidence/chat/browser/profile-320.png",
+        "url": "http://127.0.0.1:3000/profiles/maya-chen",
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "state": "profile",
+        "capturedAt": "2026-10-16T03:24:13.791160+00:00",
+        "sha256": "c498949866ca86245b349e5c4d92e882b9291137c170d156d255307b92e2c4c3"
+      },
+      {
+        "path": "docs/evidence/chat/browser/donation-dialog-320.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "state": "donation-dialog",
+        "capturedAt": "2026-10-16T03:24:13.958158+00:00",
+        "sha256": "c3f93ffcf3c30b888266116f3828dca8932a268c150a021faf834676a472c4ea"
+      },
+      {
+        "path": "docs/evidence/chat/after-empty-320.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "state": "Ask empty; controlled answer fixture",
+        "capturedAt": "2026-10-16T03:24:20.910096+00:00",
+        "sha256": "9f639ff675a0888f909b3c568e6857b3adcda88582ecc08f3adf59733c06db08"
+      },
+      {
+        "path": "docs/evidence/chat/after-conversation-320.png",
+        "url": "http://127.0.0.1:3000/fundraisers/grow-a-neighborhood",
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "state": "Ask conversation; controlled answer fixture",
+        "capturedAt": "2026-10-16T03:24:21.523091+00:00",
+        "sha256": "14ba92d5755db900e463ad170c6761d0ec1f3ea2bcde4fdfc5a67bbf0be0dc50"
+      }
+    ],
+    "reviewedAt": "2026-10-16T03:25:34.905347+00:00",
+    "review": "All18 refreshed production captures viewed, including6chat states and12baseline page/modal states. Existing baseline files in docs/evidence/browser were not overwritten.",
+    "observations": [
+      "Ask uses a compact stable header/context, a distinct user bubble and assistant content, bottom composer, and source footer after answer prose. Intro/suggestions disappear after the first user message.",
+      "At390px and320px the composer remains fully visible with16px input text; at320px the initial placeholder wraps into2lines and the composer naturally shrinks25px when replaced by the shorter follow-up placeholder. Its bottom remains anchored.",
+      "Long mobile answers require transcript scrolling; latest-message view naturally clips earlier prose above the viewport. Scrollback stays in place until the visitor explicitly jumps to latest or sends a new message.",
+      "Source pills wrap within320px with no horizontal overflow; header close control and composer send control remain visible.",
+      "All deferred campaign photos are loaded before full-page capture; fine texture remains somewhat soft atquality60 but subject detail is recognizable. Public page hierarchy and donation controls remain intact at all3widths."
+    ]
+  },
+  "developmentRun": "docs/evidence/chat-browser-development-run.json",
+  "scopeLimits": [
+    "Local headless Chrome lab verification; no cross-browser coverage, physical touch-device testing, or authenticated reference-product behavior.",
+    "All campaigns and contributions are fictional/simulated; cookie-bound demo persistence does not establish cross-device identity.",
+    "Application process restart persistence is a separate parent-run check; this suite verifies reload persistence only.",
+    "Native sharing and clipboard outcomes are controlled fixtures; no recipient delivery or external conversion is claimed.",
+    "No field responsiveness, retention improvement, or Lighthouse performance-budget claim follows from these tests.",
+    "IME coverage uses synthetic composition/key events; physical mobile keyboards, browser viewport changes under an on-screen keyboard, and screen-reader spoken output were not tested.",
+    "Preview tests are a local reproduction of forwarded origins; they do not directly observe/control the user embedded browser. InvalidAsk probes pass the origin gate without paid model calls.",
+    "Chat screenshot answer prose is a controlled layout fixture, not a live answer. Live chat/provider acceptance is recorded separately by the parent."
+  ]
+}

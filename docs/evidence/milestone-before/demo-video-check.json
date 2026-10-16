@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-10-16T05:16:25.321298+00:00",
+  "state": "Development recording before the milestone performance repair; not final release evidence",
+  "buildId": "jltxTNzfwPja4fpuVnTtM",
+  "file": "demo.webm",
+  "sha256": "756d820f9bd1f49393094906ece85c6fd835051f746f5a73cf235ff6430b18c1",
+  "media": {
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1440,
+        "height": 1000,
+        "r_frame_rate": "25/1"
+      }
+    ],
+    "format": {
+      "duration": "57.720000",
+      "size": "8447497"
+    }
+  },
+  "tools": {
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "ffprobe": "6.1.1-3ubuntu5"
+  },
+  "fullStreamDecode": {
+    "command": "ffmpeg -hide_banner -v error -threads 1 -i docs/evidence/milestone/demo.webm -f null -",
+    "exitCode": 0,
+    "errors": []
+  },
+  "visualReview": {
+    "reviewer": "Codex browser-verification agent",
+    "method": "Viewed all11 extracted frames; not a claim of full real-time human playback.",
+    "frames": [
+      {
+        "file": "demo-frames/01.50-community.png",
+        "sampleSeconds": 1.5,
+        "sha256": "c7c5a290800ac8b079fefe81cf81d56a7e0408b4c116d8d4a3ef6267a56c7c10"
+      },
+      {
+        "file": "demo-frames/08.20-organizer-profile.png",
+        "sampleSeconds": 8.2,
+        "sha256": "9d8eb430974829f751d4cc1d1d0ae8c4a019c85c8b9dd2021705819fec666b23"
+      },
+      {
+        "file": "demo-frames/11.80-following.png",
+        "sampleSeconds": 11.8,
+        "sha256": "64c642f2b0043d2a0975d80df3ac054433c49ed3d2cfdd252681138170022eec"
+      },
+      {
+        "file": "demo-frames/14.90-live-partial-purpose.png",
+        "sampleSeconds": 14.9,
+        "sha256": "5b4f82af060ac0494c1a04d2b2cf2712bb3321194b99a132392d34eab48d822a"
+      },
+      {
+        "file": "demo-frames/16.80-purpose-source-footer.png",
+        "sampleSeconds": 16.8,
+        "sha256": "eba8f5ae2c14e7b460078290a846aa9c3373632edfb4b4f6faac8b6c13fc1d17"
+      },
+      {
+        "file": "demo-frames/26.70-simulated-donation.png",
+        "sampleSeconds": 26.7,
+        "sha256": "6ee1b7be1df5b310c7029c2cc97ac0027bd26a78d134cbb48c45f999ab8a4216"
+      },
+      {
+        "file": "demo-frames/30.70-fresh-funding.png",
+        "sampleSeconds": 30.7,
+        "sha256": "e90ec27201a74aea4d4847dd5febb4bc90b3d2c1f7663219d9fcb0b64fe0281d"
+      },
+      {
+        "file": "demo-frames/35.50-contextual-average.png",
+        "sampleSeconds": 35.5,
+        "sha256": "eace7f23f1486af6c29f6c21cdbdb163fe4380f0470b8cba89c388828bb856bd"
+      },
+      {
+        "file": "demo-frames/43.50-private-profile.png",
+        "sampleSeconds": 43.5,
+        "sha256": "6770d299998cdbb64d5e1fc349b2e0a2b3518ccf0473d23a82a186b883e74078"
+      },
+      {
+        "file": "demo-frames/48.00-missing-budget.png",
+        "sampleSeconds": 48.0,
+        "sha256": "21d1e590fbd6e0415b7744f3df36b0560d1e68db4ce4272df0431a1e895490a3"
+      },
+      {
+        "file": "demo-frames/53.00-measurement-report.png",
+        "sampleSeconds": 53.0,
+        "sha256": "671d4e6db0dc359cdcd2871e9cd25569d6103a6727bd456be23ab3b1f8510b15"
+      }
+    ],
+    "observations": [
+      "Community discovery, organizer profile, and Following union are visible.",
+      "14.90s frame shows three sourced budget claims while the Writing status remains;16.80s shows the fourth claim and no pending status. This independently confirms visible incremental content rather than relying only on parser timestamps.",
+      "The $12.50 simulated donation confirmation explicitly says no money was charged.",
+      "Fresh funding shows $11,862.50/87 completed contributions/$3,137.50 remaining, and the contextual follow-up shows $136.35 average with its own bottom source footer and snapshot.",
+      "Private profile shows featured campaign and followed organizer; saved donation activity was separately asserted by the recorder but lies below the sampled viewport.",
+      "Missing-budget answer explicitly says individual costs were not supplied; no invented amounts are shown.",
+      "All seven report rows and its actual-population/simulation/no-uplift disclaimer are readable within the recording frame."
+    ]
+  },
+  "caveats": [
+    "Silent desktop recording with an isolated x-demo-test cookie visitor; no physical mobile device or authenticated reference account.",
+    "Four real model calls; no response interception or artificial typing animation. Model output varies on future runs.",
+    "This build later missed the project-selected profile LCP budget; retain as development history while final performance-repaired evidence is produced.",
+    "SSE frame elapsed timestamps in this run were sampled per parsed frame; DOM-visible and video-frame evidence establish partial-before-final behavior independently. Future recorder corrected to one timestamp per reader.read."
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-16T02:35:14.210Z",
+  "completedAt": "2026-10-16T02:36:20.152300+00:00",
+  "command": "npm run test:browser (equivalent full suite; list + temporary JSON reporter used for this record)",
+  "environment": {
+    "applicationMode": "production, next start",
+    "baseURL": "http://127.0.0.1:3000",
+    "nextBuildId": "dEfGzmJ5GREpv04KlgWuH",
+    "operatingSystem": "Linux",
+    "node": "24.14.0",
+    "next": "16.4.2",
+    "browser": "Google Chrome 151.0.7922.173, headless, /usr/bin/google-chrome",
+    "playwright": "1.64.1",
+    "axeCorePlaywright": "4.14.0",
+    "workers": 1,
+    "retries": 0,
+    "deviceScaleFactor": 1,
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 844
+      }
+    ],
+    "visualChecksReducedMotion": "reduce",
+    "testTrafficHeader": "x-demo-test: true",
+    "storage": "Configured local PostgreSQL; independent browser visitors; no global reset",
+    "font": "Manrope, locally preloaded",
+    "imageDelivery": "AVIF preferred; quality60; campaign cards mount media within200px of viewport",
+    "prettier": "3.6.2"
+  },
+  "results": {
+    "passed": 35,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMs": 25273.016
+  },
+  "files": [
+    {
+      "file": "tests/browser/assistant-visual.spec.ts",
+      "cases": 9,
+      "passed": 9
+    },
+    {
+      "file": "tests/browser/donation-pending.spec.ts",
+      "cases": 3,
+      "passed": 3
+    },
+    {
+      "file": "tests/browser/experience.spec.ts",
+      "cases": 16,
+      "passed": 16
+    },
+    {
+      "file": "tests/browser/journey.spec.ts",
+      "cases": 1,
+      "passed": 1
+    },
+    {
+      "file": "tests/browser/navigation-loading.spec.ts",
+      "cases": 1,
+      "passed": 1
+    },
+    {
+      "file": "tests/browser/storage-events.spec.ts",
+      "cases": 5,
+      "passed": 5
+    }
+  ],
+  "coverage": [
+    "Isolated cookie identity, reload persistence, visitor-ID spoof rejection, same-origin mutation checks",
+    "Integer cents/range/precision validation, concurrent idempotent donation retries, lost-response retry, conflicting key reuse, independent new donations, trusted completion event counts",
+    "Real saved donation responses delayed: amount controls disabled, exact saved confirmation, close/reopen stale callback discarded, older acknowledgement cannot replace newer completion or funding total",
+    "Following union across community/campaign/organizer, deduplication, persistent reversal, failed-follow recovery, analytics collector outage leaves support usable",
+    "Private plain-text feature reasons, 280-character bound, markup safety, visitor and public-profile isolation, reload and unfeature",
+    "Combined search/topic/reset, deterministic matching, Back restores URL/search/topic/scroll within 30px, header view navigation, linked profiles and all four campaign routes",
+    "Visible-only update-view persistence and newer-update freshness; keyboard chart ranges and dated cumulative data alternative",
+    "Canonical share/copy URLs, native cancellation, clipboard denial/selectable fallback, separate outcome events; native outcomes use controlled browser fixtures",
+    "Complete community to fundraiser to organizer to Following to fixture Ask/citation to feature/donation to private-profile journey",
+    "Empty transactional-schema migration replay, database uniqueness/check constraints, collector deduplication and private-property stripping, client completion-event spoof rejection",
+    "Visitor-scoped PostgreSQL failure produces recoverable page error; real Retry succeeds after scoped trigger removal; trigger/function cleaned in finally",
+    "Keyboard modal entry/tab order/escape/focus return, reduced motion, page overflow checks and serious/critical axe checks at all three viewports",
+    "Delayed actual client-navigation RSC response exposes a distinct visible Link pending status while the current page remains readable; release reaches the clicked fundraiser and removes pending status"
+  ],
+  "ai": {
+    "browserFixtureCases": 6,
+    "liveModelCallsMadeBySuite": 0,
+    "cases": [
+      "Campaign scope and exact citation reveal/focus",
+      "Provider unavailable and rate-limit feedback",
+      "Malformed successful response safely rejected",
+      "Close discards delayed answers and another campaign starts empty",
+      "20-second visible timeout using Playwright virtual clock",
+      "Blank input rejected and typed input capped at 1000 characters"
+    ],
+    "acceptanceBoundary": "Controlled UI fixtures only. Live-provider grounding, rate-window enforcement, and provider latency require separate server/live evaluation evidence."
+  },
+  "accessibility": {
+    "axeScans": 12,
+    "seriousOrCriticalViolations": 0,
+    "scope": "Three page types and donation modal at each of three viewports; does not establish complete WCAG conformance"
+  },
+  "visualEvidence": {
+    "directory": "docs/evidence/browser",
+    "screenshots": [
+      "community-1440.png",
+      "fundraiser-1440.png",
+      "profile-1440.png",
+      "donation-dialog-1440.png",
+      "community-390.png",
+      "fundraiser-390.png",
+      "profile-390.png",
+      "donation-dialog-390.png",
+      "community-320.png",
+      "fundraiser-320.png",
+      "profile-320.png",
+      "donation-dialog-320.png"
+    ],
+    "review": "All twelve captures from the corrected final production build viewed, including lower-page photos, deferred media, and donation modals at1440/390/320px. Mobile/narrow community descriptions were inspected at original resolution to confirm corrected spacing. Every card was scrolled into view and its mounted image confirmed loaded before capture.",
+    "observations": [
+      "All four discovery photos are present after scrolling; no blank deferred-media placeholders remain in captures.",
+      "Quality60 photos retain recognizable subjects and useful visual detail; some fine foliage/soil texture is soft at native size, with no material subject-obscuring compression defect.",
+      "Manrope body and heading text remains readable at tested sizes. No clipped controls or page-level horizontal overflow observed.",
+      "Fundraiser support actions precede image/story on mobile; story and chart require substantial vertical scrolling.",
+      "Mobile community hero description maintains the intended space after Shared roots. at390px and320px; no remaining copy-joining defect observed."
+    ]
+  },
+  "scopeLimits": [
+    "Local headless Chrome lab verification; no cross-browser coverage, physical touch-device testing, or authenticated reference-product behavior.",
+    "All campaigns and contributions are fictional/simulated; cookie-bound demo persistence does not establish cross-device identity.",
+    "Application process restart persistence is a separate parent-run check; this suite verifies reload persistence only.",
+    "Native sharing and clipboard outcomes are controlled fixtures; no recipient delivery or external conversion is claimed.",
+    "No field responsiveness, retention improvement, or Lighthouse performance-budget claim follows from these tests."
+  ]
+}

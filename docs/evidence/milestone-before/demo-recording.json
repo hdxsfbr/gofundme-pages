@@ -1,0 +1,252 @@
+{
+  "startedAt": "2026-10-16T05:13:24.105Z",
+  "endedAt": "2026-10-16T05:14:15.233Z",
+  "origin": "http://127.0.0.1:3000",
+  "buildId": "jltxTNzfwPja4fpuVnTtM",
+  "viewport": "1440x1000",
+  "browser": "151.0.7922.173",
+  "runtime": "Live OpenAI Responses requests, no intercepted AI answers",
+  "liveResponses": [
+    {
+      "status": 200,
+      "time": "2026-10-16T05:13:37.077Z"
+    },
+    {
+      "status": 200,
+      "time": "2026-10-16T05:13:52.745Z"
+    },
+    {
+      "status": 200,
+      "time": "2026-10-16T05:13:56.539Z"
+    },
+    {
+      "status": 200,
+      "time": "2026-10-16T05:14:09.840Z"
+    }
+  ],
+  "providerCalls": 4,
+  "reportPopulation": {
+    "visitors": 1,
+    "sessions": 1,
+    "scope": "all recorded sessions including tests"
+  },
+  "answers": [
+    {
+      "name": "purpose-answer-and-source-footer",
+      "status": "supported",
+      "requestId": "1625c0dc-3d6e-4f4d-b242-fca41dd811af",
+      "historyMessages": 0,
+      "claimCount": 4,
+      "sourceIds": [
+        "budget"
+      ],
+      "transport": "live server/provider SSE; no interception",
+      "partialBeforeCompletion": true,
+      "visiblePartialBeforeCompletion": true,
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 19.600000023841858
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1856.199999988079
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 2066.600000023842
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 2193.600000023842
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 2388.800000011921
+          },
+          {
+            "type": "done",
+            "elapsedMs": 2695.800000011921
+          }
+        ],
+        "completed": true,
+        "visiblePartialAtMs": 1857.3999999761581
+      },
+      "visiblePartialVideoSeconds": 14.695999755859376
+    },
+    {
+      "name": "fresh-funding-after-donation",
+      "status": "supported",
+      "requestId": "4ca8b144-2861-48a3-8a9c-0ba1bd47b785",
+      "historyMessages": 0,
+      "claimCount": 3,
+      "sourceIds": [
+        "funding"
+      ],
+      "transport": "live server/provider SSE; no interception",
+      "partialBeforeCompletion": true,
+      "visiblePartialBeforeCompletion": true,
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 56.39999997615814
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 697.2999999523163
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 823
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 968
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1137.2999999523163
+          }
+        ],
+        "completed": true,
+        "visiblePartialAtMs": 699.0999999642372
+      },
+      "visiblePartialVideoSeconds": 29.170300048828125
+    },
+    {
+      "name": "contextual-average-follow-up",
+      "status": "supported",
+      "requestId": "8eb2cd4e-6a6a-4904-b5df-5f3ba3e3666d",
+      "historyMessages": 2,
+      "claimCount": 1,
+      "sourceIds": [
+        "funding"
+      ],
+      "transport": "live server/provider SSE; no interception",
+      "partialBeforeCompletion": true,
+      "visiblePartialBeforeCompletion": true,
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 55.19999998807907
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1821.6000000238419
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1975.6000000238419
+          }
+        ],
+        "completed": true,
+        "visiblePartialAtMs": 1823.800000011921
+      },
+      "visiblePartialVideoSeconds": 34.08989990234375
+    },
+    {
+      "name": "explicit-missing-budget",
+      "status": "missing",
+      "requestId": "941f2291-cf93-4cd7-bddb-3a7983574dc3",
+      "historyMessages": 0,
+      "claimCount": 0,
+      "sourceIds": [],
+      "transport": "live server/provider SSE; no interception",
+      "partialBeforeCompletion": false,
+      "visiblePartialBeforeCompletion": false,
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 43.19999998807907
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1125.699999988079
+          }
+        ],
+        "completed": true
+      },
+      "visiblePartialVideoSeconds": null
+    }
+  ],
+  "scenes": [
+    {
+      "name": "community-discovery",
+      "seconds": 0.143
+    },
+    {
+      "name": "organizer-profile",
+      "seconds": 7.107
+    },
+    {
+      "name": "following-discovery",
+      "seconds": 10.913
+    },
+    {
+      "name": "purpose-answer-and-source-footer",
+      "seconds": 15.641
+    },
+    {
+      "name": "simulated-donation-confirmation",
+      "seconds": 25.891
+    },
+    {
+      "name": "fresh-funding-after-donation",
+      "seconds": 29.744
+    },
+    {
+      "name": "contextual-average-follow-up",
+      "seconds": 34.384
+    },
+    {
+      "name": "private-supporter-profile",
+      "seconds": 42.431
+    },
+    {
+      "name": "explicit-missing-budget",
+      "seconds": 46.802
+    },
+    {
+      "name": "actual-measurement-report",
+      "seconds": 51.11
+    }
+  ],
+  "outputDirectory": "docs/evidence/milestone",
+  "recordedUntil": "2026-10-16T05:14:21.330Z",
+  "privacy": "x-demo-test tagged isolated new visitor; no credentials or cookie values captured in artifact metadata",
+  "report": "demo-engagement.json",
+  "notes": "Silent real-browser recording. Final measurement scene renders the actual CLI report captured for this time window; it is not an application dashboard.",
+  "timingSemantics": "This recording sampled elapsedMs while parsing each SSE frame; coalesced frames can receive slightly different timestamps. These parser-observation timestamps alone are not proof of separate network reads. Visible partial DOM observations and extracted video frames independently show partial content before completion; the recorder was subsequently corrected to sample once per reader.read for future reproduction.",
+  "numericChecks": {
+    "savedDonationCents": 1250,
+    "freshRaisedUSD": "11862.50",
+    "freshContributions": 87,
+    "freshRemainingUSD": "3137.50",
+    "followUpAverageUSD": "136.35",
+    "followUpHistoryMessages": 2
+  },
+  "incrementalEvidence": {
+    "supportedAnswersWithVisiblePartialBeforeCompletion": 3,
+    "supportedAnswers": 3,
+    "visibleToDoneGapsMs": [
+      {
+        "name": "purpose-answer-and-source-footer",
+        "gapMs": 838.4
+      },
+      {
+        "name": "fresh-funding-after-donation",
+        "gapMs": 438.2
+      },
+      {
+        "name": "contextual-average-follow-up",
+        "gapMs": 151.8
+      }
+    ],
+    "caveat": "Missing-information answer has no supported claim to stream and returned done without partial frames. No artificial per-character animation."
+  },
+  "evidenceState": "Development recording before milestone performance repair; superseded final build recording pending"
+}

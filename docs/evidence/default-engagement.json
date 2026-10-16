@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "window": {
+    "from": null,
+    "to": null,
+    "bounds": "[from, to)"
+  },
+  "population": "non-test recorded sessions; not verified human traffic",
+  "simulatedDonations": true,
+  "counts": {
+    "events": 0,
+    "pageViews": 0,
+    "pageVisitors": 0,
+    "activeSessions": 0
+  },
+  "discovery": {
+    "communityVisitors": 0,
+    "cardOpenEvents": 0,
+    "campaignArrival": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    }
+  },
+  "follows": {
+    "savedFollowEvents": 0,
+    "savedUnfollowEvents": 0,
+    "visitorFollow": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    }
+  },
+  "donations": {
+    "startedAttempts": 0,
+    "completedAttempts": 0,
+    "completedCents": 0,
+    "completion": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "unmatchedCompletedAttempts": 0,
+    "startsMissingAttemptId": 0,
+    "completionsMissingAttemptId": 0
+  },
+  "sharing": {
+    "share_opened": {
+      "events": 0,
+      "visitors": 0
+    },
+    "share_copied": {
+      "events": 0,
+      "visitors": 0
+    },
+    "native_share_completed": {
+      "events": 0,
+      "visitors": 0
+    },
+    "share_cancelled": {
+      "events": 0,
+      "visitors": 0
+    },
+    "share_failed": {
+      "events": 0,
+      "visitors": 0
+    }
+  },
+  "returns": {
+    "sessionsStarted": 0,
+    "returningVisitors": 0,
+    "returningSession": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    }
+  },
+  "ai": {
+    "submittedRequests": 0,
+    "supported": 0,
+    "abstained": 0,
+    "failed": 0,
+    "observedOutcome": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "pendingSubmittedRequests": 0,
+    "outcomesWithoutInWindowSubmission": 0,
+    "citationOpens": 0,
+    "citationVisitors": 0,
+    "visitorCitationUse": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "answeredRequestCitationUse": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "citationOpensWithoutMatchedAnswer": 0,
+    "latencySamples": 0,
+    "meanLatencyMs": null,
+    "eventsMissingRequestId": 0
+  },
+  "outbox": {
+    "reconciled": 0,
+    "pending": 0
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-16T02:38:18.371Z",
+  "endedAt": "2026-10-16T02:39:03.806Z",
+  "origin": "http://127.0.0.1:3000",
+  "buildId": "dEfGzmJ5GREpv04KlgWuH",
+  "viewport": "1440x1000",
+  "browser": "151.0.7922.173",
+  "runtime": "Live OpenAI Responses requests, no intercepted AI answers",
+  "liveResponses": [
+    {
+      "status": 200,
+      "time": "2026-10-16T02:38:32.724Z"
+    },
+    {
+      "status": 200,
+      "time": "2026-10-16T02:38:47.803Z"
+    },
+    {
+      "status": 200,
+      "time": "2026-10-16T02:38:59.486Z"
+    }
+  ],
+  "privacy": "x-demo-test tagged isolated new visitor; no credentials or cookie values captured in artifact metadata",
+  "report": "demo-engagement.json",
+  "notes": "Silent real-browser recording. Final measurement scene renders the actual CLI report captured for this time window; it is not an application dashboard."
+}

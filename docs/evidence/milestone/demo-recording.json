@@ -1,0 +1,306 @@
+{
+  "startedAt": "2026-10-16T05:25:46.244Z",
+  "endedAt": "2026-10-16T05:26:34.940Z",
+  "origin": "http://127.0.0.1:3000",
+  "buildId": "-6yPHl9lZGab-87T31WH9",
+  "viewport": "1440x1000",
+  "browser": "151.0.7922.173",
+  "runtime": "Live OpenAI Responses requests, no intercepted AI answers",
+  "liveResponses": [
+    {
+      "status": 200,
+      "time": "2026-10-16T05:25:59.269Z"
+    },
+    {
+      "status": 200,
+      "time": "2026-10-16T05:26:13.860Z"
+    },
+    {
+      "status": 200,
+      "time": "2026-10-16T05:26:17.859Z"
+    },
+    {
+      "status": 200,
+      "time": "2026-10-16T05:26:29.705Z"
+    }
+  ],
+  "providerCalls": 4,
+  "timingSemantics": "Each reader.read arrival samples one elapsed time shared by all frames in that read; visible partial timing comes from a DOM MutationObserver.",
+  "reportPopulation": {
+    "visitors": 1,
+    "sessions": 1,
+    "scope": "all recorded sessions including tests"
+  },
+  "answers": [
+    {
+      "name": "purpose-answer-and-source-footer",
+      "status": "supported",
+      "requestId": "da3af983-912d-4e14-9111-5c390060b6b5",
+      "historyMessages": 0,
+      "claimCount": 1,
+      "sourceIds": [
+        "budget"
+      ],
+      "transport": "live server/provider SSE; no interception",
+      "partialBeforeCompletion": true,
+      "visiblePartialBeforeCompletion": true,
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 23
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1554.7999999523163
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1680.699999988079
+          }
+        ],
+        "completed": true,
+        "visiblePartialAtMs": 1555.699999988079
+      },
+      "visiblePartialVideoSeconds": 14.44739990234375
+    },
+    {
+      "name": "fresh-funding-after-donation",
+      "status": "supported",
+      "requestId": "c4e3f4ef-2d0d-4bcc-b99a-e8efc456a390",
+      "historyMessages": 0,
+      "claimCount": 3,
+      "sourceIds": [
+        "funding"
+      ],
+      "transport": "live server/provider SSE; no interception",
+      "partialBeforeCompletion": true,
+      "visiblePartialBeforeCompletion": true,
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 15.199999988079071
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 999.9000000357628
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1125.5
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1235.199999988079
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1383.300000011921
+          }
+        ],
+        "completed": true,
+        "visiblePartialAtMs": 1000.8000000119209
+      },
+      "visiblePartialVideoSeconds": 28.49160009765625
+    },
+    {
+      "name": "contextual-average-follow-up",
+      "status": "supported",
+      "requestId": "2577044e-2cd7-44ee-8831-38d1fc4b0ca3",
+      "historyMessages": 2,
+      "claimCount": 1,
+      "sourceIds": [
+        "funding"
+      ],
+      "transport": "live server/provider SSE; no interception",
+      "partialBeforeCompletion": true,
+      "visiblePartialBeforeCompletion": true,
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 32.30000001192093
+          },
+          {
+            "type": "partial",
+            "elapsedMs": 1008.6000000238419
+          },
+          {
+            "type": "done",
+            "elapsedMs": 1200.6000000238419
+          }
+        ],
+        "completed": true,
+        "visiblePartialAtMs": 1009.3000000119209
+      },
+      "visiblePartialVideoSeconds": 32.48260009765625
+    },
+    {
+      "name": "explicit-missing-budget",
+      "status": "missing",
+      "requestId": "b19e8f9a-6b74-4f04-b5d7-0ef72a2fc6e8",
+      "historyMessages": 0,
+      "claimCount": 0,
+      "sourceIds": [],
+      "transport": "live server/provider SSE; no interception",
+      "partialBeforeCompletion": false,
+      "visiblePartialBeforeCompletion": false,
+      "stream": {
+        "events": [
+          {
+            "type": "start",
+            "elapsedMs": 11.900000035762787
+          },
+          {
+            "type": "done",
+            "elapsedMs": 915.1999999880791
+          }
+        ],
+        "completed": true
+      },
+      "visiblePartialVideoSeconds": null
+    }
+  ],
+  "scenes": [
+    {
+      "name": "community-discovery",
+      "seconds": 0.184
+    },
+    {
+      "name": "organizer-profile",
+      "seconds": 7.162
+    },
+    {
+      "name": "following-discovery",
+      "seconds": 10.915
+    },
+    {
+      "name": "purpose-answer-and-source-footer",
+      "seconds": 14.671
+    },
+    {
+      "name": "simulated-donation-confirmation",
+      "seconds": 24.925
+    },
+    {
+      "name": "fresh-funding-after-donation",
+      "seconds": 28.967
+    },
+    {
+      "name": "contextual-average-follow-up",
+      "seconds": 32.771
+    },
+    {
+      "name": "private-supporter-profile",
+      "seconds": 40.201
+    },
+    {
+      "name": "explicit-missing-budget",
+      "seconds": 44.36
+    },
+    {
+      "name": "actual-measurement-report",
+      "seconds": 48.679
+    }
+  ],
+  "outputDirectory": "docs/evidence/milestone",
+  "recordedUntil": "2026-10-16T05:26:41.037Z",
+  "privacy": "x-demo-test tagged isolated new visitor; no credentials or cookie values captured in artifact metadata",
+  "report": "demo-engagement.json",
+  "notes": "Silent real-browser recording. Final measurement scene renders the actual CLI report captured for this time window; it is not an application dashboard.",
+  "numericChecks": {
+    "savedDonationCents": 1250,
+    "freshRaisedUSD": "11862.50",
+    "freshContributions": 87,
+    "freshRemainingUSD": "3137.50",
+    "followUpAverageUSD": "136.35",
+    "followUpHistoryMessages": 2
+  },
+  "incrementalEvidence": {
+    "supportedAnswersWithVisiblePartialBeforeCompletion": 3,
+    "supportedAnswers": 3,
+    "visibleToDoneGapsMs": [
+      {
+        "name": "purpose-answer-and-source-footer",
+        "gapMs": 125.0
+      },
+      {
+        "name": "fresh-funding-after-donation",
+        "gapMs": 382.5
+      },
+      {
+        "name": "contextual-average-follow-up",
+        "gapMs": 191.3
+      }
+    ],
+    "videoProof": [
+      "demo-frames/28.40-live-partial-funding-early.png",
+      "demo-frames/28.60-live-partial-funding.png",
+      "demo-frames/29.67-fresh-funding-after-donation.png"
+    ],
+    "description": "28.40s shows one funding claim with Writing status;28.60s shows all three claims while Writing remains;29.67s shows final completion with no pending status. Missing-information answer has no supported claim and honestly emits no partials."
+  },
+  "answerContentReview": {
+    "method": "Visual transcription from final video frames and comparison to application source records, not original wire payload retention. No extra provider calls were made to obtain these transcriptions.",
+    "reviewedAt": "2026-10-16T05:29:19.922426+00:00",
+    "answers": [
+      {
+        "name": "purpose-answer-and-source-footer",
+        "frame": "demo-frames/15.37-purpose-answer-and-source-footer.png",
+        "status": "supported",
+        "visibleText": "The $15,000 goal covers $7,000 for raised beds and soil, $4,000 for accessible paths, $2,500 for shared tools and storage, and $1,500 for seeds and water connections.",
+        "sources": [
+          {
+            "id": "budget",
+            "label": "Intended use of funds",
+            "dateDisplayed": "Sep 10, 2026",
+            "href": "/fundraisers/grow-a-neighborhood#budget"
+          }
+        ]
+      },
+      {
+        "name": "fresh-funding-after-donation",
+        "frame": "demo-frames/29.67-fresh-funding-after-donation.png",
+        "status": "supported",
+        "visibleClaims": [
+          "The fundraiser has raised $11,862.50 so far.",
+          "There have been 87 completed contributions.",
+          "The amount still needed to reach the goal is $3,137.50."
+        ],
+        "sources": [
+          {
+            "id": "funding",
+            "label": "Current demo funding",
+            "href": "/fundraisers/grow-a-neighborhood#funding"
+          }
+        ],
+        "visibleSnapshotUTC": "2026-10-16 05:26:13"
+      },
+      {
+        "name": "contextual-average-follow-up",
+        "frame": "demo-frames/33.47-contextual-average-follow-up.png",
+        "status": "supported",
+        "visibleText": "The average contribution to the fundraiser is $136.35.",
+        "sources": [
+          {
+            "id": "funding",
+            "label": "Current demo funding",
+            "href": "/fundraisers/grow-a-neighborhood#funding"
+          }
+        ],
+        "visibleSnapshotUTC": "2026-10-16 05:26:17"
+      },
+      {
+        "name": "explicit-missing-budget",
+        "frame": "demo-frames/45.06-explicit-missing-budget.png",
+        "status": "missing",
+        "visibleText": "An itemized budget with specific costs has not been supplied for this campaign.",
+        "sources": []
+      }
+    ],
+    "primaryAgentIndependentReview": "Primary agent independently viewed final purpose/funding/average/missing/report frames and checked src/lib/content.ts. Budget components total$15000; seeded$11850/86 plus$12.50 produces$11862.50/87, remaining$3137.50, average$136.35. Tree campaign explicitly lacks an itemized budget. All observed answers/source footers/report counts agree.",
+    "limitation": "Visual snapshots preserve displayed second precision, not full original ISO timestamp precision or undisplayed response fields."
+  },
+  "evidenceState": "Final production release candidate recording"
+}

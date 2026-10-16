@@ -1,0 +1,13 @@
+{
+  "recordedAt": "2026-10-16T02:56:00.444Z",
+  "buildId": "OWarGDoXxQxksChR2HgFM",
+  "browser": "151.0.7922.173",
+  "url": "http://localhost:61071/fundraisers/roots-for-the-future",
+  "method": "Isolated local Chrome through localhost:61071 reproduction relay; not direct control of the embedded browser.",
+  "question": "What is the itemized budget?",
+  "httpStatus": 200,
+  "answerStatus": "missing",
+  "visibleAnswer": "What is the itemized budget?\n\nAn itemized budget has not been supplied for this campaign as of the latest information.",
+  "elapsedMs": 2089,
+  "runtime": "One live provider request; no intercepted answer; fictional campaign; test-tagged visitor."
+}

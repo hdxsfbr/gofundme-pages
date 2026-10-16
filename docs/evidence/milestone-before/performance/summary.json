@@ -1,0 +1,97 @@
+{
+  "recordedAt": "2026-10-16T05:15:20.319Z",
+  "tool": "Lighthouse",
+  "version": "13.5.0",
+  "node": "v24.14.0",
+  "os": "Linux 7.0.0-38-generic",
+  "cpu": "Intel(R) Core(TM) i9-14900KF",
+  "ramGiB": 31,
+  "build": "Next.js production, npm run build && npm run start",
+  "buildId": "jltxTNzfwPja4fpuVnTtM",
+  "method": "Three separate Chrome launches per route; fresh temporary browser profiles and Lighthouse storage reset; default simulated mobile preset. Local server and image optimizer may have warm caches. No concurrent browser suite.",
+  "dataset": "One fictional community, four campaigns, fixed seed ledger, new visitor per run; automation tagged x-demo-test.",
+  "settings": "settings.json",
+  "results": [
+    {
+      "name": "community",
+      "route": "/communities/a-greener-tomorrow",
+      "runs": [
+        {
+          "run": 1,
+          "lcpMs": 2478.1908,
+          "cls": 0,
+          "score": 0.98
+        },
+        {
+          "run": 2,
+          "lcpMs": 2473.3723999999997,
+          "cls": 0,
+          "score": 0.98
+        },
+        {
+          "run": 3,
+          "lcpMs": 2474.0032,
+          "cls": 0,
+          "score": 0.98
+        }
+      ],
+      "medianLcpMs": 2474.0032,
+      "medianCls": 0,
+      "pass": true
+    },
+    {
+      "name": "fundraiser",
+      "route": "/fundraisers/grow-a-neighborhood",
+      "runs": [
+        {
+          "run": 1,
+          "lcpMs": 2030.6398999999997,
+          "cls": 0,
+          "score": 0.99
+        },
+        {
+          "run": 2,
+          "lcpMs": 2473.1630999999998,
+          "cls": 0,
+          "score": 0.98
+        },
+        {
+          "run": 3,
+          "lcpMs": 2398.1683,
+          "cls": 0,
+          "score": 0.98
+        }
+      ],
+      "medianLcpMs": 2398.1683,
+      "medianCls": 0,
+      "pass": true
+    },
+    {
+      "name": "profile",
+      "route": "/profiles/maya-chen",
+      "runs": [
+        {
+          "run": 1,
+          "lcpMs": 2624.6513999999997,
+          "cls": 0,
+          "score": 0.97
+        },
+        {
+          "run": 2,
+          "lcpMs": 2624.6517,
+          "cls": 0,
+          "score": 0.97
+        },
+        {
+          "run": 3,
+          "lcpMs": 2623.8617,
+          "cls": 0,
+          "score": 0.97
+        }
+      ],
+      "medianLcpMs": 2624.6513999999997,
+      "medianCls": 0,
+      "pass": false
+    }
+  ]
+}
