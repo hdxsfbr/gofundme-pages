@@ -1,0 +1,175 @@
+{
+  "inspectedAt": "2026-10-16T20:24:11.881Z",
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "sourceEvidence": "initial-2026-10-16T20-22-20-338Z.json",
+  "purpose": "Correct screenshots after images decode and route arrival; original automated checks remain unchanged",
+  "authentication": "Same anonymous session as initial acceptance",
+  "traffic": "x-demo-test: true",
+  "mutatingRequestsSent": 0,
+  "modelRequests": 0,
+  "blockedRequests": [
+    {
+      "path": "/api/actions",
+      "action": "view-updates"
+    },
+    {
+      "path": "/api/actions",
+      "action": "view-updates"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-desktop-community.png",
+      "path": "/communities/a-greener-tomorrow",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "heading": "A greener\ntomorrow.",
+      "images": [
+        {
+          "loaded": true,
+          "alt": "A green forest, representing the community's shared care for nature"
+        },
+        {
+          "loaded": true,
+          "alt": "Gardening tools, a green trowel, and soil ready for planting"
+        },
+        {
+          "loaded": true,
+          "alt": "Sunlight falling through a green woodland"
+        },
+        {
+          "loaded": true,
+          "alt": "Solar panels angled toward the sky"
+        },
+        {
+          "loaded": true,
+          "alt": "A walking path winding through trees"
+        }
+      ]
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-desktop-fundraiser.png",
+      "path": "/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "heading": "Help a neighborhood grow something good",
+      "images": [
+        {
+          "loaded": true,
+          "alt": "Gardening tools, a green trowel, and soil ready for planting"
+        }
+      ]
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-desktop-organizer.png",
+      "path": "/profiles/maya-chen",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "heading": "Maya Chen",
+      "images": [
+        {
+          "loaded": true,
+          "alt": "Gardening tools, a green trowel, and soil ready for planting"
+        }
+      ]
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-desktop-private-profile.png",
+      "path": "/me",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "heading": "Your corner of good.",
+      "images": [
+        {
+          "loaded": true,
+          "alt": "Gardening tools, a green trowel, and soil ready for planting"
+        }
+      ]
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-mobile-community.png",
+      "path": "/communities/a-greener-tomorrow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "heading": "A greener\ntomorrow.",
+      "images": [
+        {
+          "loaded": true,
+          "alt": "A green forest, representing the community's shared care for nature"
+        },
+        {
+          "loaded": true,
+          "alt": "Gardening tools, a green trowel, and soil ready for planting"
+        },
+        {
+          "loaded": true,
+          "alt": "Sunlight falling through a green woodland"
+        },
+        {
+          "loaded": true,
+          "alt": "Solar panels angled toward the sky"
+        },
+        {
+          "loaded": true,
+          "alt": "A walking path winding through trees"
+        }
+      ]
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-mobile-fundraiser.png",
+      "path": "/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "heading": "Help a neighborhood grow something good",
+      "images": [
+        {
+          "loaded": true,
+          "alt": "Gardening tools, a green trowel, and soil ready for planting"
+        }
+      ]
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-mobile-organizer.png",
+      "path": "/profiles/maya-chen",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "heading": "Maya Chen",
+      "images": [
+        {
+          "loaded": true,
+          "alt": "Gardening tools, a green trowel, and soil ready for planting"
+        }
+      ]
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-mobile-private-profile.png",
+      "path": "/me",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "heading": "Your corner of good.",
+      "images": [
+        {
+          "loaded": true,
+          "alt": "Gardening tools, a green trowel, and soil ready for planting"
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}

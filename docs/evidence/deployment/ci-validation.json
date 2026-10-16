@@ -1,0 +1,35 @@
+{
+  "recordedAt": "2026-10-16T20:31:28.693877+00:00",
+  "sourceSha": "04873c0bc0911852af4ea20ff9e9a172c2d6abee",
+  "pipelineId": 57420,
+  "pipelineUrl": "https://labs.gauntletai.com/andrebatista/gofundme-pages/-/pipelines/57420",
+  "validationJob": {
+    "id": 234247,
+    "url": "https://labs.gauntletai.com/andrebatista/gofundme-pages/-/jobs/234247",
+    "status": "success"
+  },
+  "checks": [
+    "formatting",
+    "lint",
+    "unit and database integration",
+    "production build",
+    "typecheck",
+    "Chromium browser journeys"
+  ],
+  "unit": {
+    "passed": 175,
+    "failed": 0,
+    "skipped": 0,
+    "source": "Successful job trace and required CI assertion; unit report was subsequently cleared by Playwright output setup."
+  },
+  "browser": {
+    "startTime": "2026-10-16T20:21:59.549Z",
+    "duration": 516378.678,
+    "expected": 59,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "modelRequests": 0,
+  "hostedAcceptance": "Recorded separately against the actual Railway release."
+}

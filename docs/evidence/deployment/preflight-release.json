@@ -1,0 +1,9 @@
+{
+  "deploymentId": "c53ff568-2a53-479c-b86b-fcdb1512e6e0",
+  "sourceSha": "fc87cc49c4ecf26f01f7439e5b4fc8fcfa529d63",
+  "trigger": "manual preflight of previously CI-validated source",
+  "validationPipeline": 57373,
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "status": "SUCCESS",
+  "verifiedAt": "2026-10-16T20:22:20.171152+00:00"
+}

@@ -1,0 +1,73 @@
+{
+  "reviewedAt": "2026-10-16T20:25:47.225735+00:00",
+  "reviewer": "primary Codex agent",
+  "humanReview": false,
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "deploymentId": "c53ff568-2a53-479c-b86b-fcdb1512e6e0",
+  "status": "passed",
+  "findings": [
+    "All eight corrected page captures show loaded imagery and responsive layouts without visible clipping.",
+    "Desktop and mobile organizer captures show the actual Maya Chen profile.",
+    "Feature, simulated-donation and AI dialogs are readable; AI sources are below the answer."
+  ],
+  "captureLimitations": [
+    "Initial page captures preceded lazy-image loading, and the initial mobile organizer capture preceded navigation completion; corrected captures supersede those page images.",
+    "Corrected captures are read-only: two automatic view-updates requests were blocked during scrolling. Saved follow, feature and donation were verified separately by the initial acceptance run."
+  ],
+  "liveAiReview": {
+    "requests": 1,
+    "grounded": true,
+    "source": "src/lib/content.ts:105",
+    "checkedFacts": "$15,000 total: $7,000 raised beds/soil, $4,000 accessible paths, $2,500 tools/storage, $1,500 seeds/water connections. Organizer estimates from fictional fixture data."
+  },
+  "reviewedImages": [
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-desktop-community.png",
+      "sha256": "04882fc129cb036b2cd99f9c36568e0b65f67d5cef198da0b055d24e7537e78e"
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-desktop-fundraiser.png",
+      "sha256": "bd3f0fba25d0ef518ef90a0c4018c23f6998f2b3fe5182a3de36d9918283e090"
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-desktop-organizer.png",
+      "sha256": "2570a9ea0b78c98eca392762f12fd474cac3436c1447e72eb010ac8e98e9cd31"
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-desktop-private-profile.png",
+      "sha256": "fc722215518fb21d341fceffabe6f368651141fd918902be5d01afdde5e3640f"
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-mobile-community.png",
+      "sha256": "16c335ed082313824b21d9692fba9d977c2963fca8ffaf6129f70f8383ece33c"
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-mobile-fundraiser.png",
+      "sha256": "ca40ff1eaddac7460ef0ae5eb40a7361aaa92bc2ee3ad6f57de182523bef7629"
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-mobile-organizer.png",
+      "sha256": "e9388db6e3ebe673a3c09322d07be7d5e3a6c7d888d98313b17110d3f4e519fe"
+    },
+    {
+      "file": "corrected-2026-10-16T20-24-11-881Z-mobile-private-profile.png",
+      "sha256": "2925286964e8e9d53b2bbb5f0770640075e908e4c9be7b70dcfcb78c643984ae"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-feature-dialog.png",
+      "sha256": "00d60d2ab24a14d4871f8161f5efc409bacfb3c95616783e9bcfc3bf2da68244"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-simulated-donation-dialog.png",
+      "sha256": "7dadad0c181b3e95893d00eed4cb588fb56b9ec29d98b76f6957c83bf9f54915"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-live-ai.png",
+      "sha256": "2a537d775c0de98b8935517caec224dadb80bb2624f27cf3dd197611a06e2fbf"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-mobile-simulated-donation-dialog.png",
+      "sha256": "03f9c5c92cf50b3c028411b8ffe8af3365de9ba6450895c473559acecc905430"
+    }
+  ]
+}

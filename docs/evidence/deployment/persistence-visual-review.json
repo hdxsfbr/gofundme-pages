@@ -1,0 +1,32 @@
+{
+  "reviewedAt": "2026-10-16T20:34:56.154128+00:00",
+  "reviewer": "primary Codex agent",
+  "humanReview": false,
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "deploymentId": "210d080a-ef9e-4b18-b58a-1d4de2cd1ff3",
+  "status": "passed",
+  "findings": [
+    "Desktop fundraiser retains the saved feature, organizer follow and $11,862.50 / 87 contributions snapshot.",
+    "Both private-profile layouts retain the exact feature reason and one $12.50 simulated contribution.",
+    "Mobile organizer is the actual Maya Chen profile, remains followed and loads its campaign image.",
+    "These four final-release captures were visually reviewed; other pages and dialogs were reviewed in the preflight and all final journeys passed automated checks."
+  ],
+  "reviewedImages": [
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-desktop-fundraiser.png",
+      "sha256": "bd3f0fba25d0ef518ef90a0c4018c23f6998f2b3fe5182a3de36d9918283e090"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-desktop-private-profile.png",
+      "sha256": "91b96ea0f6436bb5aa2f9d6e8f80b220b65c83d81a3e8b6f9d23e8286530da69"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-mobile-organizer.png",
+      "sha256": "e9388db6e3ebe673a3c09322d07be7d5e3a6c7d888d98313b17110d3f4e519fe"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-mobile-private-profile.png",
+      "sha256": "2925286964e8e9d53b2bbb5f0770640075e908e4c9be7b70dcfcb78c643984ae"
+    }
+  ]
+}

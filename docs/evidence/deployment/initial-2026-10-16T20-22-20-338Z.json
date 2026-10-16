@@ -1,0 +1,133 @@
+{
+  "inspectedAt": "2026-10-16T20:22:20.338Z",
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "mode": "initial",
+  "authentication": "signed out; anonymous device-bound demo session",
+  "traffic": "x-demo-test: true; excluded from normal analytics",
+  "simulatedDonation": true,
+  "modelRequests": 1,
+  "checks": {
+    "readiness": true,
+    "followPersistedOnReload": true,
+    "featureAndDonationPersistedOnReload": true,
+    "desktopAndMobileNavigation": true,
+    "savedSessionAfterReplacement": false
+  },
+  "screenshots": [
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-community.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/communities/a-greener-tomorrow"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-fundraiser.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-organizer.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/profiles/maya-chen"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-feature-dialog.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-simulated-donation-dialog.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-private-profile.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/me"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-desktop-live-ai.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-mobile-community.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/communities/a-greener-tomorrow"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-mobile-fundraiser.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-mobile-simulated-donation-dialog.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-mobile-organizer.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/profiles/maya-chen"
+    },
+    {
+      "file": "initial-2026-10-16T20-22-20-338Z-mobile-private-profile.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/me"
+    }
+  ],
+  "networkFailures": [],
+  "pageErrors": [],
+  "deploymentId": "c53ff568-2a53-479c-b86b-fcdb1512e6e0",
+  "previousDeploymentId": null,
+  "cookie": {
+    "secure": true,
+    "httpOnly": true,
+    "sameSite": "Lax",
+    "path": "/"
+  },
+  "liveAi": {
+    "status": 200,
+    "transport": "text/event-stream",
+    "answer": "The $15,000 goal covers $7,000 for raised beds and soil.\n\nIt includes $4,000 for accessible paths.\n\nThe budget allocates $2,500 for shared tools and storage.\n\nIt also includes $1,500 for seeds and water connections.\n\nSources\nIntended use of funds · Sep 10, 2026 ",
+    "citations": [
+      "Intended use of funds · Sep 10, 2026 "
+    ]
+  },
+  "status": "passed"
+}

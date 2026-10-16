@@ -112,7 +112,82 @@ try {
   };
   observe(page);
   const capture = async (page, name) => {
-    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(async () => {
+      const position = { top: scrollY, left: scrollX };
+      const paint = () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        );
+      const modalOpen = Boolean(
+        document.querySelector("dialog[open], [role=dialog][aria-modal=true]"),
+      );
+      let timer;
+      const ready = async () => {
+        await document.fonts.ready;
+        try {
+          if (!modalOpen) {
+            // Native scrolling lets the browser request lazy images normally.
+            // Preserve the original position rather than altering loading attrs.
+            for (
+              let top = 0;
+              top < document.documentElement.scrollHeight;
+              top += Math.max(1, innerHeight * 0.8)
+            ) {
+              scrollTo({ top, left: position.left, behavior: "instant" });
+              await paint();
+            }
+          }
+          const images = Array.from(document.images).filter((image) => {
+            const bounds = image.getBoundingClientRect();
+            if (!bounds.width || !bounds.height) return false;
+            return (
+              !modalOpen ||
+              (bounds.bottom > 0 &&
+                bounds.top < innerHeight &&
+                bounds.right > 0 &&
+                bounds.left < innerWidth)
+            );
+          });
+          await Promise.all(
+            images.map(async (image) => {
+              if (!image.complete)
+                await new Promise((resolve, reject) => {
+                  image.addEventListener("load", resolve, { once: true });
+                  image.addEventListener(
+                    "error",
+                    () => reject(new Error("Screenshot image failed to load")),
+                    { once: true },
+                  );
+                });
+              if (!image.naturalWidth)
+                throw new Error("Screenshot image has no decoded content");
+              await image.decode();
+            }),
+          );
+        } finally {
+          if (!modalOpen) scrollTo({ ...position, behavior: "instant" });
+          await paint();
+        }
+      };
+      try {
+        await Promise.race([
+          ready(),
+          new Promise((_, reject) => {
+            timer = setTimeout(
+              () =>
+                reject(
+                  new Error(
+                    "Screenshot images did not become ready within 30 seconds",
+                  ),
+                ),
+              30_000,
+            );
+          }),
+        ]);
+      } finally {
+        clearTimeout(timer);
+      }
+    });
     const filename = `${label}-${name}.png`;
     await page.screenshot({
       path: join(evidenceDir, filename),
@@ -286,6 +361,10 @@ try {
     .getByRole("button", { name: "Close" })
     .click();
   await phone.locator("#organizer a").click();
+  await expect(phone).toHaveURL(origin + "/profiles/maya-chen");
+  await expect(phone.getByRole("heading", { level: 1 })).toHaveText(
+    "Maya Chen",
+  );
   await expect(
     phone.getByRole("button", { name: "Following", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");

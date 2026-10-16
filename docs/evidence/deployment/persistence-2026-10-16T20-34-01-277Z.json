@@ -1,0 +1,101 @@
+{
+  "inspectedAt": "2026-10-16T20:34:01.277Z",
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "mode": "persistence",
+  "authentication": "signed out; anonymous device-bound demo session",
+  "traffic": "x-demo-test: true; excluded from normal analytics",
+  "simulatedDonation": true,
+  "modelRequests": 0,
+  "checks": {
+    "readiness": true,
+    "followPersistedOnReload": true,
+    "featureAndDonationPersistedOnReload": true,
+    "desktopAndMobileNavigation": true,
+    "savedSessionAfterReplacement": true
+  },
+  "screenshots": [
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-desktop-community.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/communities/a-greener-tomorrow"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-desktop-fundraiser.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-desktop-organizer.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/profiles/maya-chen"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-desktop-private-profile.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "path": "/me"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-mobile-community.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/communities/a-greener-tomorrow"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-mobile-fundraiser.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-mobile-simulated-donation-dialog.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/fundraisers/grow-a-neighborhood"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-mobile-organizer.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/profiles/maya-chen"
+    },
+    {
+      "file": "persistence-2026-10-16T20-34-01-277Z-mobile-private-profile.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/me"
+    }
+  ],
+  "networkFailures": [],
+  "pageErrors": [],
+  "deploymentId": "210d080a-ef9e-4b18-b58a-1d4de2cd1ff3",
+  "previousDeploymentId": "c53ff568-2a53-479c-b86b-fcdb1512e6e0",
+  "cookie": {
+    "secure": true,
+    "httpOnly": true,
+    "sameSite": "Lax",
+    "path": "/"
+  },
+  "status": "passed"
+}

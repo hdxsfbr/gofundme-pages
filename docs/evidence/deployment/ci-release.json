@@ -1,0 +1,10 @@
+{
+  "sourceSha": "04873c0bc0911852af4ea20ff9e9a172c2d6abee",
+  "pipelineId": "57420",
+  "deploymentId": "210d080a-ef9e-4b18-b58a-1d4de2cd1ff3",
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "status": "verified",
+  "pipelineUrl": "https://labs.gauntletai.com/andrebatista/gofundme-pages/-/pipelines/57420",
+  "jobUrl": "https://labs.gauntletai.com/andrebatista/gofundme-pages/-/jobs/234248",
+  "trigger": "automatic protected-main GitLab pipeline"
+}
