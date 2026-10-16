@@ -866,10 +866,18 @@ export function FeatureButton({ campaign }: { campaign: Campaign }) {
     </>
   );
 }
-export function ProgressHistory({ campaign }: { campaign: Campaign }) {
+export function ProgressHistory({
+  campaign,
+  snapshotAt,
+}: {
+  campaign: Campaign;
+  snapshotAt: string;
+}) {
   const { viewer } = useDemo();
   const [range, setRange] = useState<"7" | "30" | "all">("30");
-  const h = history(campaign, viewer.donations, range);
+  // Reuse the server snapshot through hydration and range changes. A refresh
+  // supplies a new snapshot without independently reading the browser clock.
+  const h = history(campaign, viewer.donations, range, new Date(snapshotAt));
   const max = Math.max(...h.points.map((p) => p.cents), 1);
   const points = h.points
     .map(

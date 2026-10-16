@@ -99,7 +99,10 @@ export default async function FundraiserPage({
                 community.
               </small>
             </section>
-            <ProgressHistory campaign={c} />
+            <ProgressHistory
+              campaign={c}
+              snapshotAt={new Date().toISOString()}
+            />
             <Updates campaign={c} />
             <Link
               className="community-link"

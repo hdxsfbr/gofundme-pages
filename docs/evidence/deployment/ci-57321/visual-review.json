@@ -1,0 +1,132 @@
+{
+  "sourceSha": "a414e056064dcfd09b0d0eeb46286dfa2b5ff101",
+  "pipeline": "https://labs.gauntletai.com/andrebatista/gofundme-pages/-/pipelines/57321",
+  "job": "https://labs.gauntletai.com/andrebatista/gofundme-pages/-/jobs/233844",
+  "origin": "http://127.0.0.1:3000",
+  "environment": "GitLab Docker runner, standalone Next.js runtime, disposable PostgreSQL 18.3",
+  "browser": "Chromium 155.0.8059.79",
+  "authentication": "signed out; isolated anonymous test visitors; x-demo-test true",
+  "capturedDateUTC": "2026-10-16",
+  "reviewedAtUTC": "2026-10-16T19:24:06.921958+00:00",
+  "reviewer": "primary assistant; not a separate human review",
+  "result": "Reviewed all eight images: assets rendered, page sections and mobile layouts present, donation controls and simulation notice visible, no visible clipping or blocking overlay. Automated keyboard, overflow and axe checks for these scenes passed.",
+  "limitations": [
+    "CI-local rendering, not hosted Railway acceptance.",
+    "No live model requests in these browser tests.",
+    "Screenshots copied directly from this running CI job; no historical milestone captures were replaced."
+  ],
+  "screenshots": [
+    {
+      "file": "browser/community-1440.png",
+      "route": "/communities/a-greener-tomorrow",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "imageSize": {
+        "width": 1440,
+        "height": 2282
+      },
+      "sha256": "e3ec4fd18b7767a3b9e1177a2aa7a6b91e86d23e1d191177c67957ff3f01346a",
+      "reviewed": true
+    },
+    {
+      "file": "browser/community-390.png",
+      "route": "/communities/a-greener-tomorrow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imageSize": {
+        "width": 390,
+        "height": 5273
+      },
+      "sha256": "d0983d1a27729975549ce9abc8ca0a44ef5d1712c261ecd0fa30594a8ea52306",
+      "reviewed": true
+    },
+    {
+      "file": "browser/donation-dialog-1440.png",
+      "route": "/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "imageSize": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "bef9a7322611d7348413a8ec732bb59fb25ab20a2c0002c6fceda79130703f58",
+      "reviewed": true
+    },
+    {
+      "file": "browser/donation-dialog-390.png",
+      "route": "/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imageSize": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "21d230d6fe99bb7ae63e6694cea30eed42df8c8ddee8c49c8e7f1b77f9ecbb4a",
+      "reviewed": true
+    },
+    {
+      "file": "browser/fundraiser-1440.png",
+      "route": "/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "imageSize": {
+        "width": 1440,
+        "height": 2827
+      },
+      "sha256": "cf13bc468dbf7a44ece0ad3654493ba5433deb5ec48f405ad635e9dbe9af67a0",
+      "reviewed": true
+    },
+    {
+      "file": "browser/fundraiser-390.png",
+      "route": "/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imageSize": {
+        "width": 390,
+        "height": 3399
+      },
+      "sha256": "efe0b9d8c0222d550daa129799c4a0123bc842a4386085b48cffe0746fec16d3",
+      "reviewed": true
+    },
+    {
+      "file": "browser/profile-1440.png",
+      "route": "/profiles/maya-chen",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "imageSize": {
+        "width": 1440,
+        "height": 1958
+      },
+      "sha256": "50695ccbb43cecbeb5793fb09ddaaeb12eee6a74db0921ab7c3723a7c2a30392",
+      "reviewed": true
+    },
+    {
+      "file": "browser/profile-390.png",
+      "route": "/profiles/maya-chen",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imageSize": {
+        "width": 390,
+        "height": 2248
+      },
+      "sha256": "c373c8a4193f2f35c135d9d2520a3b8a81f75ea218ab0a3cf562859c642fbf46",
+      "reviewed": true
+    }
+  ]
+}

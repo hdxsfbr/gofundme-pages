@@ -244,10 +244,11 @@ try {
     evidence.modelRequests = 1;
     expect(response.status()).toBe(200);
     expect(response.headers()["content-type"]).toContain("text/event-stream");
+    await expect(dialog.locator(".chat-pending")).toHaveCount(0, {
+      timeout: 30000,
+    });
     await expect(dialog.locator(".answer")).toBeVisible({ timeout: 30000 });
-    expect(await dialog.locator(".answer .citation").count()).toBeGreaterThan(
-      0,
-    );
+    await expect(dialog.locator(".answer .citation").first()).toBeVisible();
     evidence.liveAi = {
       status: response.status(),
       transport: "text/event-stream",

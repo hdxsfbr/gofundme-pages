@@ -17,6 +17,10 @@ The pipeline SHALL validate branch changes with formatting, linting, type checki
 - **WHEN** a non-main branch passes its checks
 - **THEN** it reports successful validation without changing production
 
+#### Scenario: Initial interaction crosses a clock boundary
+- **WHEN** fundraiser HTML is rendered on the server and hydrated after a minute or UTC-day boundary in the browser
+- **THEN** its funding history uses the same serialized snapshot time during hydration and the first donation interaction opens the dialog without a React hydration error
+
 ### Requirement: Serialized observable releases
 Production deployment jobs SHALL be serialized and shall reject outdated release jobs. Deployment success SHALL require the uploaded release to finish successfully and its own readiness identity to be returned over HTTPS within a bounded wait. Build or upload success alone SHALL not count as deployment success.
 

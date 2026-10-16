@@ -2,6 +2,8 @@
 
 Project date: October 15, 2026 local time; machine-readable artifact timestamps use UTC. This record distinguishes application checks from live-provider evaluation and real-user evidence.
 
+The milestone measurements below describe the archived local release. Later CI and hosted-release evidence is tracked separately in the [deployment runbook](deployment.md); changing deployment configuration does not update these historical build measurements.
+
 ## Reproduction
 
 Use the README setup, then run:
@@ -24,7 +26,7 @@ npm run demo:record
 
 The PostgreSQL unit/integration tests create uniquely named temporary schemas and remove them after each suite. Browser tests use isolated cookie contexts tagged `x-demo-test`; their synthetic rows remain in the local demo database and are excluded from default engagement reports. The server-error test installs a temporary trigger that targets only its own test visitor and removes it in `finally`. No broad reset of another visitor's state is needed.
 
-## Current milestone build — `-6yPHl9lZGab-87T31WH9`
+## Archived local milestone build — `-6yPHl9lZGab-87T31WH9`
 
 Production build, typecheck, lint, formatting, and all 150 Vitest checks passed. The final production browser suite passed 57/57 checks with zero failures, flaky cases, or skips. It ran in headless Chrome 151.0.7922.173 through the local preview relay, at desktop and mobile widths (1440, 390, and 320 px), with isolated test visitors. The full details and exact command are in [`browser-check.json`](evidence/milestone/browser-check.json); the 18 final release-scene screenshots were viewed and are linked from its visual evidence. A capture-readiness rerun replaced six transient chat/loading captures; the recorded release set contains 18 axe scans, with zero serious/critical findings. The wider run plus readiness rerun performed 24 scans total. This is not a complete WCAG conformance claim.
 
