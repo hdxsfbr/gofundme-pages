@@ -10,29 +10,28 @@ for (const [boundary, milliseconds] of [
   }) => {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
-    let serverSnapshot = "";
+    // Fetch real SSR before navigation. Changing the page clock while a
+    // navigation route is pending waits for that same navigation to finish.
+    // The context request shares cookies with the page, preserving its visitor.
+    const response = await page.request.get(fundraiser);
+    expect(response.status()).toBe(200);
+    const html = await response.text();
+    const serverSnapshot =
+      html
+        .replace(/<!--[\s\S]*?-->/g, "")
+        .match(/Snapshot:\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}) UTC/)?.[1] || "";
+    expect(serverSnapshot).not.toBe("");
+    await page.clock.setFixedTime(
+      new Date(
+        Date.parse(serverSnapshot.replace(" ", "T") + ":00Z") + milliseconds,
+      ),
+    );
     await page.route(
       (url) => url.pathname === fundraiser,
       async (route) => {
         if (!route.request().isNavigationRequest()) return route.continue();
-        // Obtain real SSR HTML first, then advance only the browser clock before
-        // it hydrates. Timers keep running; no sleeps or hydration waits hide
-        // the first interaction that was lost during the original mismatch.
-        const response = await route.fetch();
-        expect(response.status()).toBe(200);
-        const html = await response.text();
-        serverSnapshot =
-          html
-            .replace(/<!--[\s\S]*?-->/g, "")
-            .match(/Snapshot:\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}) UTC/)?.[1] ||
-          "";
-        expect(serverSnapshot).not.toBe("");
-        await page.clock.setFixedTime(
-          new Date(
-            Date.parse(serverSnapshot.replace(" ", "T") + ":00Z") +
-              milliseconds,
-          ),
-        );
+        // Deliver the exact server-rendered snapshot with a later browser clock.
+        // Timers still run, so the initial click exercises normal hydration.
         await route.fulfill({ response, body: html });
       },
     );

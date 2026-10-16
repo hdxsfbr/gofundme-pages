@@ -16,7 +16,7 @@
 
 ## 3. Integrated release verification
 
-- [ ] 3.0 Repair the timestamp hydration mismatch exposed by CI; verify a server snapshot remains stable when the browser clock crosses a minute or UTC day and the first donation interaction works.
+- [x] 3.0 Repair the timestamp hydration mismatch exposed by CI; verify a server snapshot remains stable when the browser clock crosses a minute or UTC day and the first donation interaction works.
 - [ ] 3.1 Push the implementation branch and obtain a passing required-check pipeline, recording its URL and test counts.
 - [ ] 3.2 Publish the checked source to main and verify automatic deployment success, matching readiness identity, HTTPS pages/assets, and a healthy database.
 - [ ] 3.3 Exercise hosted desktop/mobile journeys and verify saved actions survive a subsequent application deployment; capture and view screenshots and record any limitations.
