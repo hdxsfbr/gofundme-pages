@@ -4,9 +4,9 @@
 
 The application is a TypeScript, React 19, Next.js App Router project. Route pages render campaign and profile content; client components handle discovery controls, charts, and support interactions. `/` redirects to the seeded community. Main routes are `/communities/[slug]`, `/fundraisers/[slug]`, `/profiles/[slug]`, and the visitor-specific `/me` page.
 
-Immutable content is authored in `src/lib/content.ts`; records use stable string IDs for campaigns, organizers, the community, and updates. The central funding calculation and UTC date helpers are in `src/lib/domain.ts`. PostgreSQL access and visitor/session handling are in server-only modules under `src/lib`. Migrations `db/001_initial.sql` and `db/002_event_outbox.sql` are applied by `scripts/migrate.ts`. Local Compose runs PostgreSQL 17 on `127.0.0.1:55432` with a named volume. The application pool allows eight connections with connection and statement timeouts.
+Immutable content is authored in `src/lib/content.ts`; records use stable string IDs for campaigns, organizers, the community, and updates. The central funding calculation and UTC date helpers are in `src/lib/domain.ts`. PostgreSQL access and visitor/session handling are in server-only modules under `src/lib`. Migrations `db/001_initial.sql` and `db/002_event_outbox.sql` are applied by `scripts/migrate.mjs`. Local Compose runs PostgreSQL 17 on `127.0.0.1:55432` with a named volume. The application pool allows eight connections with connection and statement timeouts.
 
-## Local setup and Node/PostgreSQL deployment
+## Local setup and hosted deployment
 
 Use Node.js 22 or newer and npm. For local development:
 
@@ -31,7 +31,7 @@ AI_REQUEST_BUDGET=100
 
 `APP_ORIGIN` is the required primary browser-visible origin. `APP_PREVIEW_ORIGINS` optionally adds comma-separated, exact browser-facing origins for forwarded previews; for this session the preview origin is `http://localhost:61071`. Add the origin to `.env.local` and restart the server before using that preview. Scheme, hostname, and port are distinct (`http://localhost:61071` differs from `http://127.0.0.1:61071` and from another port). Configure origins only: no path, trailing slash, query, or credentials. Configuration values are normalized and validated; malformed values fail closed with a service-unavailable response rather than allowing a mutation. Keep the optional list empty in general environments unless a preview origin is required. `OPENAI_API_KEY` is optional at startup but required for live Ask answers. The code default for `AI_MODEL` is `gpt-4.1-mini-2025-04-14`. Do not use Anthropic API credentials for application runtime.
 
-For a generic Node/PostgreSQL production build, install locked dependencies, set production environment variables, apply migrations, build, then start:
+For a local Node/PostgreSQL production build, install locked dependencies, set local environment variables, apply migrations, build, then start:
 
 ```sh
 npm ci
@@ -40,7 +40,7 @@ npm run build
 npm run start
 ```
 
-The provided start script binds to `127.0.0.1:3000`. A deployment must provide the host-specific port mapping or reverse proxy needed to expose it. This repository contains no hosted deployment configuration or claim of a production deployment. Compose's fixed credentials are local development values only.
+The npm start script binds to `127.0.0.1:3000` for local use. Hosted deployment uses the standalone non-root Node 24 Docker image, which binds to `0.0.0.0:$PORT`; its local build/run procedure, Railway configuration, GitLab release gate, and current deployment status are in the [deployment runbook](deployment.md). Compose's fixed credentials and PostgreSQL 17 volume are local development resources; the hosted PostgreSQL 18 service is separate.
 
 ## Available verification commands
 

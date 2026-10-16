@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import { cpSync } from "node:fs";
 const children = [];
 const start = (command, args, env = process.env) => {
   const child = spawn(command, args, { stdio: "inherit", env });
@@ -12,12 +13,14 @@ for (const signal of ["SIGTERM", "SIGINT"])
     process.exit(1);
   });
 try {
-  start("node", [
-    "node_modules/next/dist/bin/next",
-    "start",
-    "--hostname",
-    "127.0.0.1",
-  ]);
+  // Exercise the same standalone layout used by the production container.
+  cpSync("public", ".next/standalone/public", { recursive: true });
+  cpSync(".next/static", ".next/standalone/.next/static", { recursive: true });
+  start("node", [".next/standalone/server.js"], {
+    ...process.env,
+    HOSTNAME: "127.0.0.1",
+    PORT: "3000",
+  });
   start("node", ["scripts/preview-proxy.mjs"]);
   const deadline = Date.now() + 60_000;
   for (const origin of [process.env.BASE_URL, process.env.PREVIEW_BASE_URL]) {
