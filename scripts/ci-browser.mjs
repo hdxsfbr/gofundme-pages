@@ -40,7 +40,12 @@ try {
   }
   const tests = start(
     "node",
-    ["node_modules/@playwright/test/cli.js", "test", "--reporter=list,json"],
+    [
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--reporter=list,json",
+      "--max-failures=1",
+    ],
     {
       ...process.env,
       PLAYWRIGHT_JSON_OUTPUT_FILE: "test-results/browser.json",

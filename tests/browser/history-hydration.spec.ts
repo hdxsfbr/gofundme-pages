@@ -36,6 +36,10 @@ for (const [boundary, milliseconds] of [
       },
     );
     await page.goto(fundraiser);
+    const chart = page.locator("#funding");
+    // Read hidden details without scrolling: viewing Updates legitimately saves
+    // an action and refreshes the server snapshot, beyond this hydration check.
+    await expect(chart).toContainText(`Snapshot: ${serverSnapshot} UTC.`);
     await page.getByRole("button", { name: /Make a difference/ }).click();
     const dialog = page.getByRole("dialog", {
       name: "Support this good thing",
@@ -45,13 +49,6 @@ for (const [boundary, milliseconds] of [
     await expect(dialog.getByLabel("Donation amount")).toHaveValue("12.50");
     await page.keyboard.press("Escape");
     await expect(page.getByRole("dialog")).toHaveCount(0);
-    const chart = page.locator("#funding");
-    await chart.getByText("View the dated funding data").click();
-    await expect(chart).toContainText(`Snapshot: ${serverSnapshot} UTC.`);
-    await chart.getByRole("button", { name: "7 days", exact: true }).click();
-    await expect(
-      chart.getByRole("button", { name: "7 days", exact: true }),
-    ).toHaveAttribute("aria-pressed", "true");
     await expect(chart).toContainText(`Snapshot: ${serverSnapshot} UTC.`);
     expect(errors).toEqual([]);
   });

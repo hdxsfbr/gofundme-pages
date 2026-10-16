@@ -1,10 +1,10 @@
 {
-  "recordedAt": "2026-10-16T19:33:37.566211+00:00",
+  "recordedAt": "2026-10-16T19:50:12.916286+00:00",
   "scope": "Isolated local production Docker images with disposable PostgreSQL18; no hosted or existing local app/database changes and no model requests.",
   "fixture": {
     "path": "tests/browser/history-hydration.spec.ts",
-    "sha256": "186380321b8924196d305fb6d0e3d09bccc60b63d59d5f9a938c915f73c250fe",
-    "method": "Fetch actual SSR before navigation; advance only browser Date by one minute or one UTC day; replay unchanged SSR; test first donation click and unchanged server snapshot through range changes; require no browser page errors."
+    "sha256": "ea5f61ee30a783df84de9ed9c137026425db4d2692a520347bf7b082c0cadf81",
+    "method": "Fetch actual SSR before navigation; advance only browser Date by one minute or one UTC day; replay unchanged SSR; compare hidden chart snapshot before and after initial donation open/fill/close without scrolling; require no browser page errors. No chart range changes or Updates visibility that can trigger a legitimate server refresh."
   },
   "old": {
     "image": "gfm-runtime-check:local",
@@ -15,7 +15,7 @@
       "unexpected": 2,
       "skipped": 0,
       "flaky": 0,
-      "duration": 11925.318
+      "duration": 12019.829
     },
     "failure": "Rendered snapshot used independently advanced browser clock rather than server snapshot.",
     "pageErrors": [
@@ -37,13 +37,13 @@
     "image": "gfm-hydration-fixed:local",
     "imageId": "sha256:659a3190f5dec5e948dcb21e2ff755258af9c8e41db748961a22d72aa8078f62",
     "sourceCommit": "6ed1c8bb76cabb12c216e0c5b78f609c4ad283ac",
-    "dockerBuild": "passed once using existing cache; no root .next build",
+    "dockerBuild": "Reused previously built fixed image; no rebuild during this revised verification.",
     "hydrationRegression": {
       "expected": 2,
       "unexpected": 0,
       "skipped": 0,
       "flaky": 0,
-      "duration": 1285.649
+      "duration": 1716.9180000000001
     },
     "donationPending": {
       "expected": 3,
@@ -53,16 +53,23 @@
       "duration": 2735.215
     },
     "checks": [
-      "Minute boundary and UTC-day boundary both retain the original server snapshot.",
-      "Initial donation opens, accepts typed amount, and closes; chart range control remains usable.",
-      "No page errors in either fixed clock-boundary test.",
-      "All three delayed acknowledgement and stale donation response regressions pass."
+      "Minute boundary and UTC-day boundary both retain the server snapshot in hidden chart text before and after the initial donation dialog interaction.",
+      "Initial donation opens, accepts typed amount, and closes.",
+      "No browser page errors in either fixed clock-boundary test.",
+      "Earlier related verification: all three delayed acknowledgement and stale donation response tests passed; not repeated during this narrow recheck."
     ]
   },
   "limitations": [
-    "The original fixture clock update inside a blocked navigation route deadlocked before hydration; that setup failure was excluded and corrected before the reported comparison.",
-    "Initial donation click succeeded in the controlled old-image runs; these results prove hydration mismatch and snapshot drift, not deterministic reproduction of a lost click.",
+    "The original fixture clock update inside a blocked navigation route deadlocked before hydration; that setup failure was excluded and corrected before reported image comparisons.",
+    "This revised old-image run fails at the initial hidden snapshot assertion and does not proceed to the donation click; it proves real React418 hydration mismatch and clock-dependent snapshot drift, not deterministic lost-click reproduction.",
+    "No assertion freezes the server snapshot across an intentional action-triggered router.refresh.",
     "Raw traces remain temporary because they contain disposable session identifiers; only sanitized hydration error summaries are retained."
   ],
-  "cleanup": "Disposable old/fixed app containers, PostgreSQL18 container and its anonymous volume, and test Docker network removed after verification; original cached images retained."
+  "cleanup": "Disposable old/fixed app containers, PostgreSQL18 container and its anonymous volume, and test Docker network removed after verification; original cached images retained.",
+  "priorVerification": {
+    "recordedAt": "2026-10-16T19:33:37.566211+00:00",
+    "donationPending": "Three related donation regressions passed against the same fixed image.",
+    "ciPipeline57354": "58/59 browser tests passed; the minute-boundary test wrongly required the old snapshot after scrolling/range interaction exposed Updates and triggered view-updates plus router.refresh. That failure was a test assertion mistake, not evidence of another app hydration bug.",
+    "fixtureRevision": "Removed chart expansion, scrolling, and range changes; compares hidden text without causing the unrelated server refresh."
+  }
 }
