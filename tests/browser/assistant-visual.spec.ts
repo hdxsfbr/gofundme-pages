@@ -138,6 +138,9 @@ for (const width of [1440, 390, 320]) {
   test(`visual, reduced motion, modal keyboard, and serious accessibility review at ${width}px`, async ({
     page,
   }) => {
+    // This journey loads and audits three complete routes, then runs a fourth
+    // axe scan in the donation dialog. CI's shared browser can exceed 45s here.
+    test.setTimeout(90_000);
     await page.setViewportSize({ width, height: width === 1440 ? 1000 : 844 });
     await page.emulateMedia({ reducedMotion: "reduce" });
     mkdirSync(evidenceDirectory, { recursive: true });
