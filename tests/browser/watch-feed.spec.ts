@@ -748,13 +748,30 @@ test("reduced motion, keyboard focus, enlarged text, and short landscape stay us
   const play = page.getByRole("button", { name: "Play video" });
   await expect(play).toBeFocused();
   await expect(play).toHaveCSS("outline-style", "solid");
+  // The solar clip may legitimately qualify for an impression before the
+  // dialog opens on a slow runner (pipeline 58876); only impressions sent
+  // while the dialog covers the clip are false views.
   const visitor = await actor(page.context());
+  const solarImpressions: number[] = [];
+  page.on("request", (request) => {
+    if (!request.url().endsWith("/api/events")) return;
+    const event = request.postDataJSON() as {
+      name?: string;
+      properties?: { sourceId?: string };
+    } | null;
+    if (
+      event?.name === "video_clip_impression" &&
+      event.properties?.sourceId === "common-ground-solar"
+    )
+      solarImpressions.push(Date.now());
+  });
   await page
     .locator(".watch-item.is-active")
     .getByRole("button", { name: "Donate now" })
     .click();
   const donation = page.locator("dialog");
   await expect(donation).toBeVisible();
+  const coveredSince = Date.now();
   await expect
     .poll(() =>
       solarVideo.evaluate((element: HTMLVideoElement) => element.paused),
@@ -766,11 +783,7 @@ test("reduced motion, keyboard focus, enlarged text, and short landscape stay us
       .getByRole("button", { name: "Next clip" }),
   ).toBeDisabled();
   await page.waitForTimeout(1200);
-  const covered = await db.query(
-    "SELECT count(*)::int AS count FROM events WHERE visitor_id=$1 AND name='video_clip_impression' AND properties->>'sourceId'='common-ground-solar'",
-    [visitor],
-  );
-  expect(covered.rows[0].count).toBe(0);
+  expect(solarImpressions.filter((sent) => sent >= coveredSince)).toEqual([]);
   await donation.getByRole("button", { name: "Close dialog" }).click();
   await expect(
     page
