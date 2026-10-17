@@ -1,8 +1,8 @@
 # GoFundMe community experience prototype
 
-A responsive Next.js prototype connecting one fictional community, four fundraisers, organizer profiles, and a private demo supporter profile. Visitors can browse campaigns, follow causes, save featured causes, share public links, and record simulated donations. Fundraiser pages show funding history and an optional campaign-scoped AI question panel with source links.
+A responsive Next.js prototype connecting one fictional community, four fundraisers, organizer profiles, a private demo supporter profile, and a curated short-video Watch feed. Visitors can browse campaigns, follow causes, save featured causes, share public links, and record simulated donations. Fundraiser pages show funding history and an optional campaign-scoped AI question panel with source links.
 
-**This is a demonstration, not GoFundMe or a payment service.** All campaign, organizer, community, update, and seed contribution content is fictional. Donations are simulated and affect only the current browser's demo visitor. No card details are requested. Stock photographs are illustrative and do not depict or verify the fictional beneficiaries.
+**This is a demonstration, not GoFundMe or a payment service.** All campaign, organizer, community, update, and seed contribution content is fictional. Donations are simulated and affect only the current browser's demo visitor. No card details are requested. Stock photographs and video are illustrative; performers do not depict, endorse, or verify the fictional campaign organizers or beneficiaries.
 
 ## Requirements
 
@@ -21,7 +21,7 @@ npm run db:migrate
 npm run dev
 ```
 
-Open <http://127.0.0.1:3000>. `/` redirects to the seeded community. Main routes are `/communities/a-greener-tomorrow`, `/fundraisers/grow-a-neighborhood`, `/profiles/maya-chen`, and `/me`.
+Open <http://127.0.0.1:3000>. `/` redirects to the seeded community. Main routes are `/communities/a-greener-tomorrow`, `/communities/a-greener-tomorrow/watch`, `/fundraisers/grow-a-neighborhood`, `/profiles/maya-chen`, and `/me`.
 
 `.env.local` starts from `.env.example`. Keep `DATABASE_URL` and `APP_ORIGIN` aligned with your local database and browser-visible origin. Same-origin mutation requests also accept the comma-separated `APP_PREVIEW_ORIGINS` list. Add the exact preview origin when accessing the app through a forwarded preview (for example, `http://localhost:61071`), then restart the server. Scheme, hostname (`localhost` versus `127.0.0.1`), and port must match; origins cannot include a path, trailing slash, query, or credentials. Leave this setting empty unless you need an additional browser-facing origin. Malformed origin configuration fails closed. To reproduce the local forwarded-preview path, configure `APP_PREVIEW_ORIGINS=http://localhost:61071`, restart the app, and in another terminal run `node scripts/preview-proxy.mjs`; open `http://localhost:61071`. The helper forwards to `http://127.0.0.1:3000` while preserving the browser Origin header. The default `AI_MODEL` is `gpt-4.1-mini-2025-04-14`. Set `OPENAI_API_KEY` only when you have an authorized key for application runtime use; never commit it.
 
@@ -41,7 +41,7 @@ To stop local PostgreSQL, run `docker compose down`; its named volume remains. `
 
 ## Scope and limits
 
-The prototype covers the community, fundraiser, and profile page types plus the private `/me` view. It has visitor-isolated persistent follows/features, simulated donations, UTC funding history, first-party measurement, and optional campaign-grounded AI. Creator campaign publishing was explicitly deferred. There is no production login, account recovery, cross-device identity, real payment, public user-generated posting, or shared cross-visitor donation ledger. Clearing the `demo_session` cookie starts a new visitor but does not erase the old visitor's stored records. There is no in-app visitor reset or deletion control; database-wide reset is available only by deliberately removing the local Compose volume.
+The prototype covers the community, fundraiser, and profile page types, the private `/me` view, and a four-clip curated Watch feed. It has visitor-isolated persistent follows/features, simulated donations, UTC funding history, first-party measurement, and optional campaign-grounded AI. Creator campaign publishing and public user-generated video were deferred. Watch clips use licensed illustrative stock footage with authored fictional campaign copy; they are silent and do not represent organizer testimony. There is no production login, account recovery, cross-device identity, real payment, or shared cross-visitor donation ledger. Clearing the `demo_session` cookie starts a new visitor but does not erase the old visitor's stored records. There is no in-app visitor reset or deletion control; database-wide reset is available only by deliberately removing the local Compose volume.
 
 ### Archived local milestone
 

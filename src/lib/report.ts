@@ -1,4 +1,5 @@
 /** Aggregate-only analytics. Inputs may contain historical sessions for return detection. */
+import { campaignClips, clipById } from "./video-content";
 export interface ReportSession {
   id: string;
   visitor_id: string;
@@ -59,6 +60,153 @@ const key = (e: ReportEvent, property: string) => {
   const value = identifier(e, property);
   return value ? JSON.stringify([e.visitor_id, e.entity_id, value]) : undefined;
 };
+const videoShareNames = [
+  "share_opened",
+  "share_copied",
+  "native_share_completed",
+  "share_cancelled",
+  "share_failed",
+] as const;
+
+function videoReport(events: ReportEvent[]) {
+  const videoEventNames = new Set([
+    "video_clip_impression",
+    "video_play_started",
+    "video_campaign_opened",
+    "follow_changed",
+    "donation_started",
+    "donation_completed",
+    ...videoShareNames,
+  ]);
+  const byClip = campaignClips.map((clip) => {
+    const sourceEvents = events.filter(
+      (e) =>
+        videoEventNames.has(e.name) &&
+        e.properties.source === "watch" &&
+        e.properties.sourceId === clip.id &&
+        e.entity_id === clip.campaignId &&
+        clipById(clip.id)?.campaignId === clip.campaignId,
+    );
+    const named = (name: string) => sourceEvents.filter((e) => e.name === name);
+    const combination = (e: ReportEvent) =>
+      JSON.stringify([e.visitor_id, e.session_id, clip.id]);
+    const exposures = new Map<string, ReportEvent>();
+    for (const e of named("video_clip_impression")) {
+      const id = combination(e);
+      if (!exposures.has(id)) exposures.set(id, e);
+    }
+    const plays = new Set(named("video_play_started").map(combination));
+    const exposedPlays = [...plays].filter((id) => exposures.has(id)).length;
+    const opens = named("video_campaign_opened");
+    const arrived = new Set<string>();
+    for (const open of opens) {
+      const id = combination(open);
+      const exposure = exposures.get(id);
+      if (
+        exposure &&
+        instant(exposure.created_at) <= instant(open.created_at) &&
+        events.some(
+          (view) =>
+            view.name === "page_view" &&
+            view.visitor_id === open.visitor_id &&
+            view.session_id === open.session_id &&
+            view.entity_id === clip.campaignId &&
+            ["fundraisers", "fundraiser"].includes(
+              String(view.properties.pageType),
+            ) &&
+            instant(view.created_at) >= instant(open.created_at),
+        )
+      )
+        arrived.add(id);
+    }
+    const follows = named("follow_changed").filter(
+      (e) =>
+        e.properties.targetType === "fundraiser" &&
+        e.properties.active === true,
+    );
+    const unfollows = named("follow_changed").filter(
+      (e) =>
+        e.properties.targetType === "fundraiser" &&
+        e.properties.active === false,
+    );
+    const exposedFollows = new Set(
+      follows.map(combination).filter((id) => exposures.has(id)),
+    );
+    const sharing = Object.fromEntries(
+      videoShareNames.map((name) => [name, named(name).length]),
+    ) as Record<(typeof videoShareNames)[number], number>;
+    const shared = new Set(
+      [...named("share_copied"), ...named("native_share_completed")]
+        .map(combination)
+        .filter((id) => exposures.has(id)),
+    );
+    const attemptKey = (e: ReportEvent) => {
+      const attemptId = identifier(e, "attemptId");
+      return attemptId
+        ? JSON.stringify([e.visitor_id, clip.campaignId, clip.id, attemptId])
+        : undefined;
+    };
+    const starts = new Map<string, ReportEvent>();
+    for (const e of named("donation_started")) {
+      const id = attemptKey(e);
+      if (id && !starts.has(id)) starts.set(id, e);
+    }
+    const completions = new Map<string, ReportEvent>();
+    for (const e of named("donation_completed")) {
+      const id = attemptKey(e);
+      if (id && !completions.has(id)) completions.set(id, e);
+    }
+    const matched = [...completions].filter(
+      ([id, completed]) =>
+        starts.has(id) &&
+        instant(completed.created_at) >= instant(starts.get(id)!.created_at),
+    );
+    const completedCents = [...completions.values()].reduce((sum, e) => {
+      const cents = e.properties.cents;
+      return (
+        sum +
+        (typeof cents === "number" && Number.isSafeInteger(cents) && cents > 0
+          ? cents
+          : 0)
+      );
+    }, 0);
+    return {
+      clipId: clip.id,
+      campaignId: clip.campaignId,
+      qualifiedExposures: exposures.size,
+      playStarts: plays.size,
+      playsAfterExposure: exposedPlays,
+      playRate: rate(exposedPlays, exposures.size),
+      campaignOpenEvents: opens.length,
+      confirmedArrivals: arrived.size,
+      campaignArrivalRate: rate(arrived.size, exposures.size),
+      savedFollowEvents: follows.length,
+      savedUnfollowEvents: unfollows.length,
+      exposedFollows: exposedFollows.size,
+      followRate: rate(exposedFollows.size, exposures.size),
+      sharing,
+      exposedSuccessfulShares: shared.size,
+      successfulShareRate: rate(shared.size, exposures.size),
+      donations: {
+        startedAttempts: starts.size,
+        completedAttempts: completions.size,
+        matchedCompletedAttempts: matched.length,
+        unmatchedCompletedAttempts: completions.size - matched.length,
+        completionsWithoutExposure: [...completions.values()].filter(
+          (e) => !exposures.has(combination(e)),
+        ).length,
+        completedCents,
+        completionRate: rate(matched.length, starts.size),
+      },
+    };
+  });
+  return {
+    attribution: "observed Watch source association; not causal impact",
+    qualification:
+      "Client impression after one continuously visible active second; reported unique visitor/session/clip combinations",
+    byClip,
+  };
+}
 
 export function engagementReport(
   inputEvents: ReportEvent[],
@@ -254,6 +402,7 @@ export function engagementReport(
       ).length,
     },
     sharing,
+    video: videoReport(events),
     returns: {
       sessionsStarted: begun.length,
       returningVisitors: new Set(returning.map((s) => s.visitor_id)).size,

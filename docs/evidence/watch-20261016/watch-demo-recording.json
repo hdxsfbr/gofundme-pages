@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-17T00:33:42.903Z",
+  "finishedAt": "2026-10-17T00:33:48.755Z",
+  "origin": "http://127.0.0.1:3012",
+  "buildId": "kGzf_4_cGNX3sVrHOTOPj",
+  "browser": "151.0.7922.173",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "isMobile": true,
+    "hasTouch": true
+  },
+  "recordedActions": [
+    "Enter Watch from Discover",
+    "Play the first captioned clip",
+    "Swipe up to the next campaign clip",
+    "Open Donate now and save $12.50 in simulated support",
+    "Show the no-charge confirmation and return to the same paused clip"
+  ],
+  "recording": "/home/hdx/code/gofundme-pages/docs/evidence/watch-20261016/recordings/watch-mobile-swipe-donate.webm",
+  "limitations": [
+    "Chromium mobile emulation; no physical iOS device was used.",
+    "Campaign footage is licensed illustrative stock with editorial demo text and no spoken audio.",
+    "The donation is simulated; no money moves."
+  ]
+}

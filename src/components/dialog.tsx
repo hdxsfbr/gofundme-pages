@@ -1,27 +1,30 @@
 "use client";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode, type RefObject } from "react";
 import { X } from "lucide-react";
 export function Dialog({
   title,
   children,
   onClose,
   variant = "default",
+  returnFocusRef,
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
   variant?: "default" | "chat";
+  returnFocusRef?: RefObject<HTMLElement | null>;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const d = ref.current;
-    const previous = document.activeElement as HTMLElement | null;
+    const previous =
+      returnFocusRef?.current ?? (document.activeElement as HTMLElement | null);
     d?.showModal();
     return () => {
       d?.close();
       previous?.focus();
     };
-  }, []);
+  }, [returnFocusRef]);
   return (
     <dialog
       ref={ref}

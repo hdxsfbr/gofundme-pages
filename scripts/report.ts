@@ -51,6 +51,7 @@ try {
     const events = await client.query<ReportEvent>(
       `SELECT e.id, e.visitor_id, e.session_id, e.name, e.entity_id, e.created_at,
       jsonb_strip_nulls(jsonb_build_object('pageType',e.properties->'pageType','active',e.properties->'active',
+        'source',e.properties->'source','sourceId',e.properties->'sourceId','targetType',e.properties->'targetType',
         'attemptId',e.properties->'attemptId','requestId',e.properties->'requestId','cents',e.properties->'cents',
         'latencyMs',e.properties->'latencyMs')) AS properties
       FROM events e JOIN analytics_sessions s ON s.id=e.session_id

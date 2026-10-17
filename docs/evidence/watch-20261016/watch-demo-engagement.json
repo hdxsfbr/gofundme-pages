@@ -1,0 +1,329 @@
+{
+  "version": 1,
+  "window": {
+    "from": "2026-10-17T00:33:42.903Z",
+    "to": "2026-10-17T00:33:48.755Z",
+    "bounds": "[from, to)"
+  },
+  "population": "all recorded sessions including tests",
+  "simulatedDonations": true,
+  "counts": {
+    "events": 8,
+    "pageViews": 2,
+    "pageVisitors": 1,
+    "activeSessions": 1
+  },
+  "discovery": {
+    "communityVisitors": 1,
+    "cardOpenEvents": 0,
+    "campaignArrival": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0
+    }
+  },
+  "follows": {
+    "savedFollowEvents": 0,
+    "savedUnfollowEvents": 0,
+    "visitorFollow": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0
+    }
+  },
+  "donations": {
+    "startedAttempts": 1,
+    "completedAttempts": 1,
+    "completedCents": 1250,
+    "completion": {
+      "numerator": 1,
+      "denominator": 1,
+      "rate": 1
+    },
+    "unmatchedCompletedAttempts": 0,
+    "startsMissingAttemptId": 0,
+    "completionsMissingAttemptId": 0
+  },
+  "sharing": {
+    "share_opened": {
+      "events": 0,
+      "visitors": 0
+    },
+    "share_copied": {
+      "events": 0,
+      "visitors": 0
+    },
+    "native_share_completed": {
+      "events": 0,
+      "visitors": 0
+    },
+    "share_cancelled": {
+      "events": 0,
+      "visitors": 0
+    },
+    "share_failed": {
+      "events": 0,
+      "visitors": 0
+    }
+  },
+  "video": {
+    "attribution": "observed Watch source association; not causal impact",
+    "qualification": "Client impression after one continuously visible active second; reported unique visitor/session/clip combinations",
+    "byClip": [
+      {
+        "clipId": "garden-neighbors",
+        "campaignId": "grow-a-neighborhood",
+        "qualifiedExposures": 1,
+        "playStarts": 1,
+        "playsAfterExposure": 1,
+        "playRate": {
+          "numerator": 1,
+          "denominator": 1,
+          "rate": 1
+        },
+        "campaignOpenEvents": 0,
+        "confirmedArrivals": 0,
+        "campaignArrivalRate": {
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0
+        },
+        "savedFollowEvents": 0,
+        "savedUnfollowEvents": 0,
+        "exposedFollows": 0,
+        "followRate": {
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0
+        },
+        "sharing": {
+          "share_opened": 0,
+          "share_copied": 0,
+          "native_share_completed": 0,
+          "share_cancelled": 0,
+          "share_failed": 0
+        },
+        "exposedSuccessfulShares": 0,
+        "successfulShareRate": {
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0
+        },
+        "donations": {
+          "startedAttempts": 0,
+          "completedAttempts": 0,
+          "matchedCompletedAttempts": 0,
+          "unmatchedCompletedAttempts": 0,
+          "completionsWithoutExposure": 0,
+          "completedCents": 0,
+          "completionRate": {
+            "numerator": 0,
+            "denominator": 0,
+            "rate": null
+          }
+        }
+      },
+      {
+        "clipId": "tree-care",
+        "campaignId": "roots-for-the-future",
+        "qualifiedExposures": 0,
+        "playStarts": 1,
+        "playsAfterExposure": 0,
+        "playRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "campaignOpenEvents": 0,
+        "confirmedArrivals": 0,
+        "campaignArrivalRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "savedFollowEvents": 0,
+        "savedUnfollowEvents": 0,
+        "exposedFollows": 0,
+        "followRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "sharing": {
+          "share_opened": 0,
+          "share_copied": 0,
+          "native_share_completed": 0,
+          "share_cancelled": 0,
+          "share_failed": 0
+        },
+        "exposedSuccessfulShares": 0,
+        "successfulShareRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "donations": {
+          "startedAttempts": 1,
+          "completedAttempts": 1,
+          "matchedCompletedAttempts": 1,
+          "unmatchedCompletedAttempts": 0,
+          "completionsWithoutExposure": 1,
+          "completedCents": 1250,
+          "completionRate": {
+            "numerator": 1,
+            "denominator": 1,
+            "rate": 1
+          }
+        }
+      },
+      {
+        "clipId": "common-ground-solar",
+        "campaignId": "power-our-common-ground",
+        "qualifiedExposures": 0,
+        "playStarts": 0,
+        "playsAfterExposure": 0,
+        "playRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "campaignOpenEvents": 0,
+        "confirmedArrivals": 0,
+        "campaignArrivalRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "savedFollowEvents": 0,
+        "savedUnfollowEvents": 0,
+        "exposedFollows": 0,
+        "followRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "sharing": {
+          "share_opened": 0,
+          "share_copied": 0,
+          "native_share_completed": 0,
+          "share_cancelled": 0,
+          "share_failed": 0
+        },
+        "exposedSuccessfulShares": 0,
+        "successfulShareRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "donations": {
+          "startedAttempts": 0,
+          "completedAttempts": 0,
+          "matchedCompletedAttempts": 0,
+          "unmatchedCompletedAttempts": 0,
+          "completionsWithoutExposure": 0,
+          "completedCents": 0,
+          "completionRate": {
+            "numerator": 0,
+            "denominator": 0,
+            "rate": null
+          }
+        }
+      },
+      {
+        "clipId": "open-path-access",
+        "campaignId": "a-path-for-everyone",
+        "qualifiedExposures": 0,
+        "playStarts": 0,
+        "playsAfterExposure": 0,
+        "playRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "campaignOpenEvents": 0,
+        "confirmedArrivals": 0,
+        "campaignArrivalRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "savedFollowEvents": 0,
+        "savedUnfollowEvents": 0,
+        "exposedFollows": 0,
+        "followRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "sharing": {
+          "share_opened": 0,
+          "share_copied": 0,
+          "native_share_completed": 0,
+          "share_cancelled": 0,
+          "share_failed": 0
+        },
+        "exposedSuccessfulShares": 0,
+        "successfulShareRate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "donations": {
+          "startedAttempts": 0,
+          "completedAttempts": 0,
+          "matchedCompletedAttempts": 0,
+          "unmatchedCompletedAttempts": 0,
+          "completionsWithoutExposure": 0,
+          "completedCents": 0,
+          "completionRate": {
+            "numerator": 0,
+            "denominator": 0,
+            "rate": null
+          }
+        }
+      }
+    ]
+  },
+  "returns": {
+    "sessionsStarted": 1,
+    "returningVisitors": 0,
+    "returningSession": {
+      "numerator": 0,
+      "denominator": 1,
+      "rate": 0
+    }
+  },
+  "ai": {
+    "submittedRequests": 0,
+    "supported": 0,
+    "abstained": 0,
+    "failed": 0,
+    "observedOutcome": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "pendingSubmittedRequests": 0,
+    "outcomesWithoutInWindowSubmission": 0,
+    "citationOpens": 0,
+    "citationVisitors": 0,
+    "visitorCitationUse": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "answeredRequestCitationUse": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "citationOpensWithoutMatchedAnswer": 0,
+    "latencySamples": 0,
+    "meanLatencyMs": null,
+    "eventsMissingRequestId": 0
+  },
+  "outbox": {
+    "reconciled": 0,
+    "pending": 0
+  }
+}

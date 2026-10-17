@@ -1,10 +1,18 @@
 # Submission index
 
-This project submission contains the source repository, technical documentation, the current demo recording, and an AI usage log. The current measured production build is `-6yPHl9lZGab-87T31WH9`; its build, typecheck, lint, formatting, 150 Vitest checks, 57 browser checks, and three-route Lighthouse budgets passed. The video has passed full decode and sampled-frame review; the current release manifest is verified; the OpenSpec change is archived with all 47 tasks complete. See the [milestone closeout](milestone-closeout.md).
+This submission index preserves the archived milestone record and tracks the active Campaign Watch follow-on separately. The previous milestone closeout is in [milestone closeout](milestone-closeout.md); the Watch implementation and its local production validation are summarized below.
+
+## Campaign Watch follow-on
+
+The active OpenSpec change adds a curated, swipeable four-clip campaign feed with captions, campaign/profile links, and simulated Donate now, follow, and share actions. The current local production build is `kGzf_4_cGNX3sVrHOTOPj`. It passed 187 Vitest checks, 64 of 64 executed browser checks, build, lint, typecheck, and formatting. Two browser checks for a forwarded preview origin were skipped because no preview proxy was configured. The complete [validation record](evidence/watch-20261016/validation.md) includes screenshots, media facts, browser coverage, and the measured Lighthouse budget miss.
+
+The controlled swipe-and-donate recording is [`watch-mobile-swipe-donate.webm`](evidence/watch-20261016/recordings/watch-mobile-swipe-donate.webm), with [recording metadata](evidence/watch-20261016/watch-demo-recording.json) and the [event report](evidence/watch-20261016/watch-demo-engagement.json). It uses fictional campaign content and stock footage; the $12.50 support is simulated. The app is not deployed with this feature: the [existing hosted app](https://web-production-7e5023.up.railway.app/) is the earlier release. OpenSpec task 5.4 remains pending until a protected-main pipeline publishes this change and the hosted journey is checked.
+
+## Previous milestone deliverables and evidence
 
 ## Deliverables and current evidence
 
-- **Source:** this repository, including the Next.js application, fictional fixtures, migrations, and tests. There is no hosted deployment URL.
+- **Source:** this repository, including the Next.js application, fictional fixtures, migrations, and tests. The earlier baseline release is hosted at [web-production-7e5023.up.railway.app](https://web-production-7e5023.up.railway.app/); it predates the active Watch follow-on above.
 - **Technical documentation:** [README and setup](../README.md), [technical notes](technical.md), [analytics definitions](analytics.md), [media/content notes](media.md), and the [transcribed sponsor brief](project-requirements.md).
 - **Demo video:** the current silent real-browser recording is [`demo.webm`](evidence/milestone/demo.webm), with [recording metadata](evidence/milestone/demo-recording.json) and [recording-window engagement report](evidence/milestone/demo-engagement.json). It uses build `-6yPHl9lZGab-87T31WH9` and runs 55.24 seconds (VP9, 1440 × 1000, 25 fps; 7,486,360 bytes). FFmpeg decoded the full stream with zero errors; 13 sampled frames were reviewed. See [decode/frame review](evidence/milestone/demo-video-check.json) and [reviewed frames](evidence/milestone/demo-frames/). The earlier [recording](evidence/demo.webm), [metadata](evidence/demo-recording.json), [decode/frame review](evidence/demo-video-check.json), and [engagement report](evidence/demo-engagement.json) are historical.
 - **AI usage log:** [AI usage log](ai-usage-log.md) separates development assistance from application runtime AI.
@@ -16,4 +24,4 @@ This project submission contains the source repository, technical documentation,
 
 ## Limits
 
-All campaigns and people are fictional; stock photographs are illustrative. Donations and follows are simulated and visitor-scoped. There is no live payment processing, production identity, or hosted deployment. Performance is based on local lab runs, not field data. Browser accessibility checks report zero serious/critical axe findings across 18 release scenes; this is not a full WCAG conformance claim. No separate human final review is recorded; that is a documentation limitation, not an outstanding milestone task.
+All campaigns and people are fictional; stock photographs are illustrative. Donations and follows are simulated and visitor-scoped. There is no live payment processing or production identity. The existing hosted release predates the Watch follow-on, which is not yet deployed. Performance is based on local lab runs, not field data. Browser accessibility checks report zero serious/critical axe findings across 18 release scenes; this is not a full WCAG conformance claim. No separate human final review is recorded; that is a documentation limitation, not an outstanding milestone task.

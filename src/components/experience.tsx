@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
   type ReactNode,
+  type RefObject,
 } from "react";
 import Link from "@/components/link";
 import Image from "next/image";
@@ -57,6 +58,17 @@ const Context = createContext<{
   act: (action: Action) => Promise<void>;
 }>({ viewer: emptyViewer, act: async () => {} });
 export const useDemo = () => useContext(Context);
+function rememberDiscovery() {
+  if (location.pathname !== "/communities/" + community.id) return;
+  try {
+    sessionStorage.setItem(
+      "discovery-return",
+      JSON.stringify({ url: location.pathname + location.search, y: scrollY }),
+    );
+  } catch {
+    // Browsing remains usable when private storage is unavailable.
+  }
+}
 export function Shell({
   initial,
   children,
@@ -66,6 +78,10 @@ export function Shell({
 }) {
   const viewer = initial;
   const pathname = usePathname();
+  const params = useSearchParams();
+  const watching = pathname.endsWith("/watch");
+  const inCommunity = pathname === "/communities/" + community.id;
+  const following = inCommunity && params.get("view") === "following";
   const router = useRouter();
   const act = useCallback(
     async (action: Action) => {
@@ -82,12 +98,12 @@ export function Shell({
   );
   useEffect(() => {
     track("page_view", pathname.split("/").pop() || null, {
-      pageType: pathname.split("/")[1] || "community",
+      pageType: watching ? "watch" : pathname.split("/")[1] || "community",
     });
-  }, [pathname]);
+  }, [pathname, watching]);
   return (
     <Context.Provider value={{ viewer, act }}>
-      <header className="site-header">
+      <header className={"site-header" + (watching ? " watch-header" : "")}>
         <div className="nav-inner">
           <Link
             href={"/communities/" + community.id}
@@ -101,13 +117,27 @@ export function Shell({
           </Link>
           <nav aria-label="Main navigation">
             <Link
-              className={pathname.includes("communities") ? "nav-current" : ""}
+              className={inCommunity && !following ? "nav-current" : ""}
+              aria-current={inCommunity && !following ? "page" : undefined}
               href={"/communities/" + community.id}
             >
               Discover
             </Link>
-            <Link href={"/communities/" + community.id + "?view=following"}>
+            <Link
+              href={"/communities/" + community.id + "?view=following"}
+              className={following ? "nav-current" : ""}
+              aria-current={following ? "page" : undefined}
+            >
               Following
+            </Link>
+            <Link
+              href={"/communities/" + community.id + "/watch"}
+              className={watching ? "nav-current" : ""}
+              aria-current={watching ? "page" : undefined}
+              prefetch={false}
+              onClick={rememberDiscovery}
+            >
+              Watch
             </Link>
           </nav>
           <Link className="my-profile-link" href="/me">
@@ -117,18 +147,20 @@ export function Shell({
         </div>
       </header>
       {children}
-      <footer className="footer container">
-        <Link className="wordmark" href={"/communities/" + community.id}>
-          gofundme<span className="footer-dot">✳</span>
-        </Link>
-        <p>A little good goes a long way.</p>
-        <p className="demo-note">
-          Fictional demo · No money is charged.
-          <br />
-          Your actions are saved for this browser only.{" "}
-          <Link href="/me">Your demo profile</Link>
-        </p>
-      </footer>
+      {!watching && (
+        <footer className="footer container">
+          <Link className="wordmark" href={"/communities/" + community.id}>
+            gofundme<span className="footer-dot">✳</span>
+          </Link>
+          <p>A little good goes a long way.</p>
+          <p className="demo-note">
+            Fictional demo · No money is charged.
+            <br />
+            Your actions are saved for this browser only.{" "}
+            <Link href="/me">Your demo profile</Link>
+          </p>
+        </footer>
+      )}
     </Context.Provider>
   );
 }
@@ -148,10 +180,12 @@ export function FollowButton({
   type,
   id,
   compact = false,
+  sourceId,
 }: {
   type: "community" | "fundraiser" | "organizer";
   id: string;
   compact?: boolean;
+  sourceId?: string;
 }) {
   const { viewer, act } = useDemo();
   const [pending, setPending] = useState(false),
@@ -168,6 +202,7 @@ export function FollowButton({
         targetType: type,
         targetId: id,
         active: !active,
+        ...(sourceId ? { sourceId } : {}),
       });
     } catch (e) {
       setError((e as Error).message);
@@ -392,9 +427,9 @@ export function Discovery() {
     topic = params.get("topic") || "";
   useEffect(() => {
     const restore = () => {
-      const saved = sessionStorage.getItem("discovery-return");
-      if (!saved) return;
       try {
+        const saved = sessionStorage.getItem("discovery-return");
+        if (!saved) return;
         const entry = JSON.parse(saved);
         if (entry.url === location.pathname + location.search) {
           sessionStorage.removeItem("discovery-return");
@@ -403,7 +438,7 @@ export function Discovery() {
           );
         }
       } catch {
-        sessionStorage.removeItem("discovery-return");
+        // Storage can be disabled; ordinary navigation still works.
       }
     };
     restore();
@@ -440,21 +475,31 @@ export function Discovery() {
   return (
     <section id="discover" className="discovery container">
       <div className="discovery-top">
-        <div className="tabs" role="tablist" aria-label="Campaign views">
-          <button
-            role="tab"
-            aria-selected={view === "discover"}
-            onClick={() => change("discover", query, topic, "view")}
+        <div className="discovery-views">
+          <div className="tabs" role="tablist" aria-label="Campaign views">
+            <button
+              role="tab"
+              aria-selected={view === "discover"}
+              onClick={() => change("discover", query, topic, "view")}
+            >
+              Discover
+            </button>
+            <button
+              role="tab"
+              aria-selected={view === "following"}
+              onClick={() => change("following", query, topic, "view")}
+            >
+              Following <span>{followed.length}</span>
+            </button>
+          </div>
+          <Link
+            className="watch-discovery-link"
+            href={"/communities/" + community.id + "/watch"}
+            prefetch={false}
+            onClick={rememberDiscovery}
           >
-            Discover
-          </button>
-          <button
-            role="tab"
-            aria-selected={view === "following"}
-            onClick={() => change("following", query, topic, "view")}
-          >
-            Following <span>{followed.length}</span>
-          </button>
+            Watch <ArrowUpRight size={16} />
+          </Link>
         </div>
         <label className="search">
           <Search size={18} />
@@ -598,37 +643,53 @@ export function Discovery() {
 export function ShareButton({
   id,
   type = "fundraiser",
+  onOpenChange,
+  sourceId,
+  returnFocusRef,
 }: {
   id: string;
   type?: "fundraiser" | "community";
+  onOpenChange?: (open: boolean) => void;
+  sourceId?: string;
+  returnFocusRef?: RefObject<HTMLElement | null>;
 }) {
+  const activeSource = useRef<string | undefined>(undefined);
   const [open, setOpen] = useState(false),
     [status, setStatus] = useState("");
   const route = (type === "community" ? "/communities/" : "/fundraisers/") + id;
   const [url, setUrl] = useState("");
+  function properties() {
+    return activeSource.current
+      ? { source: "watch", sourceId: activeSource.current }
+      : {};
+  }
   function show() {
+    activeSource.current = sourceId;
     setUrl(location.origin + route);
     setStatus("");
     setOpen(true);
-    track("share_opened", id);
+    onOpenChange?.(true);
+    track("share_opened", id, properties());
   }
   async function copy() {
+    const source = properties();
     try {
       await navigator.clipboard.writeText(url);
       setStatus("Link copied. A little good travels far.");
-      track("share_copied", id);
+      track("share_copied", id, source);
     } catch {
       setStatus(
         "Copy is unavailable. Select the link below and copy it manually.",
       );
-      track("share_failed", id);
+      track("share_failed", id, source);
     }
   }
   async function native() {
+    const source = properties();
     try {
       await navigator.share({ title: "A little good goes a long way", url });
       setStatus("Your browser completed the share.");
-      track("native_share_completed", id);
+      track("native_share_completed", id, source);
     } catch (e) {
       const canceled = (e as Error).name === "AbortError";
       setStatus(
@@ -636,7 +697,7 @@ export function ShareButton({
           ? "Sharing canceled."
           : "Sharing is unavailable. You can copy the link.",
       );
-      track(canceled ? "share_cancelled" : "share_failed", id);
+      track(canceled ? "share_cancelled" : "share_failed", id, source);
     }
   }
   return (
@@ -645,7 +706,14 @@ export function ShareButton({
         <Share2 size={17} /> Share
       </button>
       {open && (
-        <Dialog title="Pass a little good along" onClose={() => setOpen(false)}>
+        <Dialog
+          title="Pass a little good along"
+          returnFocusRef={returnFocusRef}
+          onClose={() => {
+            setOpen(false);
+            onOpenChange?.(false);
+          }}
+        >
           <p>Share this cause with someone who cares.</p>
           <label className="field">
             Public link
@@ -671,12 +739,21 @@ export function ShareButton({
 export function DonateButton({
   campaign,
   wide = false,
+  label = "Make a difference",
+  onOpenChange,
+  sourceId,
+  returnFocusRef,
 }: {
   campaign: Campaign;
   wide?: boolean;
+  label?: string;
+  onOpenChange?: (open: boolean) => void;
+  sourceId?: string;
+  returnFocusRef?: RefObject<HTMLElement | null>;
 }) {
   const { act } = useDemo();
   const activeAttempt = useRef<string | null>(null);
+  const activeSource = useRef<string | undefined>(undefined);
   const [confirmedCents, setConfirmedCents] = useState(0);
   const [open, setOpen] = useState(false),
     [amount, setAmount] = useState("25"),
@@ -686,13 +763,18 @@ export function DonateButton({
     [done, setDone] = useState(false);
   function start() {
     const k = crypto.randomUUID();
+    activeSource.current = sourceId;
     activeAttempt.current = k;
     setKey(k);
     setPending(false);
     setOpen(true);
+    onOpenChange?.(true);
     setDone(false);
     setError("");
-    track("donation_started", campaign.id, { attemptId: k });
+    track("donation_started", campaign.id, {
+      attemptId: k,
+      ...(sourceId ? { source: "watch", sourceId } : {}),
+    });
   }
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -701,7 +783,13 @@ export function DonateButton({
     setError("");
     try {
       const submittedCents = amountCents(amount);
-      await act({ action: "donate", campaignId: campaign.id, amount, key });
+      await act({
+        action: "donate",
+        campaignId: campaign.id,
+        amount,
+        key,
+        ...(activeSource.current ? { sourceId: activeSource.current } : {}),
+      });
       if (activeAttempt.current === key) {
         setConfirmedCents(submittedCents);
         setDone(true);
@@ -718,14 +806,16 @@ export function DonateButton({
         className={"button primary " + (wide ? "wide" : "")}
         onClick={start}
       >
-        <Heart size={18} /> Make a difference <ArrowUpRight size={18} />
+        <Heart size={18} /> {label} <ArrowUpRight size={18} />
       </button>
       {open && (
         <Dialog
           title={done ? "A little good, added." : "Support this good thing"}
+          returnFocusRef={returnFocusRef}
           onClose={() => {
             activeAttempt.current = null;
             setOpen(false);
+            onOpenChange?.(false);
           }}
         >
           {done ? (

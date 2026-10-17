@@ -17,7 +17,8 @@
     "format:check": "prettier --check src scripts tests",
     "perf": "node scripts/performance.mjs",
     "perf:interactions": "node scripts/interaction-evidence.mjs",
-    "demo:record": "node scripts/record-demo.mjs"
+    "demo:record": "node scripts/record-demo.mjs",
+    "demo:watch": "node scripts/record-watch-demo.mjs"
   },
   "engines": {
     "node": ">=22.0.0"
