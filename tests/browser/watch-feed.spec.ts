@@ -233,7 +233,17 @@ test("Watch loads media only on entry, plays one clip, navigates, and ends expli
 
   mkdirSync(evidence, { recursive: true });
   const firstVideo = await activeVideo.elementHandle();
-  await page.screenshot({ path: `${evidence}/desktop.png`, fullPage: true });
+  // Watch is a fixed-height shell, so a viewport capture is the full page.
+  // fullPage capture briefly resizes the viewport, which on the slow CI
+  // runner let a late re-layout move the feed before the Next click.
+  await page.screenshot({ path: `${evidence}/desktop.png` });
+  await expect(scroller).toHaveAttribute(
+    "data-active-clip",
+    "garden-neighbors",
+  );
+  await expect
+    .poll(() => scroller.evaluate((element) => element.scrollTop))
+    .toBe(0);
   await page
     .locator(".watch-navigation")
     .getByRole("button", { name: "Next clip" })
