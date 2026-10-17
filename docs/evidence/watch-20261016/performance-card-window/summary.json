@@ -1,0 +1,25 @@
+{
+  "recordedAt": "2026-10-17T00:58:45Z",
+  "tool": "Lighthouse 13.5.0",
+  "method": "Three separate Chrome launches per route with fresh temporary profiles and the default simulated-mobile preset, using isolated rebuilt production copies. This is a diagnostic experiment, not accepted-source evidence.",
+  "baselineBuildId": "prnxf3-xC3TU3lAPFLrX1",
+  "experimentBuildId": "oSuSOyoJAIDCMwPQSI6_u",
+  "experiment": "Keep snap wrappers in the initial render, omit full card content for inactive clips, and render active plus adjacent card contents after hydration.",
+  "results": {
+    "baseline": {
+      "lcpMs": [2476.866, 2475.551, 2623.177],
+      "medianLcpMs": 2476.866,
+      "medianCls": 0,
+      "rawHtmlBytes": 125101,
+      "compressedHtmlBytes": 26484
+    },
+    "experiment": {
+      "lcpMs": [2627.759, 2623.288, 2622.295],
+      "medianLcpMs": 2623.288,
+      "medianCls": 0,
+      "rawHtmlBytes": 111857,
+      "compressedHtmlBytes": 25936
+    }
+  },
+  "conclusion": "The experiment reduced raw HTML by 13244 bytes but did not improve simulated LCP and was not integrated. Run-to-run variation is substantial: the fresh baseline median differs from the previously accepted source-build median of 2625.511 ms. The playback/navigation/end journey passed; a media-deferral regression expected an offscreen img placeholder removed by the experiment. Workspace source was unchanged."
+}

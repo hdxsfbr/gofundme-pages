@@ -18,7 +18,7 @@ variables:
 
 validate:
   stage: validate
-  timeout: 25m
+  timeout: 35m
   services:
     - name: postgres:18.3-bookworm@sha256:80630f83606d8db77d30b3851b16a9f78be2d0d4dda6f7b82a1fdca5ebe3acba
       alias: postgres

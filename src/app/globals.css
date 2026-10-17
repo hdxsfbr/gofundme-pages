@@ -7,6 +7,7 @@
   --lime: #d3f36a;
   --line: #e5e8df;
   --radius: 24px;
+  --watch-header-height: calc(92px + env(safe-area-inset-top, 0px));
 }
 * {
   box-sizing: border-box;
@@ -129,6 +130,10 @@ svg {
   height: 92px;
   border-bottom: 1px solid var(--line);
   background: var(--canvas);
+}
+.site-header.watch-header {
+  height: var(--watch-header-height);
+  padding-top: env(safe-area-inset-top, 0px);
 }
 .nav-inner {
   max-width: 1248px;
@@ -402,6 +407,19 @@ svg {
   display: flex;
   gap: 30px;
   align-items: center;
+}
+.discovery-views {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.watch-discovery-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 17px 0;
+  font-weight: 600;
+  color: var(--green);
 }
 .tabs button {
   padding: 17px 0;
@@ -1446,12 +1464,53 @@ dialog::backdrop {
   }
 }
 @media (max-width: 650px) {
+  :root {
+    --watch-header-height: calc(102px + env(safe-area-inset-top, 0px));
+  }
   .site-header {
     height: 74px;
   }
   .nav-inner {
     padding: 0 20px;
-    gap: 28px;
+    gap: 18px;
+  }
+  .watch-header {
+    height: auto;
+    min-height: var(--watch-header-height);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .watch-header .nav-inner {
+    height: auto;
+    min-height: 102px;
+    padding: 6px max(12px, env(safe-area-inset-right, 0px)) 6px
+      max(12px, env(safe-area-inset-left, 0px));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    gap: 4px 12px;
+  }
+  .watch-header .wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .watch-header nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    height: auto;
+    width: 100%;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .watch-header nav a {
+    height: auto;
+    min-height: 42px;
+    padding: 6px 0;
+    line-height: 1.2;
+  }
+  .watch-header .my-profile-link {
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 0;
   }
   .wordmark {
     font-size: 25px;
@@ -1460,7 +1519,7 @@ dialog::backdrop {
     left: 44px;
   }
   .nav-inner nav {
-    gap: 18px;
+    gap: 14px;
     font-size: 12px;
   }
   .my-profile-link > span:last-child {
@@ -1802,6 +1861,45 @@ dialog::backdrop {
   }
   .community-link strong {
     font-size: 16px;
+  }
+}
+@media (max-width: 380px) {
+  .site-header:not(.watch-header) {
+    height: auto;
+    min-height: 102px;
+  }
+  .site-header:not(.watch-header) .nav-inner {
+    height: auto;
+    min-height: 102px;
+    padding: 6px max(12px, env(safe-area-inset-right, 0px)) 6px
+      max(12px, env(safe-area-inset-left, 0px));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    gap: 4px 12px;
+  }
+  .site-header:not(.watch-header) .wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .site-header:not(.watch-header) nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .site-header:not(.watch-header) nav a {
+    height: auto;
+    min-height: 42px;
+    padding: 6px 0;
+    line-height: 1.2;
+  }
+  .site-header:not(.watch-header) .my-profile-link {
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 0;
   }
 }
 

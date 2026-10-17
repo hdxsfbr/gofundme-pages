@@ -10,6 +10,10 @@ export const clientEvents = [
   "share_failed",
   "ai_citation_opened",
   "performance_measured",
+  "video_feed_opened",
+  "video_clip_impression",
+  "video_play_started",
+  "video_campaign_opened",
 ] as const;
 export const trustedEvents = [
   "follow_changed",

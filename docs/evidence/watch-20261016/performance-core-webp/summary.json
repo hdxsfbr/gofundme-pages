@@ -1,0 +1,109 @@
+{
+  "recordedAt": "2026-10-17T00:38:46.128Z",
+  "tool": "Lighthouse",
+  "version": "13.5.0",
+  "node": "v24.14.0",
+  "os": "Linux 7.0.0-38-generic",
+  "cpu": "Intel(R) Core(TM) i9-14900KF",
+  "ramGiB": 31,
+  "build": "Next.js production, npm run build && npm run start",
+  "buildId": "kGzf_4_cGNX3sVrHOTOPj",
+  "method": "Three separate Chrome launches per route; fresh temporary browser profiles and Lighthouse storage reset; default simulated mobile preset. Local server and image optimizer may have warm caches. No concurrent browser suite.",
+  "dataset": "One fictional community, four campaigns, fixed seed ledger, new visitor per run; automation tagged x-demo-test.",
+  "settings": "settings.json",
+  "results": [
+    {
+      "name": "community",
+      "route": "/communities/a-greener-tomorrow",
+      "runs": [
+        {
+          "run": 1,
+          "lcpMs": 2472.972,
+          "observedLcpMs": 66,
+          "cls": 0,
+          "score": 0.98
+        },
+        {
+          "run": 2,
+          "lcpMs": 2470.688,
+          "observedLcpMs": 61,
+          "cls": 0,
+          "score": 0.98
+        },
+        {
+          "run": 3,
+          "lcpMs": 2471.5806,
+          "observedLcpMs": 51,
+          "cls": 0,
+          "score": 0.98
+        }
+      ],
+      "medianLcpMs": 2471.5806,
+      "medianObservedLcpMs": 61,
+      "medianCls": 0,
+      "pass": true
+    },
+    {
+      "name": "fundraiser",
+      "route": "/fundraisers/grow-a-neighborhood",
+      "runs": [
+        {
+          "run": 1,
+          "lcpMs": 2473.7463,
+          "observedLcpMs": 51,
+          "cls": 0,
+          "score": 0.98
+        },
+        {
+          "run": 2,
+          "lcpMs": 2029.8478,
+          "observedLcpMs": 48,
+          "cls": 0,
+          "score": 0.99
+        },
+        {
+          "run": 3,
+          "lcpMs": 2027.9587999999999,
+          "observedLcpMs": 47,
+          "cls": 0,
+          "score": 0.99
+        }
+      ],
+      "medianLcpMs": 2029.8478,
+      "medianObservedLcpMs": 48,
+      "medianCls": 0,
+      "pass": true
+    },
+    {
+      "name": "profile",
+      "route": "/profiles/maya-chen",
+      "runs": [
+        {
+          "run": 1,
+          "lcpMs": 2475.8879,
+          "observedLcpMs": 44,
+          "cls": 0,
+          "score": 0.98
+        },
+        {
+          "run": 2,
+          "lcpMs": 2104.3977999999997,
+          "observedLcpMs": 42,
+          "cls": 0,
+          "score": 0.99
+        },
+        {
+          "run": 3,
+          "lcpMs": 2471.8109,
+          "observedLcpMs": 49,
+          "cls": 0,
+          "score": 0.98
+        }
+      ],
+      "medianLcpMs": 2471.8109,
+      "medianObservedLcpMs": 44,
+      "medianCls": 0,
+      "pass": true
+    }
+  ]
+}

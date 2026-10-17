@@ -11,6 +11,7 @@ import { transaction } from "@/lib/db";
 import { body, failure, RequestError } from "@/lib/http";
 import { amountCents } from "@/lib/domain";
 import { campaignById, validTarget } from "@/lib/content";
+import { clipById } from "@/lib/video-content";
 const schema = z.discriminatedUnion("action", [
   z
     .object({
@@ -18,6 +19,7 @@ const schema = z.discriminatedUnion("action", [
       targetType: z.enum(["community", "fundraiser", "organizer"]),
       targetId: z.string(),
       active: z.boolean(),
+      sourceId: z.string().optional(),
     })
     .strict(),
   z
@@ -26,6 +28,7 @@ const schema = z.discriminatedUnion("action", [
       campaignId: z.string(),
       amount: z.string(),
       key: z.uuid(),
+      sourceId: z.string().optional(),
     })
     .strict(),
   z
@@ -55,6 +58,20 @@ export async function POST(req: Request) {
         : !campaignById(a.campaignId)
     )
       throw new RequestError("That cause could not be found.", 404);
+    if (a.action === "follow" || a.action === "donate") {
+      if (a.sourceId !== undefined) {
+        const clip = clipById(a.sourceId);
+        const campaignId = a.action === "follow" ? a.targetId : a.campaignId;
+        if (
+          !clip ||
+          clip.campaignId !== campaignId ||
+          (a.action === "follow" && a.targetType !== "fundraiser")
+        )
+          throw new RequestError(
+            "That video does not belong to this fundraiser.",
+          );
+      }
+    }
     let cents = 0;
     if (a.action === "donate") {
       try {
@@ -87,6 +104,7 @@ export async function POST(req: Request) {
           await saveEvent("follow_changed", a.targetId, {
             targetType: a.targetType,
             active: a.active,
+            ...(a.sourceId ? { source: "watch", sourceId: a.sourceId } : {}),
           });
       } else if (a.action === "donate") {
         const old = (
@@ -111,7 +129,11 @@ export async function POST(req: Request) {
         await saveEvent(
           "donation_completed",
           a.campaignId,
-          { cents, attemptId: a.key },
+          {
+            cents,
+            attemptId: a.key,
+            ...(a.sourceId ? { source: "watch", sourceId: a.sourceId } : {}),
+          },
           donationId,
         );
       } else if (a.action === "feature") {
