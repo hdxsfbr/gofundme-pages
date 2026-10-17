@@ -132,7 +132,7 @@ test("AI controlled delayed fixture: closing cancels stale answers and another c
 });
 
 const evidenceDirectory =
-  process.env.BROWSER_EVIDENCE_DIR || "docs/evidence/browser";
+  process.env.BROWSER_EVIDENCE_DIR || "test-results/screenshots/pages";
 
 for (const width of [1440, 390, 320]) {
   test(`visual, reduced motion, modal keyboard, and serious accessibility review at ${width}px`, async ({

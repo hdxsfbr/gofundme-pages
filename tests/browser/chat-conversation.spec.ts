@@ -12,7 +12,7 @@ type Payload = {
   };
 };
 const chatEvidenceDirectory =
-  process.env.CHAT_EVIDENCE_DIR || "docs/evidence/chat";
+  process.env.CHAT_EVIDENCE_DIR || "test-results/screenshots/chat";
 const fixture = (text: string) => ({
   ...answerFixture,
   claims: [{ ...answerFixture.claims[0], text }],

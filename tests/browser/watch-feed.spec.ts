@@ -3,7 +3,10 @@ import { test, expect } from "@playwright/test";
 import { actor, community, db, origin, noOverflow } from "./helpers";
 
 const watchRoute = `${community}/watch`;
-const evidence = "docs/evidence/watch-20261016";
+// Screenshots go to test-results/ unless an evidence capture names a directory;
+// test runs must never rewrite the retained docs/evidence/ files.
+const evidence =
+  process.env.WATCH_EVIDENCE_DIR || "test-results/screenshots/watch";
 
 // Time for a newly selected clip to reach HAVE_CURRENT_DATA (readyState 2).
 const firstFrameTimeout = 20_000;
