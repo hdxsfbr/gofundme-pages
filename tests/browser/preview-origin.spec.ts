@@ -67,6 +67,8 @@ async function rejectValidAskCalls(page: Page) {
 test("explicit preview origin supports real browser actions, persistence, analytics and invalid-Ask validation; primary origin still works", async ({
   browser,
 }, testInfo) => {
+  // This exercises two origins plus database-backed persistence on the shared CI runner.
+  test.setTimeout(90_000);
   const preview = await browser.newContext({
     baseURL: previewURL!,
     extraHTTPHeaders: { "x-demo-test": "true" },
