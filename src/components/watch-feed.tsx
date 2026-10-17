@@ -34,6 +34,8 @@ import { Dialog } from "@/components/dialog";
 import "./watch-feed.css";
 
 const returnKey = `watch-return:${community.id}:v1`;
+// Longest wait for a button/key/wheel/swipe step to finish scrolling.
+const stepArrivalLimitMs = 2000;
 type WatchMemory = {
   communityId: string;
   clipId: string;
@@ -127,6 +129,7 @@ export function WatchFeed({
   // instead of the scroll offset so a slow smooth scroll cannot snap back.
   const pendingTargetRef = useRef<number | null>(null);
   const lastStepRef = useRef(0);
+  const settleRef = useRef<() => void>(() => {});
   const touchStartRef = useRef<{
     pointerId: number;
     x: number;
@@ -397,7 +400,19 @@ export function WatchFeed({
     const root = scrollerRef.current;
     if (!root || !root.clientHeight) return;
     const pending = pendingTargetRef.current;
-    pendingTargetRef.current = null;
+    if (pending !== null) {
+      // Let an in-flight smooth step arrive before snapping. On a busy device
+      // an instant jump mid-animation can overshoot to the following clip,
+      // which free-scroll settling then selects (one click, two clips). Snap
+      // anyway once the step is clearly stuck.
+      const offset = Math.abs(root.scrollTop - pending * root.clientHeight);
+      if (offset > 2 && Date.now() - lastStepRef.current < stepArrivalLimitMs) {
+        if (settlingRef.current) clearTimeout(settlingRef.current);
+        settlingRef.current = setTimeout(() => settleRef.current(), 120);
+        return;
+      }
+      pendingTargetRef.current = null;
+    }
     const destination =
       pending ?? Math.round(root.scrollTop / root.clientHeight);
     const current = activeIndexRef.current;
@@ -433,6 +448,9 @@ export function WatchFeed({
     setQualifiedView(visibleEnough(itemRefs.current[target], root));
     setTransitioning(false);
   }, [endIndex, replaceClipUrl, save]);
+  useEffect(() => {
+    settleRef.current = settle;
+  }, [settle]);
 
   const navigate = useCallback(
     (target: number, force = false) => {

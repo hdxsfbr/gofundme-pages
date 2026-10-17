@@ -872,3 +872,63 @@ test("broken media keeps campaign context and offers retry, next, and discovery 
   await page.getByRole("link", { name: "Explore campaigns" }).first().click();
   await expect(page).toHaveURL(new RegExp(`${community}$`));
 });
+
+test("a slow smooth scroll is not interrupted, so one Next click moves exactly one clip", async ({
+  page,
+}) => {
+  // Emulate a busy compositor (pipeline 58819): the smooth step starts late.
+  // Snapping instantly mid-animation let the slow CI browser overshoot to the
+  // following clip; settling must wait for the step to arrive instead.
+  await page.addInitScript(() => {
+    const original = Element.prototype.scrollTo as (
+      this: Element,
+      options?: ScrollToOptions,
+    ) => void;
+    const record = { early: 0 } as { early: number; target?: number };
+    (window as unknown as { __step: typeof record }).__step = record;
+    Element.prototype.scrollTo = function (this: Element, ...args: unknown[]) {
+      const options = args[0] as ScrollToOptions | undefined;
+      if (this.classList.contains("watch-scroller") && options) {
+        const top = options.top ?? 0;
+        if (options.behavior === "smooth") {
+          record.target = top;
+          setTimeout(() => original.call(this, options), 700);
+          return;
+        }
+        if (
+          record.target !== undefined &&
+          Math.abs(this.scrollTop - record.target) > 2
+        )
+          record.early += 1;
+      }
+      return original.call(this, options);
+    };
+  });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(watchRoute);
+  const scroller = page.locator(".watch-scroller");
+  await expect(scroller).toHaveAttribute(
+    "data-active-clip",
+    "garden-neighbors",
+  );
+  await expect(page.locator(".watch-item.is-active video")).toHaveCount(1);
+  await page
+    .locator(".watch-navigation")
+    .getByRole("button", { name: "Next clip" })
+    .click();
+  await expect(scroller).toHaveAttribute("data-active-clip", "tree-care");
+  await expect
+    .poll(() =>
+      scroller.evaluate((element) =>
+        Math.round(element.scrollTop / element.clientHeight),
+      ),
+    )
+    .toBe(1);
+  await page.waitForTimeout(1500);
+  await expect(scroller).toHaveAttribute("data-active-clip", "tree-care");
+  expect(
+    await page.evaluate(
+      () => (window as unknown as { __step: { early: number } }).__step.early,
+    ),
+  ).toBe(0);
+});
