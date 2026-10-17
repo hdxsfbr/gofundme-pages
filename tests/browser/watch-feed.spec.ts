@@ -297,6 +297,16 @@ test("Watch loads media only on entry, plays one clip, navigates, and ends expli
     "data-active-clip",
     "garden-neighbors",
   );
+  // Replay settles on the first story (not one past it) before the next
+  // keyboard step; steps closer than 360 ms are intentionally ignored.
+  await expect
+    .poll(() => scroller.evaluate((element) => element.scrollTop))
+    .toBe(0);
+  await page.waitForTimeout(100);
+  await expect(scroller).toHaveAttribute(
+    "data-active-clip",
+    "garden-neighbors",
+  );
   await scroller.focus();
   await page.keyboard.press("ArrowDown");
   await expect(scroller).toHaveAttribute("data-active-clip", "tree-care");

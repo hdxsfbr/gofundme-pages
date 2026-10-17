@@ -123,6 +123,9 @@ export function WatchFeed({
   const mutedRef = useRef(true);
   const captionsRef = useRef(true);
   const settlingRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Target of an in-flight button/key/wheel/swipe step. Settling uses it
+  // instead of the scroll offset so a slow smooth scroll cannot snap back.
+  const pendingTargetRef = useRef<number | null>(null);
   const lastStepRef = useRef(0);
   const touchStartRef = useRef<{
     pointerId: number;
@@ -393,7 +396,10 @@ export function WatchFeed({
   const settle = useCallback(() => {
     const root = scrollerRef.current;
     if (!root || !root.clientHeight) return;
-    const destination = Math.round(root.scrollTop / root.clientHeight);
+    const pending = pendingTargetRef.current;
+    pendingTargetRef.current = null;
+    const destination =
+      pending ?? Math.round(root.scrollTop / root.clientHeight);
     const current = activeIndexRef.current;
     const next = Math.min(
       endIndex,
@@ -464,6 +470,7 @@ export function WatchFeed({
           `Clip ${target + 1} of ${campaignClips.length}: ${selected.title}`,
         );
       }
+      pendingTargetRef.current = target;
       const root = scrollerRef.current;
       root?.scrollTo({
         top: target * root.clientHeight,
