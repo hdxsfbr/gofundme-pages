@@ -42,3 +42,4 @@ These tasks track implementation and acceptance. Mark a task complete only when 
 
 - Sync the implemented deltas into the main specs and archive this change after all tracked tasks are complete.
 - Validate the archived change and main specs, and report the hosted feature, evidence, and any remaining limitations.
+- CI is too slow on shared runner #282: the single `validate` job takes about 23–26 minutes (browser suite about 16–18 minutes on one worker) and has failed on runner-speed timing flakes. Needs better CI infrastructure or a parallel/sharded browser suite.
