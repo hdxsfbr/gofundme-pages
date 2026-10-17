@@ -5,6 +5,9 @@ import { actor, community, db, origin, noOverflow } from "./helpers";
 const watchRoute = `${community}/watch`;
 const evidence = "docs/evidence/watch-20261016";
 
+// Time for a newly selected clip to reach HAVE_CURRENT_DATA (readyState 2).
+const firstFrameTimeout = 20_000;
+
 test("Watch defers optional media until hydration and keeps sources adjacent during navigation", async ({
   page,
 }) => {
@@ -166,6 +169,9 @@ test("enabling reduced motion while Watch is mounted stops autoplay but allows m
 test("Watch loads media only on entry, plays one clip, navigates, and ends explicitly", async ({
   page,
 }) => {
+  // Four clips decode in sequence on the shared CI runner; allow the whole
+  // journey, and each first-frame wait below, more time than the defaults.
+  test.setTimeout(90_000);
   const videoRequests: string[] = [];
   page.on("request", (request) => {
     if (
@@ -212,8 +218,9 @@ test("Watch loads media only on entry, plays one clip, navigates, and ends expli
   const activeVideo = page.locator(".watch-item.is-active video");
   await expect(activeVideo).toHaveAttribute("src", "/media/watch/garden.mp4");
   await expect
-    .poll(() =>
-      activeVideo.evaluate((video: HTMLVideoElement) => video.readyState),
+    .poll(
+      () => activeVideo.evaluate((video: HTMLVideoElement) => video.readyState),
+      { timeout: firstFrameTimeout },
     )
     .toBeGreaterThanOrEqual(2);
   await expect(page.getByRole("status")).toContainText("Tap Play to watch");
@@ -275,9 +282,13 @@ test("Watch loads media only on entry, plays one clip, navigates, and ends expli
     await expect(scroller).toHaveAttribute("data-active-clip", clip);
     const currentVideo = page.locator(".watch-item.is-active video");
     const track = page.locator(".watch-item.is-active video track");
+    // The active clip remounts its <video> on selection, so the first frame
+    // can take several seconds to decode on the slow runner (pipeline 58765).
     await expect
-      .poll(() =>
-        currentVideo.evaluate((video: HTMLVideoElement) => video.readyState),
+      .poll(
+        () =>
+          currentVideo.evaluate((video: HTMLVideoElement) => video.readyState),
+        { timeout: firstFrameTimeout },
       )
       .toBeGreaterThanOrEqual(2);
     await expect
