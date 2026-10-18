@@ -1125,12 +1125,14 @@ export function Updates({ campaign }: { campaign: Campaign }) {
   );
 }
 export function AskButton({ campaign }: { campaign: Campaign }) {
+  const trigger = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
   const [Panel, setPanel] = useState<
     typeof import("./ask-panel").default | null
   >(null);
   const [loadError, setLoadError] = useState("");
-  async function openPanel() {
+  async function openPanel(button?: HTMLButtonElement) {
+    if (button) trigger.current = button;
     setOpen(true);
     if (Panel) return;
     setLoadError("");
@@ -1143,7 +1145,10 @@ export function AskButton({ campaign }: { campaign: Campaign }) {
   }
   return (
     <>
-      <button className="ask-entry" onClick={() => void openPanel()}>
+      <button
+        className="ask-entry"
+        onClick={(event) => void openPanel(event.currentTarget)}
+      >
         <span className="sparkle-box">
           <Sparkles size={21} />
         </span>
@@ -1153,16 +1158,25 @@ export function AskButton({ campaign }: { campaign: Campaign }) {
         </span>
         <ArrowUpRight size={20} />
       </button>
+      <button
+        className="campaign-chat-launcher assistant-launcher"
+        aria-label="Open fundraiser assistant"
+        onClick={(event) => void openPanel(event.currentTarget)}
+      >
+        <Sparkles size={19} /> Ask about this fundraiser
+      </button>
       {open &&
         (Panel ? (
           <Panel
             key={campaign.id}
             campaign={campaign}
+            returnFocusRef={trigger}
             onClose={() => setOpen(false)}
           />
         ) : (
           <Dialog
             title="Ask about this fundraiser"
+            returnFocusRef={trigger}
             onClose={() => setOpen(false)}
           >
             {loadError ? (

@@ -125,3 +125,7 @@ The model does not supply funding numbers in recommendation prose; campaign page
 The UI uses a 19-second deadline and the provider an 18-second timeout, with cancellation on close/unmount and same-turn retry that preserves a newer draft. Conversation exists only in memory while the dialog is open, with bounded recent history sent to the provider; it is not saved in application storage, analytics, or ordinary logs. Completed validated JSON is shown as a whole, rather than streaming unvalidated partial recommendations. The existing fundraiser Ask streaming implementation is unchanged. Browser navigation and campaign support remain usable if the concierge fails.
 
 Run `BASE_URL=http://127.0.0.1:3100 node scripts/eval-concierge.mjs` only against an app with authorized runtime credentials: it makes six real model calls using synthetic questions. Results default to `test-results/concierge-live`; set `CONCIERGE_EVIDENCE_DIR` for an intentional retained capture. Browser tests intercept the provider-facing app route and make no live calls; their screenshots default to `test-results/screenshots/concierge`.
+
+### Floating fundraiser assistant entry
+
+Fundraiser pages also expose a floating “Ask about this fundraiser” button matching Discover's assistant launcher. It opens the same lazily loaded, campaign-scoped dialog as the inline Ask entry. Both entries share state; loading, retry, and loaded dialogs return focus to the original activating button. Opening either entry alone makes no model request.

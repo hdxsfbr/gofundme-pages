@@ -1920,3 +1920,33 @@ dialog::backdrop {
   font-size: 14px;
   pointer-events: none;
 }
+
+/* Shared floating entry for discovery and campaign assistants. */
+.assistant-launcher {
+  position: fixed;
+  right: 24px;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
+  background: #20563e;
+  padding: 15px 20px;
+  border-radius: 32px;
+  box-shadow: 0 5px 20px #143e3230;
+  font-size: 13px;
+  font-weight: 600;
+}
+.assistant-launcher:focus-visible {
+  outline: 3px solid #8dab56;
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .assistant-launcher {
+    right: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    padding: 12px 16px;
+  }
+}
