@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-18T00:04:37.557Z",
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "deploymentId": "005f29af-3a78-4ae8-97ee-f4124465e074",
+  "browser": "headless Google Chrome via Playwright, 390 x 844, x-demo-test: true",
+  "watchStatus": 200,
+  "cues": 2,
+  "returnedToClip": "garden-neighbors",
+  "donationConfirmedAt": "2026-10-18T00:04:37.557Z",
+  "afterDonationClip": "garden-neighbors",
+  "afterDonationVideo": "/media/watch/garden.mp4",
+  "ok": true,
+  "mediaResponses": [
+    "200 /media/watch/garden.webp image/webp",
+    "200 /media/watch/garden.vtt text/vtt; charset=UTF-8",
+    "206 /media/watch/garden.mp4 video/mp4",
+    "200 /media/watch/trees.webp image/webp",
+    "206 /media/watch/trees.mp4 video/mp4",
+    "200 /media/watch/trees.vtt text/vtt; charset=UTF-8"
+  ]
+}
