@@ -7,7 +7,7 @@
 - Source revision: `ea678369826150e79a11e7254d4dd89eb11905eb` (merge of MR !1 into `main`)
 - Main pipeline: [59049](https://labs.gauntletai.com/andrebatista/gofundme-pages/-/pipelines/59049), passed. `validate` passed 187 unit/integration and 70 browser checks.
 - Deploy job: [240206](https://labs.gauntletai.com/andrebatista/gofundme-pages/-/jobs/240206), passed.
-- Railway deployment: `005f29af-3a78-4ae8-97ee-f4124465e074`, `SUCCESS`. `/api/health` returned this same deployment ID. See [`deployment-result.json`](deployment-result.json).
+- Railway deployment: `005f29af-3a78-4ae8-97ee-f4124465e074`, `SUCCESS`. `/api/health` returned this same deployment ID. See [`ci-release.json`](ci-release.json) (the deploy job's `deployment-result.json` artifact).
 - Origin: https://web-production-7e5023.up.railway.app
 
 ## Results
