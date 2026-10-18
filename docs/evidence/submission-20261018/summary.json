@@ -1,0 +1,56 @@
+{
+  "recordedAt": "2026-10-18T19:29:42.120926+00:00",
+  "buildId": "UopYU4EC7e5SCp2whvSOU",
+  "unitTests": {
+    "passed": 205,
+    "failed": 0,
+    "skipped": 0,
+    "database": "local PostgreSQL configured via .env.local"
+  },
+  "browserTests": {
+    "passed": 81,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "origin": "http://127.0.0.1:3180",
+    "previewOrigin": "http://127.0.0.1:6180",
+    "provider": "controlled fixtures, no live calls"
+  },
+  "checks": {
+    "build": "passed",
+    "lint": "passed",
+    "typecheck": "passed",
+    "format": "passed",
+    "strictMainSpecs": "9 passed"
+  },
+  "hostedAudit": "9 functional groups passed;2 real AI calls; baseline deployment, before semantic accessibility corrections",
+  "performance": [
+    {
+      "name": "community",
+      "medianLcpMs": 2472.49455,
+      "medianCls": 0,
+      "pass": true
+    },
+    {
+      "name": "watch",
+      "medianLcpMs": 2475.3765999999996,
+      "medianCls": 0,
+      "pass": true
+    },
+    {
+      "name": "fundraiser",
+      "medianLcpMs": 1881.0030000000002,
+      "medianCls": 0,
+      "pass": true
+    },
+    {
+      "name": "profile",
+      "medianLcpMs": 2471.8957499999997,
+      "medianCls": 0,
+      "pass": true
+    }
+  ],
+  "visualReview": "Primary reviewed corrected full-page mobile Discover and desktop fundraiser; browser audit agent reviewed hosted desktop/mobile key scenes.",
+  "sourceManifest": "source-manifest.json",
+  "limitations": "See docs/submission-review.md; corrected source awaits final merge/deployment."
+}

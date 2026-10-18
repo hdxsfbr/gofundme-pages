@@ -1,6 +1,6 @@
 # Tasks
 
-These tasks track the implemented local feature and retained acceptance evidence. Production publication and a combined final submission recording are separate follow-up work.
+These tasks track the implemented local feature and retained acceptance evidence. Production publication and the combined final submission recording are now complete; see `docs/submission.md`. Final accessibility review also corrects the launcher accessible name to match its visible text.
 
 ## 1. API and model contract
 

@@ -11,3 +11,6 @@ railway-plan*.json
 deployment-result.json
 .npm/
 docs/evidence/**/recordings/
+
+# Local narration and raw capture intermediates; curated deliverables live in docs/evidence.
+artifacts/

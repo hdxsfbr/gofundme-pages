@@ -51,4 +51,4 @@ The test previously pressed ArrowDown immediately after Replay. Steps closer tha
 
 ## Limits
 
-These are local lab simulations with three samples per route. They are not field LCP, and run-to-run variation can still move a median by one simulated round trip (about 75–150 ms). The hosted Railway release sits behind a different network path and protocol stack, and it was not measured here. Task 5.4 (hosted release verification) remains open.
+These are local lab simulations with three samples per route. They are not field LCP, and run-to-run variation can still move a median by one simulated round trip (about 75–150 ms). The hosted Railway release sits behind a different network path and protocol stack, and it was not measured here. Task 5.4 was open at the time of these local measurements; it was subsequently completed with the [October 17 hosted release evidence](../watch-hosted-20261017/README.md).

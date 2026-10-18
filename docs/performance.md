@@ -1,6 +1,19 @@
 # Performance measurements
 
-## Current production build
+## Final submission build — October 18, 2026
+
+The corrected production build `UopYU4EC7e5SCp2whvSOU` was measured after the full browser suite finished, using three separate Lighthouse mobile simulations per route. All four medians meet the **project-selected** LCP ≤2,500 ms and CLS ≤0.10 budgets; these are not sponsor-specified numeric thresholds.
+
+| Route | Median LCP | Median CLS | Project budget |
+| --- | ---: | ---: | --- |
+| Community | 2472.5 ms | 0.000 | Pass |
+| Watch | 2475.4 ms | 0.000 | Pass |
+| Fundraiser | 1881.0 ms | 0.000 | Pass |
+| Profile | 2471.9 ms | 0.000 | Pass |
+
+Discover, Watch and profile have narrow LCP headroom, so small run-to-run changes can cross the threshold. These are local lab measurements with potentially warm server/image caches, not field percentiles or proof of engagement improvement. The [raw reports/settings](evidence/submission-20261018/performance/), [summary](evidence/submission-20261018/performance/summary.json), and [application hashes](evidence/submission-20261018/source-manifest.json) identify the verified build. Source differs from the latest hosted baseline only in the documented accessibility corrections; production rollout remains the final release step.
+
+## Archived October 16 milestone build
 
 Build `-6yPHl9lZGab-87T31WH9` passed the project's proposed lab budgets: median LCP at or below 2,500 ms and median CLS at or below 0.10 for each representative route. The budgets are project-selected acceptance targets, not sponsor requirements. Each route has three sequential Lighthouse launches; CLS was 0.000 in all nine runs.
 

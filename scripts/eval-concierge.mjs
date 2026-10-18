@@ -17,7 +17,7 @@ const page = await context.newPage();
 const results = [];
 try {
   await page.goto(origin + "/communities/a-greener-tomorrow");
-  await page.getByRole("button", { name: "Open discovery concierge" }).click();
+  await page.getByRole("button", { name: "Find my cause" }).click();
   for (const question of [
     "I care about making the outdoors accessible for people with disabilities. Which campaign fits?",
     "I'd like to promote that one rather than donate. How could I help?",

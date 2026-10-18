@@ -1,0 +1,82 @@
+[
+  {
+    "scene": "01-discover",
+    "start": 0,
+    "end": 24.933,
+    "speechDuration": 24.32,
+    "sourceTrim": 1.637,
+    "sourceDuration": 22.883,
+    "videoTimeScale": 1.0890180483328236,
+    "finalHoldSeconds": 0
+  },
+  {
+    "scene": "02-concierge",
+    "start": 24.933,
+    "end": 50.673,
+    "speechDuration": 25.14,
+    "sourceTrim": 1.488,
+    "sourceDuration": 19.832,
+    "videoTimeScale": 1.2979023799919323,
+    "finalHoldSeconds": 0
+  },
+  {
+    "scene": "03-campaign",
+    "start": 50.673,
+    "end": 78.04,
+    "speechDuration": 26.76,
+    "sourceTrim": 1.52,
+    "sourceDuration": 20.080000000000002,
+    "videoTimeScale": 1.3625498007968129,
+    "finalHoldSeconds": 0
+  },
+  {
+    "scene": "04-chat",
+    "start": 78.04,
+    "end": 102.773,
+    "speechDuration": 24.12,
+    "sourceTrim": 0,
+    "sourceDuration": 23.96,
+    "videoTimeScale": 1.0317195325542572,
+    "finalHoldSeconds": 0
+  },
+  {
+    "scene": "05-support",
+    "start": 102.773,
+    "end": 125.753,
+    "speechDuration": 22.38,
+    "sourceTrim": 1.527,
+    "sourceDuration": 17.192999999999998,
+    "videoTimeScale": 1.3365904728668647,
+    "finalHoldSeconds": 0
+  },
+  {
+    "scene": "06-profile",
+    "start": 125.753,
+    "end": 149.587,
+    "speechDuration": 23.22,
+    "sourceTrim": 1.457,
+    "sourceDuration": 19.023,
+    "videoTimeScale": 1.252168427692793,
+    "finalHoldSeconds": 0
+  },
+  {
+    "scene": "07-watch",
+    "start": 149.587,
+    "end": 174.087,
+    "speechDuration": 23.9,
+    "sourceTrim": 2.0,
+    "sourceDuration": 30.96,
+    "videoTimeScale": 0.7913436692506459,
+    "finalHoldSeconds": 0
+  },
+  {
+    "scene": "08-close",
+    "start": 174.087,
+    "end": 208.727,
+    "speechDuration": 34.04,
+    "sourceTrim": 1.421,
+    "sourceDuration": 34.379,
+    "videoTimeScale": 1.0075918438581692,
+    "finalHoldSeconds": 0
+  }
+]

@@ -1,0 +1,269 @@
+{
+  "startedAt": "2026-10-18T19:23:26.400Z",
+  "origin": "https://web-production-7e5023.up.railway.app",
+  "authentication": "isolated signed-out visitor with x-demo-test:true; no response interception",
+  "browserErrors": [],
+  "httpErrors": [],
+  "checks": [
+    {
+      "name": "concierge-real",
+      "status": "passed"
+    },
+    {
+      "name": "campaign-chat-real",
+      "status": "passed"
+    },
+    {
+      "name": "discover",
+      "status": "passed"
+    },
+    {
+      "name": "campaign-charts",
+      "status": "passed"
+    },
+    {
+      "name": "support-actions",
+      "status": "passed"
+    },
+    {
+      "name": "follow-and-persistence",
+      "status": "passed"
+    },
+    {
+      "name": "watch-1440",
+      "status": "passed"
+    },
+    {
+      "name": "watch-390",
+      "status": "passed"
+    },
+    {
+      "name": "mobile-pages",
+      "status": "passed"
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "desktop-concierge",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-chat",
+      "url": "https://web-production-7e5023.up.railway.app/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-discover",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-no-match",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow?q=zzzz-no-such-cause&topic=Food+%26+community",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-campaign",
+      "url": "https://web-production-7e5023.up.railway.app/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-live-chart",
+      "url": "https://web-production-7e5023.up.railway.app/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-recorded-chart",
+      "url": "https://web-production-7e5023.up.railway.app/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-donation",
+      "url": "https://web-production-7e5023.up.railway.app/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-organizer",
+      "url": "https://web-production-7e5023.up.railway.app/profiles/maya-chen",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-following",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow?view=following",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "desktop-private-profile",
+      "url": "https://web-production-7e5023.up.railway.app/me",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "watch-1440",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow/watch?clip=garden-neighbors",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "watch-donation-1440",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow/watch?clip=tree-care",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "overflow": 0
+    },
+    {
+      "name": "watch-390",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow/watch?clip=garden-neighbors",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0
+    },
+    {
+      "name": "watch-donation-390",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow/watch?clip=tree-care",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0
+    },
+    {
+      "name": "mobile-discover",
+      "url": "https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0
+    },
+    {
+      "name": "mobile-campaign",
+      "url": "https://web-production-7e5023.up.railway.app/fundraisers/grow-a-neighborhood",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0
+    },
+    {
+      "name": "mobile-organizer",
+      "url": "https://web-production-7e5023.up.railway.app/profiles/maya-chen",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0
+    },
+    {
+      "name": "mobile-private-profile",
+      "url": "https://web-production-7e5023.up.railway.app/me",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": 0
+    }
+  ],
+  "ai": [
+    {
+      "path": "/api/concierge",
+      "status": 200,
+      "type": "application/json"
+    },
+    {
+      "path": "/api/ask",
+      "status": 200,
+      "type": "text/event-stream; charset=utf-8"
+    }
+  ],
+  "health": {
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "deploymentId": "4197c321-5b2e-496d-a54e-85396162675f"
+    }
+  },
+  "browser": "151.0.7922.173",
+  "conciergeText": [
+    "Food & communityHelp a neighborhood grow something goodThis campaign will create a community garden with twelve raised beds, accessible paths, and a shared pantry for seasonal produce, fostering neighborhood connection and fresh food access.From the campaign:Campaign storyThe garden plan is taking shapeA place for every neighborExplore & support "
+  ],
+  "fundingTable": "Daily cumulative funding in USD\nDate (UTC)\tBalance\nOpening balance\t$0.00\n2026-09-10\t$413.40\n2026-09-11\t$689.00\n2026-09-12\t$1,102.38\n2026-09-13\t$1,377.96\n2026-09-14\t$1,791.33\n2026-09-15\t$2,066.91\n2026-09-16\t$2,480.28\n2026-09-17\t$2,755.86\n2026-09-18\t$3,169.23\n2026-09-19\t$3,444.81\n2026-09-20\t$3,858.18\n2026-09-21\t$4,133.76\n2026-09-22\t$4,409.34\n2026-09-23\t$4,822.71\n2026-09-24\t$5,098.29\n2026-09-25\t$5,511.66\n2026-09-26\t$5,787.24\n2026-09-27\t$6,200.61\n2026-09-28\t$6,476.19\n2026-09-29\t$6,889.56\n2026-09-30\t$7,165.14\n2026-10-01\t$7,578.51\n2026-10-02\t$7,854.09\n2026-10-03\t$8,129.67\n2026-10-04\t$8,543.04\n2026-10-05\t$8,818.62\n2026-10-06\t$9,231.99\n2026-10-07\t$9,507.57\n2026-10-08\t$9,920.94\n2026-10-09\t$10,196.52\n2026-10-10\t$10,609.89\n2026-10-11\t$10,885.47\n2026-10-12\t$11,298.84\n2026-10-13\t$11,574.42\n2026-10-14\t$11,850.00\n2026-10-15\t$11,850.00\n2026-10-16\t$11,850.00\n2026-10-17\t$11,850.00\n2026-10-18\t$11,850.00",
+  "chatAnswer": "The $15,000 goal covers $7,000 for raised beds and soil.\n\n$4,000 is intended for accessible paths.\n\n$2,500 is planned for shared tools and storage.\n\n$1,500 will be used for seeds and water connections.\n\nSources\nIntended use of funds \u00b7 Sep 10, 2026 ",
+  "citationDestination": "https://web-production-7e5023.up.railway.app/fundraisers/grow-a-neighborhood#budget",
+  "finishedAt": "2026-10-18T19:25:08.345Z",
+  "status": "passed",
+  "auditCorrections": [
+    "Initial incorrect /profiles/me probe returned 404; corrected to /me.",
+    "Await route completion and settled mutations before reload.",
+    "Explicit Watch clip avoids intentionally restored session position."
+  ],
+  "visualReview": {
+    "reviewedAt": "2026-10-18",
+    "screenshots": [
+      "desktop-discover",
+      "desktop-concierge",
+      "desktop-private-profile",
+      "mobile-campaign",
+      "watch-390"
+    ],
+    "observations": "Readable desktop and mobile layouts; no visible clipping or horizontal overflow in reviewed screenshots. Initial below-fold lazy image placeholders in non-modal captures corrected by scroll/decode before final capture. AI dialog captures retain initial background lazy-image state."
+  },
+  "limits": [
+    "Functional browser audit, not a full accessibility audit. Primary agent separately found launcher accessible-name mismatches in this deployment and is correcting them.",
+    "Real AI checks executed once per endpoint on desktop; rechecks skipped both endpoints.",
+    "Watch donation dialog open/close and clip restoration checked; no Watch donation confirmed. Campaign donation confirmed for $12.50, simulated only.",
+    "Mobile route rendering and Watch interaction checked; Discover filtering, full AI conversations and supporter mutation sequence exercised on desktop.",
+    "No real payments or authenticated external user flows tested."
+  ]
+}

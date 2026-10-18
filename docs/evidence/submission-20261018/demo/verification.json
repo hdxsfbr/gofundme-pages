@@ -1,0 +1,63 @@
+{
+  "durationSeconds": 208.748,
+  "bytes": 11507424,
+  "fullAudioVideoDecodeErrors": "",
+  "frameReview": "16 evenly spaced final-video frames reviewed, plus source screenshots for chart, answer, support and profile.",
+  "narrationReview": "Local Whisper medium.en transcription compared to authored narration. Scene04 regenerated for clearer opening. Human listening review remains for user.",
+  "voiceModel": "standard chatterbox.tts.ChatterboxTTS; balanced 0.45 exaggeration / 0.45 cfg; never Turbo",
+  "providerRequests": [
+    {
+      "scene": "02-concierge",
+      "route": "/api/concierge",
+      "status": 200
+    },
+    {
+      "scene": "04-chat",
+      "route": "/api/ask",
+      "status": 200
+    }
+  ],
+  "browserErrors": [],
+  "chapters": [
+    {
+      "scene": "01-discover",
+      "startSeconds": 0
+    },
+    {
+      "scene": "02-concierge",
+      "startSeconds": 24.933
+    },
+    {
+      "scene": "03-campaign",
+      "startSeconds": 50.673
+    },
+    {
+      "scene": "04-chat",
+      "startSeconds": 78.04
+    },
+    {
+      "scene": "05-support",
+      "startSeconds": 102.773
+    },
+    {
+      "scene": "06-profile",
+      "startSeconds": 125.753
+    },
+    {
+      "scene": "07-watch",
+      "startSeconds": 149.587
+    },
+    {
+      "scene": "08-close",
+      "startSeconds": 174.087
+    }
+  ],
+  "videoSHA256": "1b08e3a79217ddb7f20727b2d2f75843c918752e4f20b6feb2cdb47d138feead",
+  "limitations": [
+    "Fictional campaigns and people; simulated donations and live chart.",
+    "Illustrative stock Watch footage.",
+    "Edited and paced footage, not a latency benchmark.",
+    "The Following view is described, while organizer follow and supporter profile are shown."
+  ],
+  "subtitleTrack": "Optional English mov_text, plus external captions.srt"
+}
