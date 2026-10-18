@@ -1,0 +1,47 @@
+{
+  "recordedAt": "2026-10-18T17:58:00.686Z",
+  "tool": "Lighthouse",
+  "version": "13.5.0",
+  "node": "v24.14.0",
+  "os": "Linux 7.0.0-38-generic",
+  "cpu": "Intel(R) Core(TM) i9-14900KF",
+  "ramGiB": 31,
+  "build": "Next.js production, npm run build && npm run start",
+  "buildId": "cwfYiNm8y3ZaiV0SF7yvb",
+  "method": "Three separate Chrome launches per route; fresh temporary browser profiles and Lighthouse storage reset; default simulated mobile preset. Local server and image optimizer may have warm caches. No concurrent browser suite.",
+  "dataset": "One fictional community, four campaigns, fixed seed ledger, new visitor per run; automation tagged x-demo-test.",
+  "settings": "settings.json",
+  "results": [
+    {
+      "name": "community",
+      "route": "/communities/a-greener-tomorrow",
+      "runs": [
+        {
+          "run": 1,
+          "lcpMs": 2475.99365,
+          "observedLcpMs": 115,
+          "cls": 0,
+          "score": 0.98
+        },
+        {
+          "run": 2,
+          "lcpMs": 1956.8338499999998,
+          "observedLcpMs": 64,
+          "cls": 0,
+          "score": 0.99
+        },
+        {
+          "run": 3,
+          "lcpMs": 2326.82445,
+          "observedLcpMs": 69,
+          "cls": 0,
+          "score": 0.98
+        }
+      ],
+      "medianLcpMs": 2326.82445,
+      "medianObservedLcpMs": 69,
+      "medianCls": 0,
+      "pass": true
+    }
+  ]
+}

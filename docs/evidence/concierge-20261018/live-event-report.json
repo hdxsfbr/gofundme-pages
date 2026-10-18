@@ -1,0 +1,24 @@
+{
+  "scope": "Only request-tagged events from six final synthetic live-provider cases; dialog opens without requestId are excluded.",
+  "concierge": {
+    "dialogOpens": 0,
+    "dialogVisitors": 0,
+    "submittedRequests": 6,
+    "completedRequests": 6,
+    "failedRequests": 0,
+    "pendingSubmittedRequests": 0,
+    "outcomesWithoutSubmission": 0,
+    "campaignOpenEvents": 0,
+    "answeredRequestCampaignOpen": {
+      "numerator": 0,
+      "denominator": 6,
+      "rate": 0
+    },
+    "campaignOpensWithoutMatchedAnswer": 0
+  },
+  "defaultExcludesTests": true,
+  "propertyKeys": [
+    "latencyMs",
+    "requestId"
+  ]
+}
