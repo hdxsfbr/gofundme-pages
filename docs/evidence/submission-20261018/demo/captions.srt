@@ -1,0 +1,252 @@
+1
+00:00:00,000 --> 00:00:03,000
+A donation can start with a personal connection,
+
+2
+00:00:03,600 --> 00:00:05,980
+but how do you help someone find that
+
+3
+00:00:05,880 --> 00:00:09,060
+connection in the first place? I built this
+
+4
+00:00:08,960 --> 00:00:12,820
+re -imagined GoFundMe experience to connect discovery, campaign
+
+5
+00:00:12,720 --> 00:00:15,800
+stories, and supporter profiles. Let me show you
+
+6
+00:00:15,700 --> 00:00:18,760
+the working product, starting with a community built
+
+7
+00:00:18,660 --> 00:00:21,880
+around a greener tomorrow. You can browse by
+
+8
+00:00:21,780 --> 00:00:24,120
+cause or search for something specific.
+
+9
+00:00:24,933 --> 00:00:26,973
+If you know what matters to you, but
+
+10
+00:00:26,873 --> 00:00:29,773
+don't know which campaign to choose, the Discovery
+
+11
+00:00:29,673 --> 00:00:33,813
+Concierge can help. Here, I'm looking for Community
+
+12
+00:00:33,713 --> 00:00:37,513
+Gardens and access to fresh food. The Assistant
+
+13
+00:00:37,413 --> 00:00:40,193
+uses the campaigns in our catalog to suggest
+
+14
+00:00:40,093 --> 00:00:43,573
+a relevant match, explain why it fits, and
+
+15
+00:00:43,473 --> 00:00:46,973
+link back to its sources. That turns an
+
+16
+00:00:46,873 --> 00:00:49,773
+open -ended interest into a concrete next step.
+
+17
+00:00:50,673 --> 00:00:53,213
+Opening that recommendation takes us straight to the
+
+18
+00:00:53,113 --> 00:00:57,773
+fundraiser. The story, organizer, funding progress, and ways
+
+19
+00:00:57,673 --> 00:01:00,413
+to help are connected on one page. I
+
+20
+00:01:00,313 --> 00:01:03,453
+also added a live donation visualization with a
+
+21
+00:01:03,353 --> 00:01:06,993
+moving chart and an odometer style total. For
+
+22
+00:01:06,893 --> 00:01:10,893
+this demo, the animation uses clearly labeled simulated
+
+23
+00:01:10,793 --> 00:01:13,953
+data. It shows how the experience could feel
+
+24
+00:01:13,853 --> 00:01:16,993
+with people supporting a campaign in real time.
+
+25
+00:01:18,040 --> 00:01:21,740
+people often have questions before they donate. The
+
+26
+00:01:21,640 --> 00:01:25,540
+campaign assistant stays focused on this fundraiser. Let's
+
+27
+00:01:25,440 --> 00:01:27,480
+ask what the money will be used for.
+
+28
+00:01:28,440 --> 00:01:30,920
+Its answer includes source links, so we can
+
+29
+00:01:30,820 --> 00:01:33,620
+go directly to the supporting information instead of
+
+30
+00:01:33,520 --> 00:01:36,460
+taking the assistant's word for it. The system
+
+31
+00:01:36,360 --> 00:01:38,940
+is also designed to say when information isn't
+
+32
+00:01:38,840 --> 00:01:41,700
+available, rather than inventing campaign details.
+
+33
+00:01:42,773 --> 00:01:45,773
+From there, support is just a few clicks
+
+34
+00:01:45,673 --> 00:01:49,293
+away. This is a simulated donation, with no
+
+35
+00:01:49,193 --> 00:01:52,893
+payment collected, but the action is saved. Sharing
+
+36
+00:01:52,793 --> 00:01:54,913
+is built into the same journey, and you
+
+37
+00:01:54,813 --> 00:01:56,833
+can feature a cause on your own profile
+
+38
+00:01:56,733 --> 00:02:00,053
+with a personal reason for supporting it. The
+
+39
+00:01:59,953 --> 00:02:02,213
+goal is to give people useful ways to
+
+40
+00:02:02,113 --> 00:02:04,853
+participate, even when they aren't ready to donate.
+
+41
+00:02:05,753 --> 00:02:09,513
+The organizer's profile gives the campaign a human
+
+42
+00:02:09,413 --> 00:02:13,733
+connection. Following an organizer brings their campaigns into
+
+43
+00:02:13,633 --> 00:02:16,593
+your following view, giving you a way to
+
+44
+00:02:16,493 --> 00:02:19,673
+find them again. Your own supporter profile brings
+
+45
+00:02:19,573 --> 00:02:23,153
+together your featured causes and activity. These pages
+
+46
+00:02:23,053 --> 00:02:26,733
+work as one connected experience with visitor -specific
+
+47
+00:02:26,633 --> 00:02:28,633
+state persisted in the database.
+
+48
+00:02:29,587 --> 00:02:33,287
+Watch offers another way in, a short scrollable
+
+49
+00:02:33,187 --> 00:02:36,307
+video feed connected to the same campaigns. You
+
+50
+00:02:36,207 --> 00:02:39,727
+can move between stories, open a fundraiser, or
+
+51
+00:02:39,627 --> 00:02:43,007
+start a donation without losing the context. These
+
+52
+00:02:42,907 --> 00:02:45,747
+clips use illustrative stock footage for the demo.
+
+53
+00:02:46,387 --> 00:02:50,467
+It's a second discovery path, built around watching
+
+54
+00:02:50,367 --> 00:02:53,267
+a story rather than scanning a grid.
+
+55
+00:02:54,087 --> 00:02:57,547
+Underneath the experience is a Next .js application
+
+56
+00:02:57,447 --> 00:03:02,807
+with PostgreSQL persistence, grounded AI responses, and automated
+
+57
+00:03:02,707 --> 00:03:08,187
+checks. I instrumented meaningful actions, including follows, copied
+
+58
+00:03:08,087 --> 00:03:12,527
+links, simulated donations, and assistant to campaign clicks,
+
+59
+00:03:12,847 --> 00:03:16,027
+so future experiments can be evaluated against actual
+
+60
+00:03:15,927 --> 00:03:19,907
+behavior. This prototype demonstrates how I approach building,
+
+61
+00:03:20,327 --> 00:03:22,947
+connect a product idea to a usable experience,
+
+62
+00:03:23,507 --> 00:03:26,087
+make the trade -offs explicit, and build the
+
+63
+00:03:25,987 --> 00:03:27,647
+measurement needed to learn what works.
+

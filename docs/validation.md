@@ -1,5 +1,13 @@
 # Validation record
 
+## Final submission review — October 18, 2026
+
+The [submission review](submission-review.md) is the current requirements and validation entry point. It distinguishes fresh hosted checks from the locally corrected build. Evidence is retained under [submission-20261018](evidence/submission-20261018/). The final narrated demo is published on [YouTube](https://youtu.be/ObE-w7e5Pv8) with a repository MP4 fallback. The milestone counts and build identifiers below are historical.
+
+Final corrected build `UopYU4EC7e5SCp2whvSOU` passed **205/205 unit/integration tests with the database configured**, **81/81 browser checks with zero skips/flakes**, production build, lint, typecheck, formatting, and strict validation of all nine main specs. The full browser run includes axe checks at desktop/mobile/narrow widths, a configured preview origin, error/loading states, state isolation/persistence, and Watch/media regressions. All four Lighthouse route medians passed the project lab budgets. These checks cover the local corrected application tree recorded in the [source manifest](evidence/submission-20261018/source-manifest.json); they are separate from the hosted baseline audit. See [summary.json](evidence/submission-20261018/summary.json) for exact counts and build identity.
+
+## Archived milestone record
+
 Project date: October 15, 2026 local time; machine-readable artifact timestamps use UTC. This record distinguishes application checks from live-provider evaluation and real-user evidence.
 
 The milestone measurements below describe the archived local release. Later CI and hosted-release evidence is tracked separately in the [deployment runbook](deployment.md); changing deployment configuration does not update these historical build measurements.

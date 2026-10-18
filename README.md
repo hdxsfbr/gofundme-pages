@@ -4,12 +4,16 @@ A responsive Next.js prototype connecting one fictional community, four fundrais
 
 **This is a demonstration, not GoFundMe or a payment service.** All campaign, organizer, community, update, and seed contribution content is fictional. Donations are simulated and affect only the current browser's demo visitor. No card details are requested. Stock photographs and video are illustrative; performers do not depict, endorse, or verify the fictional campaign organizers or beneficiaries.
 
+## Review the project
+
+[Live demo](https://web-production-7e5023.up.railway.app/communities/a-greener-tomorrow) · [Video walkthrough](https://youtu.be/ObE-w7e5Pv8) · [Submission and deliverables](docs/submission.md) · [Final requirements review](docs/submission-review.md) · [Sponsor brief](docs/project-requirements.md)
+
 ## Requirements
 
 - Node.js 22 or newer
 - npm
 - Docker with Compose for local PostgreSQL
-- Optional: an authorized OpenAI API key for live answers. Without it, Ask is unavailable and the campaign sources remain readable.
+- Optional: an authorized OpenAI API key for live answers. Without it, the assistants show an unavailable state; browsing and campaign sources remain usable.
 
 ## Run locally
 
@@ -31,7 +35,7 @@ Main deploys automatically through GitLab CI after the required checks pass. The
 
 Available checks:
 
-- `npm test` runs the Vitest suites.
+- `npm test` runs the Vitest suites; database tests skip without `DATABASE_URL`. To include them using local configuration, run `node --env-file=.env.local node_modules/vitest/vitest.mjs run`.
 - `npm run test:browser` runs the Playwright journeys.
 - `npm run typecheck` checks TypeScript; `npm run lint` runs ESLint.
 - `npm run report` exports aggregate engagement metrics and reconciles pending durable events first. See [analytics notes](docs/analytics.md).
@@ -47,4 +51,4 @@ The prototype covers the community, fundraiser, and profile page types, the priv
 
 The completed local milestone measured build `-6yPHl9lZGab-87T31WH9`. For that recorded source, production build, typecheck, lint, formatting, and all 150 Vitest checks passed; the browser run passed 57/57 checks with 18 release-scene axe scans and zero serious/critical violations, and all three Lighthouse route medians met the project lab budgets. This evidence describes the local milestone build, not the later deployment configuration. Its browser results are in [milestone browser-check.json](docs/evidence/milestone/browser-check.json), with reviewed captures under [milestone/browser](docs/evidence/milestone/browser/) and [milestone/chat](docs/evidence/milestone/chat/). The [milestone demo video](docs/evidence/milestone/demo.webm), [decode/frame review](docs/evidence/milestone/demo-video-check.json), [reviewed frames](docs/evidence/milestone/demo-frames/), and [recording report](docs/evidence/milestone/demo-engagement.json) are preserved with the [milestone release manifest](docs/evidence/milestone/release-manifest.json), which ties 75 source/configuration/media/test/script hashes and 59 evidence hashes to that build and video. The earlier experience change is archived with 47 tasks complete and six main specs synced (46 requirements, 79 scenarios); see its [proposal](openspec/changes/archive/2026-10-16-modernize-gofundme-experience/proposal.md), [design](openspec/changes/archive/2026-10-16-modernize-gofundme-experience/design.md), and [reference evidence](openspec/changes/archive/2026-10-16-modernize-gofundme-experience/evidence/). Earlier browser/live-answer evidence and the earlier demo remain historical. See [validation notes](docs/validation.md), [performance results](docs/performance.md), [AI evaluation](docs/ai-evaluation.md), [technical notes](docs/technical.md), [media and content notes](docs/media.md), [AI usage log](docs/ai-usage-log.md), and [submission checklist](docs/submission.md).
 
-The deployment change is complete and [archived](openspec/changes/archive/2026-10-16-automate-ci-deployments/). The [hosted demo](https://web-production-7e5023.up.railway.app) deployed automatically through [pipeline 57420](https://labs.gauntletai.com/andrebatista/gofundme-pages/-/pipelines/57420), with 175 unit/integration checks and 59 browser checks passing. Hosted verification confirmed saved actions survived application replacement. See the [deployment runbook](docs/deployment.md) for release identity, evidence, and operating instructions. Campaign fixtures remain authored in `src/lib/content.ts` with stable entity and update IDs and fixed timestamps.
+The deployment change is complete and [archived](openspec/changes/archive/2026-10-16-automate-ci-deployments/). The initial October 16 [hosted demo](https://web-production-7e5023.up.railway.app) deployed automatically through [pipeline 57420](https://labs.gauntletai.com/andrebatista/gofundme-pages/-/pipelines/57420), with 175 unit/integration checks and 59 browser checks passing. Hosted verification confirmed saved actions survived application replacement. See the [deployment runbook](docs/deployment.md) for the latest release identity, evidence, and operating instructions. Campaign fixtures remain authored in `src/lib/content.ts` with stable entity and update IDs and fixed timestamps.

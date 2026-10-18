@@ -34,7 +34,7 @@ const composer = (page: Page) =>
     name: "What kind of difference would you like to make?",
   });
 async function open(page: Page) {
-  await page.getByRole("button", { name: "Open discovery concierge" }).click();
+  await page.getByRole("button", { name: "Find my cause" }).click();
   await expect(composer(page)).toBeFocused();
 }
 async function screenshot(page: Page, name: string) {
@@ -172,9 +172,9 @@ test("followups send at most two completed pairs and campaign navigation clears 
   expect(requests.at(-1)?.history).toBeUndefined();
   await dialog(page).getByRole("button", { name: "Close dialog" }).click();
   await page.getByRole("tab", { name: /Following/ }).click();
-  await expect(
-    page.getByRole("button", { name: "Open discovery concierge" }),
-  ).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Find my cause" })).toHaveCount(
+    0,
+  );
   await expect(
     page.getByRole("button", { name: "Find a cause with the concierge" }),
   ).toHaveCount(0);
@@ -256,7 +256,7 @@ test("closing aborts a pending turn, restores launcher focus, and reopens empty"
   expect(requests).toHaveLength(1);
   await dialog(page).getByRole("button", { name: "Close dialog" }).click();
   await expect(
-    page.getByRole("button", { name: "Open discovery concierge" }),
+    page.getByRole("button", { name: "Find my cause" }),
   ).toBeFocused();
   await expect.poll(() => aborted).toBe(true);
   release();

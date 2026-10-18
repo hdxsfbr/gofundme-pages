@@ -51,7 +51,6 @@ export function DiscoveryConcierge({ onNavigate }: { onNavigate: () => void }) {
       <button
         className="concierge-launcher assistant-launcher"
         onClick={(e) => void show(e.currentTarget)}
-        aria-label="Open discovery concierge"
       >
         <Sparkles size={19} /> Find my cause
       </button>

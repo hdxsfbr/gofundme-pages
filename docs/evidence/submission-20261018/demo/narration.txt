@@ -1,0 +1,15 @@
+A donation can start with a personal connection. But how do you help someone find that connection in the first place? I built this reimagined GoFundMe experience to connect discovery, campaign stories, and supporter profiles. Let me show you the working product, starting with a community built around a greener tomorrow. You can browse by cause or search for something specific.
+
+If you know what matters to you, but don't know which campaign to choose, the discovery concierge can help. Here, I'm looking for community gardens and access to fresh food. The assistant uses the campaigns in our catalog to suggest a relevant match, explain why it fits, and link back to its sources. That turns an open-ended interest into a concrete next step.
+
+Opening that recommendation takes us straight to the fundraiser. The story, organizer, funding progress, and ways to help are connected on one page. I also added a live donation visualization, with a moving chart and an odometer-style total. For this demo, that animation uses clearly labeled simulated data. It shows how the experience could feel with people supporting a campaign in real time.
+
+People often have questions before they donate. The campaign assistant stays focused on this fundraiser. Let's ask what the money will be used for. Its answer includes source links, so we can go directly to the supporting information instead of taking the assistant's word for it. The system is also designed to say when information isn't available, rather than inventing campaign details.
+
+From there, support is just a few clicks away. This is a simulated donation, with no payment collected, but the action is saved. Sharing is built into the same journey, and you can feature a cause on your own profile with a personal reason for supporting it. The goal is to give people useful ways to participate, even when they aren't ready to donate.
+
+The organizer's profile gives the campaign a human connection. Following an organizer brings their campaigns into your Following view, giving you a way to find them again. Your own supporter profile brings together your featured causes and activity. These pages work as one connected experience, with visitor-specific state persisted in the database.
+
+Watch offers another way in: a short, scrollable video feed connected to the same campaigns. You can move between stories, open a fundraiser, or start a donation without losing the context. These clips use illustrative stock footage for the demo. It's a second discovery path, built around watching a story rather than scanning a grid.
+
+Underneath the experience is a Next.js application with PostgreSQL persistence, grounded AI responses, and automated checks. I instrumented meaningful actions, including follows, copied links, simulated donations, and assistant-to-campaign clicks, so future experiments can be evaluated against actual behavior. This prototype demonstrates how I approach building: connect a product idea to a usable experience, make the tradeoffs explicit, and build the measurement needed to learn what works.

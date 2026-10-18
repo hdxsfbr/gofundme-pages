@@ -15,3 +15,5 @@ coverage
 deployment-result.json
 railway-plan*.json
 *.railway-plan.json
+
+artifacts

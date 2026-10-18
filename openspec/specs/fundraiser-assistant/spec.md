@@ -18,6 +18,7 @@ The fundraiser SHALL expose an Ask about this fundraiser panel with suggested qu
 - **THEN** the existing assistant opens scoped to that fundraiser without starting a model request
 - **AND** closing either its loading or loaded dialog returns focus to the activating button
 - **AND** the existing inline Ask entry remains available
+- **AND** the floating control's accessible name includes its visible text
 
 #### Scenario: Invalid question input
 - **WHEN** a visitor submits an empty question or one over 1,000 characters

@@ -112,7 +112,11 @@ export function LiveDonationChart() {
           onClick={() => setPaused(!paused)}
           disabled={reduced}
           aria-label={
-            paused ? "Resume live donation demo" : "Pause live donation demo"
+            reduced
+              ? "Reduced motion: live donation demo paused"
+              : paused
+                ? "Resume live donation demo"
+                : "Pause live donation demo"
           }
         >
           {running ? <Pause size={14} /> : <Play size={14} />}
@@ -123,6 +127,7 @@ export function LiveDonationChart() {
         <span className="live-chart-label">Illustrative total · USD</span>
         <span
           className="live-chart-total"
+          role="img"
           aria-label={`Illustrative total: $${value}`}
         >
           <span aria-hidden="true" className="odometer">

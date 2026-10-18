@@ -50,7 +50,7 @@ Fix commit `04873c0bc0911852af4ea20ff9e9a172c2d6abee` passed [pipeline 57420](ht
 
 ## Illustrative donation chart — 2026-10-18
 
-At the user's explicit request, Codex implemented an animated live-donation illustration with a scrolling chart and odometer-style total. All animation amounts are invented and labeled; they do not enter campaign records or analytics. A delegated Sol agent (`gpt-6.1-sol`) added focused browser checks and reviewed desktop/mobile captures; the primary agent integrated the component, preserved recorded-history/source behavior, and reviewed the desktop presentation. This work used no application AI provider calls. Validation results are tracked in `openspec/changes/animate-demo-donation-chart/tasks.md`.
+At the user's explicit request, Codex implemented an animated live-donation illustration with a scrolling chart and odometer-style total. All animation amounts are invented and labeled; they do not enter campaign records or analytics. A delegated Sol agent (`gpt-6.1-sol`) added focused browser checks and reviewed desktop/mobile captures; the primary agent integrated the component, preserved recorded-history/source behavior, and reviewed the desktop presentation. This work used no application AI provider calls. Validation results are tracked in `openspec/changes/archive/2026-10-18-animate-demo-donation-chart/tasks.md`.
 
 ## Discover concierge — 2026-10-18
 
@@ -63,3 +63,19 @@ Two final requests ran through the actual UI; four used the same application API
 ## Floating campaign chat entry — 2026-10-18
 
 At the user's request, the primary Codex agent added a floating fundraiser-specific chat launcher matching Discover's button, reused shared styling and the existing lazy chat flow, and explicitly preserved trigger focus through loading and closing. Validation used intercepted AI requests and made no live provider calls. Desktop/mobile captures and checks are retained under `docs/evidence/campaign-launcher-20261018/`.
+
+## Narrated hiring-partner demo — 2026-10-18
+
+At the user's request, Codex prepared a concise product walkthrough for hiring partners, recorded the deployed application with Playwright, and assembled the browser footage and narration with FFmpeg. A delegated Sol agent (`gpt-6.1-sol`) captured and reviewed the eight browser scenes; the primary agent wrote the narration, generated speech, checked its transcription, edited the recording, and verified the final export. The user explicitly chose this lightweight workflow instead of OpenMontage's production pipeline.
+
+Narration uses the user's authorized `andre_voice_clean_ref.wav` with **standard ChatterboxTTS**, the existing local `chatterbox` Conda environment, and the balanced voice settings. Turbo was not used. Whisper transcription was used locally to check speech and generate optional captions. One narration scene was regenerated to improve an awkward opening sentence. No cloud TTS provider was used.
+
+The production capture made two real application AI requests: one catalog recommendation and one campaign funds-use answer. Both returned HTTP 200; answers were recorded without interception. Donations and live-chart activity remain simulated, and Watch uses illustrative stock footage. The recording is edited and paced for presentation, not a latency benchmark. Source narration, raw clips, per-scene timing, and final export are retained locally under `artifacts/demo-20261018/`.
+
+## Final submission audit — 2026-10-18
+
+At the user's request, Codex audited the sponsor requirements against the source, deployed behavior, documentation, and deliverables. A Sol agent reviewed documentation/code consistency, a Sol agent exercised hosted journeys and reviewed captures, and a Luna agent audited OpenSpec completion. The primary agent integrated the documentation corrections, synced and archived completed changes, retained the published demo and portable evidence, and ran final verification. The browser accessibility regression suite exposed mismatched launcher names, an unlabelable generic odometer span, and a reduced-motion label mismatch; the primary agent corrected these semantics without changing visual behavior.
+
+Hosted review made two additional real application AI requests (one concierge and one fundraiser Ask), both successful. These are separate from the two demo-recording calls above. Unit/integration and local browser regressions use controlled AI fixtures and make no provider calls. The hosted audit proves the deployed functional paths; the corrected accessibility build has separate local checks until the final merge is deployed. No human review or measured engagement uplift is implied.
+
+The YouTube thumbnail was generated with the built-in image-generation tool using actual fundraiser and assistant screenshots as visual references. The generated artwork and exact prompt are retained with the final demo package; it is promotional portfolio artwork, not evidence of official GoFundMe affiliation.

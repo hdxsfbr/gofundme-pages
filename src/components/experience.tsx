@@ -1160,7 +1160,6 @@ export function AskButton({ campaign }: { campaign: Campaign }) {
       </button>
       <button
         className="campaign-chat-launcher assistant-launcher"
-        aria-label="Open fundraiser assistant"
         onClick={(event) => void openPanel(event.currentTarget)}
       >
         <Sparkles size={19} /> Ask about this fundraiser
