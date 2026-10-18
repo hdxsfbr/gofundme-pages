@@ -13,6 +13,12 @@ The fundraiser SHALL expose an Ask about this fundraiser panel with suggested qu
 - **WHEN** a visitor selects the intended-use question
 - **THEN** the panel requests an answer using that fundraiser's supplied information and keeps its campaign context visible
 
+#### Scenario: Open the assistant while reading a fundraiser
+- **WHEN** the visitor activates the floating campaign assistant button at desktop or mobile sizes
+- **THEN** the existing assistant opens scoped to that fundraiser without starting a model request
+- **AND** closing either its loading or loaded dialog returns focus to the activating button
+- **AND** the existing inline Ask entry remains available
+
 #### Scenario: Invalid question input
 - **WHEN** a visitor submits an empty question or one over 1,000 characters
 - **THEN** validation explains the constraint and no generation request is sent

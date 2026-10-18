@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { ArrowUp, ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
 import type { Campaign } from "@/lib/content";
 import { dateLabel } from "@/lib/domain";
@@ -209,9 +209,11 @@ function ChatAnswer({
 export default function AskPanel({
   campaign,
   onClose,
+  returnFocusRef,
 }: {
   campaign: Campaign;
   onClose: () => void;
+  returnFocusRef?: RefObject<HTMLElement | null>;
 }) {
   const [question, setQuestion] = useState("");
   const [turns, setTurns] = useState<ChatTurn[]>([]);
@@ -399,7 +401,12 @@ export default function AskPanel({
     });
   }
   return (
-    <Dialog title="Ask about this fundraiser" variant="chat" onClose={close}>
+    <Dialog
+      title="Ask about this fundraiser"
+      variant="chat"
+      onClose={close}
+      returnFocusRef={returnFocusRef}
+    >
       <div className="chat-context">
         <Sparkles size={16} aria-hidden="true" />
         <p>{campaign.title}</p>
