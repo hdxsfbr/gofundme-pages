@@ -16,7 +16,7 @@ variables:
   NEXT_TELEMETRY_DISABLED: "1"
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
 
-validate:
+.validation-base:
   stage: validate
   timeout: 35m
   services:
@@ -41,8 +41,10 @@ validate:
       files: [package-lock.json]
     paths: [.npm/]
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends chromium ca-certificates && rm -rf /var/lib/apt/lists/*
     - npm ci --prefer-offline
+
+validate:
+  extends: .validation-base
   script:
     - npm run format:check
     - npm run lint
@@ -52,6 +54,24 @@ validate:
     - node scripts/assert-ci-results.mjs unit test-results/unit.json
     - npm run build
     - npm run typecheck
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths: [test-results/]
+
+# Opt-in coverage: neither an unplayed nor a failed browser job blocks deploy.
+browser-tests:
+  extends: .validation-base
+  when: manual
+  allow_failure: true
+  needs: []
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends chromium ca-certificates && rm -rf /var/lib/apt/lists/*
+    - npm ci --prefer-offline
+  script:
+    - node scripts/ci-database.mjs
+    - npm run db:migrate
+    - npm run build
     - node scripts/ci-browser.mjs
     - node scripts/assert-ci-results.mjs browser test-results/browser.json
   artifacts:

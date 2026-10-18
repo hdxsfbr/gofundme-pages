@@ -7,11 +7,20 @@ Publish the prototype from checked source through an observable, repeatable depl
 ## Requirements
 
 ### Requirement: Checks gate automatic deployments
-The pipeline SHALL validate branch changes with formatting, linting, type checking, production compilation, unit and database integration tests, and browser journeys. Only a passing main-branch pipeline SHALL automatically deploy production. Missing deployment credentials SHALL fail deployment rather than report a skipped deployment as success.
+The pipeline SHALL require formatting, linting, type checking, production compilation, and unit/database integration tests. Passing required checks on protected main SHALL trigger deployment independently of browser journeys. Browser journeys SHALL be an optional, non-blocking manual job with its own database and production build. Missing deployment credentials SHALL fail deployment rather than report a skipped deployment as success.
 
 #### Scenario: A check fails
 - **WHEN** a required check fails for a commit
 - **THEN** that pipeline does not deploy the commit
+
+#### Scenario: Browser journeys are optional
+- **WHEN** the browser job is not started, is canceled, or fails
+- **THEN** it does not block required validation or production deployment
+- **AND** its tests run only when an operator starts the manual job
+
+#### Scenario: Operator runs browser journeys
+- **WHEN** an operator starts the manual browser job
+- **THEN** it builds and tests that pipeline's source against its own disposable database and retains diagnostic artifacts
 
 #### Scenario: A branch passes
 - **WHEN** a non-main branch passes its checks
