@@ -49,6 +49,7 @@ import {
   type Viewer,
 } from "@/lib/domain";
 import { Dialog } from "./dialog";
+import { LiveDonationChart } from "./live-donation-chart";
 import { track } from "@/lib/client-events";
 export { track } from "@/lib/client-events";
 
@@ -964,7 +965,16 @@ export function ProgressHistory({
   snapshotAt: string;
 }) {
   const { viewer } = useDemo();
+  const [live, setLive] = useState(true);
   const [range, setRange] = useState<"7" | "30" | "all">("30");
+  useEffect(() => {
+    const showSource = () => {
+      if (location.hash === "#funding") setLive(false);
+    };
+    showSource();
+    window.addEventListener("hashchange", showSource);
+    return () => window.removeEventListener("hashchange", showSource);
+  }, []);
   // Reuse the server snapshot through hydration and range changes. A refresh
   // supplies a new snapshot without independently reading the browser clock.
   const h = history(campaign, viewer.donations, range, new Date(snapshotAt));
@@ -978,6 +988,9 @@ export function ProgressHistory({
   return (
     <section
       id="funding"
+      onFocus={(event) => {
+        if (event.target === event.currentTarget) setLive(false);
+      }}
       tabIndex={-1}
       className="progress-section source-section"
     >
@@ -987,72 +1000,81 @@ export function ProgressHistory({
           <h2>Every bit adds up.</h2>
         </div>
         <div className="range-controls" aria-label="Funding history range">
+          <button aria-pressed={live} onClick={() => setLive(true)}>
+            Live demo
+          </button>
           {(["7", "30", "all"] as const).map((r) => (
             <button
-              aria-pressed={r === range}
+              aria-pressed={!live && r === range}
               key={r}
-              onClick={() => setRange(r)}
+              onClick={() => {
+                setRange(r);
+                setLive(false);
+              }}
             >
               {r === "all" ? "All time" : r + " days"}
             </button>
           ))}
         </div>
       </div>
-      <p>
-        <strong>{money(h.change)}</strong> from {h.count} contributions in this
-        period
-      </p>
-      <svg
-        className="history-chart"
-        viewBox="0 0 600 160"
-        role="img"
-        aria-label={`Cumulative USD funding. ${money(h.change)} added during the selected period.`}
-      >
-        <line x1="0" x2="600" y1="145" y2="145" stroke="#dfe6da" />
-        <polyline
-          points={points}
-          fill="none"
-          stroke="#2b704d"
-          strokeWidth="3"
-          strokeLinejoin="round"
-        />
-        <circle
-          cx="600"
-          cy={
-            h.points.at(-1) ? 145 - (h.points.at(-1)!.cents / max) * 130 : 145
-          }
-          r="4"
-          fill="#2b704d"
-        />
-      </svg>
-      <div className="funding-foot">
-        <span>{dateLabel(h.start)}</span>
-        <span>{dateLabel(h.end)} · USD · UTC</span>
-      </div>
-      <details className="chart-table">
-        <summary>View the dated funding data</summary>
+      {live && <LiveDonationChart key={campaign.id} />}
+      <div className="recorded-funding-history" hidden={live}>
         <p>
-          Cumulative balance includes contributions before this period.
-          Snapshot: {h.end.slice(0, 16).replace("T", " ")} UTC.
+          <strong>{money(h.change)}</strong> from {h.count} contributions in
+          this period
         </p>
-        <table>
-          <caption>Daily cumulative funding in USD</caption>
-          <thead>
-            <tr>
-              <th>Date (UTC)</th>
-              <th>Balance</th>
-            </tr>
-          </thead>
-          <tbody>
-            {h.points.map((p, i) => (
-              <tr key={i}>
-                <td>{p.label}</td>
-                <td>{money(p.cents, true)}</td>
+        <svg
+          className="history-chart"
+          viewBox="0 0 600 160"
+          role="img"
+          aria-label={`Cumulative USD funding. ${money(h.change)} added during the selected period.`}
+        >
+          <line x1="0" x2="600" y1="145" y2="145" stroke="#dfe6da" />
+          <polyline
+            points={points}
+            fill="none"
+            stroke="#2b704d"
+            strokeWidth="3"
+            strokeLinejoin="round"
+          />
+          <circle
+            cx="600"
+            cy={
+              h.points.at(-1) ? 145 - (h.points.at(-1)!.cents / max) * 130 : 145
+            }
+            r="4"
+            fill="#2b704d"
+          />
+        </svg>
+        <div className="funding-foot">
+          <span>{dateLabel(h.start)}</span>
+          <span>{dateLabel(h.end)} · USD · UTC</span>
+        </div>
+        <details className="chart-table">
+          <summary>View the dated funding data</summary>
+          <p>
+            Cumulative balance includes contributions before this period.
+            Snapshot: {h.end.slice(0, 16).replace("T", " ")} UTC.
+          </p>
+          <table>
+            <caption>Daily cumulative funding in USD</caption>
+            <thead>
+              <tr>
+                <th>Date (UTC)</th>
+                <th>Balance</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </details>
+            </thead>
+            <tbody>
+              {h.points.map((p, i) => (
+                <tr key={i}>
+                  <td>{p.label}</td>
+                  <td>{money(p.cents, true)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </details>
+      </div>
     </section>
   );
 }

@@ -1,0 +1,168 @@
+.live-donation-chart {
+  background: #143e32;
+  color: #f5faef;
+  border-radius: 24px;
+  padding: 24px;
+  overflow: hidden;
+}
+.live-chart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.live-chart-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.live-chart-badge i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d5fa66;
+}
+.live-chart-badge i.is-live {
+  animation: donation-beacon 2s ease-in-out infinite;
+}
+.live-chart-pause {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #edf5e8;
+  border: 1px solid #ffffff40;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+.live-chart-pause:focus-visible {
+  outline: 2px solid #d5fa66;
+  outline-offset: 4px;
+}
+.live-chart-pause:disabled {
+  opacity: 0.75;
+}
+.live-chart-stat {
+  display: flex;
+  flex-direction: column;
+  margin-top: 28px;
+  gap: 8px;
+}
+.live-chart-label {
+  font-size: 12px;
+  color: #c6d8cf;
+}
+.live-chart-total {
+  font-size: clamp(36px, 7vw, 56px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+}
+.odometer {
+  display: inline-flex;
+  align-items: baseline;
+}
+.odometer-currency {
+  color: #d5fa66;
+  margin-right: 3px;
+}
+.odometer-digit {
+  display: inline-block;
+  height: 1.15em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.odometer-digit > span {
+  display: flex;
+  flex-direction: column;
+}
+.odometer-digit > span > span {
+  height: 1.15em;
+}
+.odometer-roll {
+  animation: donation-roll 750ms cubic-bezier(0.22, 0.8, 0.25, 1) both;
+}
+.odometer-still {
+  transform: translateY(-50%);
+}
+.live-chart-arrival {
+  color: #d5fa66;
+  font-size: 12px;
+  min-height: 20px;
+  animation: donation-arrival 650ms ease-out;
+}
+.live-chart-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 6px;
+}
+.live-chart-axis {
+  display: flex;
+  justify-content: space-between;
+  color: #c6d8cf;
+  font-size: 10px;
+}
+.live-chart-disclaimer {
+  color: #c6d8cf;
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #ffffff25;
+}
+.progress-section .section-intro {
+  flex-wrap: wrap;
+  gap: 16px;
+}
+@keyframes donation-roll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes donation-arrival {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes donation-beacon {
+  50% {
+    box-shadow: 0 0 0 5px #d5fa661c;
+  }
+}
+@media (max-width: 480px) {
+  .live-donation-chart {
+    padding: 20px 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-donation-chart *,
+  .live-donation-chart *::before {
+    animation: none !important;
+  }
+  .odometer-roll {
+    transform: translateY(-50%);
+  }
+}
+
+.recorded-funding-history > p {
+  font-size: 12px;
+  color: var(--muted);
+}
+.recorded-funding-history > p strong {
+  color: var(--ink);
+  font-size: 20px;
+}
