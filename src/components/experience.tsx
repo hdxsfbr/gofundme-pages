@@ -50,6 +50,7 @@ import {
 } from "@/lib/domain";
 import { Dialog } from "./dialog";
 import { LiveDonationChart } from "./live-donation-chart";
+import { DiscoveryConcierge } from "./discovery-concierge";
 import { track } from "@/lib/client-events";
 export { track } from "@/lib/client-events";
 
@@ -475,6 +476,9 @@ export function Discovery() {
   );
   return (
     <section id="discover" className="discovery container">
+      {view === "discover" && (
+        <DiscoveryConcierge onNavigate={rememberDiscovery} />
+      )}
       <div className="discovery-top">
         <div className="discovery-views">
           <div className="tabs" role="tablist" aria-label="Campaign views">

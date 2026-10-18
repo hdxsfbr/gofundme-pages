@@ -68,6 +68,56 @@ const videoShareNames = [
   "share_failed",
 ] as const;
 
+function conciergeReport(events: ReportEvent[]) {
+  const named = (name: string) => events.filter((e) => e.name === name);
+  const requestKey = (e: ReportEvent) =>
+    identifier(e, "requestId")
+      ? JSON.stringify([e.visitor_id, e.session_id, e.properties.requestId])
+      : undefined;
+  const requests = new Map<string, ReportEvent>();
+  const outcomes = new Map<string, ReportEvent>();
+  for (const e of named("concierge_question_submitted")) {
+    const id = requestKey(e);
+    if (id && !requests.has(id)) requests.set(id, e);
+  }
+  for (const e of events.filter((e) =>
+    ["concierge_answer_completed", "concierge_answer_failed"].includes(e.name),
+  )) {
+    const id = requestKey(e);
+    if (id && !outcomes.has(id)) outcomes.set(id, e);
+  }
+  const matched = [...outcomes].filter(
+    ([id, e]) =>
+      requests.has(id) &&
+      instant(e.created_at) >= instant(requests.get(id)!.created_at),
+  );
+  const completed = matched.filter(
+    ([, e]) => e.name === "concierge_answer_completed",
+  );
+  const opens = named("concierge_campaign_opened");
+  const matches = (id: string, e: ReportEvent, open: ReportEvent) =>
+    requestKey(open) === id &&
+    instant(open.created_at) >= instant(e.created_at);
+  return {
+    dialogOpens: named("concierge_opened").length,
+    dialogVisitors: visitors(named("concierge_opened")).size,
+    submittedRequests: requests.size,
+    completedRequests: completed.length,
+    failedRequests: matched.length - completed.length,
+    pendingSubmittedRequests: requests.size - matched.length,
+    outcomesWithoutSubmission: outcomes.size - matched.length,
+    campaignOpenEvents: opens.length,
+    answeredRequestCampaignOpen: rate(
+      completed.filter(([id, e]) => opens.some((open) => matches(id, e, open)))
+        .length,
+      completed.length,
+    ),
+    campaignOpensWithoutMatchedAnswer: opens.filter(
+      (open) => !completed.some(([id, e]) => matches(id, e, open)),
+    ).length,
+  };
+}
+
 function videoReport(events: ReportEvent[]) {
   const videoEventNames = new Set([
     "video_clip_impression",
@@ -403,6 +453,7 @@ export function engagementReport(
     },
     sharing,
     video: videoReport(events),
+    concierge: conciergeReport(events),
     returns: {
       sessionsStarted: begun.length,
       returningVisitors: new Set(returning.map((s) => s.visitor_id)).size,

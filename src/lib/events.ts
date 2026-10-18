@@ -1,4 +1,6 @@
 export const clientEvents = [
+  "concierge_opened",
+  "concierge_campaign_opened",
   "page_view",
   "discovery_card_open",
   "discovery_filter_changed",
@@ -16,6 +18,9 @@ export const clientEvents = [
   "video_campaign_opened",
 ] as const;
 export const trustedEvents = [
+  "concierge_question_submitted",
+  "concierge_answer_completed",
+  "concierge_answer_failed",
   "follow_changed",
   "cause_featured",
   "cause_unfeatured",

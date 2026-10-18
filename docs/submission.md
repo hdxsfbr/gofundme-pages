@@ -25,3 +25,7 @@ The controlled swipe-and-donate recording is [`watch-mobile-swipe-donate.webm`](
 ## Limits
 
 All campaigns and people are fictional; stock photographs are illustrative. Donations and follows are simulated and visitor-scoped. There is no live payment processing or production identity. The existing hosted release predates the Watch follow-on, which is not yet deployed. Performance is based on local lab runs, not field data. Browser accessibility checks report zero serious/critical axe findings across 18 release scenes; this is not a full WCAG conformance claim. No separate human final review is recorded; that is a documentation limitation, not an outstanding milestone task.
+
+## Discover concierge walkthrough addition (2026-10-18)
+
+The new concierge change is ready for review separately from the historical recordings. On Discover, open **Find my cause**, ask about outdoor accessibility, inspect the source-linked trail recommendation, then ask how to promote it instead of donating. Open the campaign to demonstrate its existing Share and Feature this cause controls. Reopen the concierge to show that conversation clears, then ask about emergency veterinary care to demonstrate an honest no-match response. Current screenshots and live-provider evidence are under [concierge evidence](evidence/concierge-20261018/). Existing demo videos predate this addition; a combined final submission recording is still to be made.

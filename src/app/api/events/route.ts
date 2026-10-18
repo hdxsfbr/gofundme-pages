@@ -2,7 +2,7 @@ import { z } from "zod";
 import { clientEvents } from "@/lib/events";
 import { body, failure, RequestError } from "@/lib/http";
 import { event, visitor } from "@/lib/store";
-import { community } from "@/lib/content";
+import { community, campaignById } from "@/lib/content";
 import { clipById } from "@/lib/video-content";
 const schema = z
   .object({
@@ -31,6 +31,16 @@ export function validClientEventAssociation(a: {
   properties?: Record<string, unknown>;
 }) {
   const p = a.properties ?? {};
+  if (a.name === "concierge_opened") return a.entityId === community.id;
+  if (a.name === "concierge_campaign_opened")
+    return Boolean(
+      a.entityId &&
+        campaignById(a.entityId) &&
+        (p.targetType === "campaign" || p.targetType === "source") &&
+        (p.requestId === undefined ||
+          (typeof p.requestId === "string" &&
+            z.uuid().safeParse(p.requestId).success)),
+    );
   if (a.name === "video_feed_opened")
     return (
       a.entityId === community.id &&
@@ -52,7 +62,7 @@ export async function POST(req: Request) {
     if (!p.success) throw new RequestError("Invalid event.");
     const a = p.data;
     if (!validClientEventAssociation(a))
-      throw new RequestError("Invalid video source for this cause.");
+      throw new RequestError("Invalid event association.");
     await event(await visitor(), a.name, a.entityId, a.properties, a.id);
     return Response.json({ ok: true });
   } catch (e) {

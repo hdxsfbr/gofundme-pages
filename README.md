@@ -1,6 +1,6 @@
 # GoFundMe community experience prototype
 
-A responsive Next.js prototype connecting one fictional community, four fundraisers, organizer profiles, a private demo supporter profile, and a curated short-video Watch feed. Visitors can browse campaigns, follow causes, save featured causes, share public links, and record simulated donations. Fundraiser pages show funding history and an optional campaign-scoped AI question panel with source links.
+A responsive Next.js prototype connecting one fictional community, four fundraisers, organizer profiles, a private demo supporter profile, and a curated short-video Watch feed. Visitors can browse campaigns, follow causes, save featured causes, share public links, and record simulated donations. Fundraiser pages show funding history and an optional campaign-scoped AI question panel with source links. Discover also offers a conversational AI concierge that matches interests to the four available campaigns, with recommendation reasons and source links. Both assistants share the configured AI usage allowance; concierge conversations clear on close.
 
 **This is a demonstration, not GoFundMe or a payment service.** All campaign, organizer, community, update, and seed contribution content is fictional. Donations are simulated and affect only the current browser's demo visitor. No card details are requested. Stock photographs and video are illustrative; performers do not depict, endorse, or verify the fictional campaign organizers or beneficiaries.
 
